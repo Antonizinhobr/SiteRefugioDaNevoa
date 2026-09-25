@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termos de Uso | Refúgio da Névoa</title>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/navbar.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="../assets/icon.jpg" type="image/jpg">
+    <style>
+        .legal-shell {
+            padding: 150px 20px 80px;
+            min-height: 80vh;
+        }
+        .legal-card {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #111116, #09090d);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 60px 70px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        .legal-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #e5222e;
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .legal-card h1 {
+            font-family: var(--font-game, 'Arial Black', sans-serif);
+            font-size: 2.8rem;
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 25px;
+            letter-spacing: 1px;
+        }
+        .legal-card h2 {
+            font-family: var(--font-family, 'Inter', sans-serif);
+            font-size: 1.1rem;
+            color: #e5222e;
+            margin: 40px 0 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+        .legal-card p, .legal-card li {
+            color: #a5a5ac;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        .legal-card ul {
+            padding-left: 20px;
+            margin-bottom: 25px;
+        }
+        .legal-card li::marker {
+            color: #e5222e;
+        }
+        .legal-card strong {
+            color: #ddd;
+        }
+        .legal-card a {
+            color: #fff;
+            text-decoration: underline;
+            text-decoration-color: #e5222e;
+            text-underline-offset: 3px;
+        }
+        .legal-card a:hover {
+            color: #e5222e;
+        }
+        @media (max-width: 760px) {
+            .legal-card { padding: 40px 25px; }
+            .legal-card h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body class="fade-in">
+
+    <header id="navbar" class="dashboard-header navbar-transparent">
+        <div class="logo">REFÚGIO DA NÉVOA</div>
+        <nav class="nav-menu pill-nav">
+            <a href="dashboard.html" class="nav-item">Início</a>
+            <div class="nav-item has-dropdown">
+                <span class="dropdown-trigger">Campeonato <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i></span>
+                <div class="mega-menu">
+                    <div class="mega-menu-grid">
+                        <a href="home.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-map-marked-alt"></i></div>
+                            <div class="mega-text"><span class="mega-title">Votação de Reinos</span><span class="mega-desc">Defina o palco do próximo massacre.</span></div>
+                        </a>
+                        <a href="teams.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-users"></i></div>
+                            <div class="mega-text"><span class="mega-title">Equipes</span><span class="mega-desc">Veja os sobreviventes e assassinos.</span></div>
+                        </a>
+                        <a href="bracket.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-sitemap"></i></div>
+                            <div class="mega-text"><span class="mega-title">Chaves</span><span class="mega-desc">Acompanhe os confrontos do torneio.</span></div>
+                        </a>
+                        <a href="perks.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-ban"></i></div>
+                            <div class="mega-text"><span class="mega-title">Perks Banidas</span><span class="mega-desc">O que é proibido pela Entidade.</span></div>
+                        </a>
+                        <a href="regras.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-star"></i></div>
+                            <div class="mega-text"><span class="mega-title">Sistema de Pontuação</span><span class="mega-desc">Regras do campeonato e penalidades.</span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a href="regras_servidor.html" class="nav-item">Regras</a>
+            <a href="mapas.html" class="nav-item">Numeração Mapas</a>
+            <a href="santuario.html" class="nav-item">Santuário</a>
+            <a href="codigos.html" class="nav-item">Códigos</a>
+            <a href="desafios.html" class="nav-item">Desafios</a>
+            <a href="builds.html" class="nav-item">Builds</a>
+        </nav>
+        <div class="nav-actions">
+            <div class="user-container" id="user-profile-trigger">
+                <span id="display-name">CARREGANDO...</span>
+                <i class="fas fa-chevron-down" style="font-size: 0.8rem; color: #aaa; margin-left: 5px;"></i>
+                <div class="avatar-circle"><img src="../assets/icon.jpg" alt="User Profile" /></div>
+            </div>
+        </div>
+        <div id="user-submenu" class="dropdown-menu">
+            <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> SAIR DA NÉVOA</button>
+        </div>
+    </header>
+
+    <main class="legal-shell">
+        <div class="legal-card">
+            <div class="legal-eyebrow"><i class="fas fa-file-contract"></i> DOCUMENTO OFICIAL</div>
+            <h1>Termos de Uso</h1>
+
+            <h2>1. Aceitação dos Termos</h2>
+            <p>Ao aceder e utilizar a plataforma <strong>Refúgio da Névoa</strong>, bem como ao participar no nosso servidor de Discord e nos torneios organizados por esta comunidade, o utilizador concorda expressamente em cumprir e sujeitar-se aos presentes Termos de Uso. Se não concordar com alguma parte destes termos, o acesso à plataforma poderá ser-lhe restringido ou negado.</p>
+
+            <h2>2. Natureza do Projeto</h2>
+            <p>O Refúgio da Névoa é uma comunidade e plataforma <strong>estritamente independente</strong> e não oficial, criada de fãs para fãs do jogo Dead by Daylight. Não somos patrocinados, endossados ou de qualquer forma afiliados à <em>Behaviour Interactive Inc.</em>.</p>
+
+            <h2>3. Propriedade Intelectual</h2>
+            <ul>
+                <li><strong>Ativos do Jogo:</strong> Todos os ícones, nomes de personagens, imagens de perks, add-ons e mapas relacionados ao Dead by Daylight apresentados neste site são propriedade exclusiva da Behaviour Interactive Inc. e são usados estritamente para fins informativos e de fã para fã.</li>
+                <li><strong>Plataforma e Código:</strong> O código-fonte, o design da plataforma (UI/UX), o sistema de registo de equipas, a forja de builds e toda a lógica desenvolvida para o <em>Refúgio da Névoa</em> pertencem inteiramente ao seu criador, <strong>Anthonny Michael</strong>. A reprodução não autorizada do código ou layout é estritamente proibida.</li>
+            </ul>
+
+            <h2>4. Conduta do Utilizador</h2>
+            <p>No <em>Refúgio da Névoa</em>, a Entidade não tolera desrespeito. Ao utilizar a nossa plataforma, concorda em:</p>
+            <ul>
+                <li>Não submeter imagens ofensivas, discriminatórias ou ilegais na forja de equipas ou builds.</li>
+                <li>Não utilizar exploits, scripts automáticos ou bots para prejudicar o funcionamento do site, manipular o sistema de votação de mapas ou sobrecarregar a base de dados.</li>
+                <li>Manter o fair-play e o respeito absoluto por todos os membros da comunidade, tanto no site como no Discord.</li>
+            </ul>
+
+            <h2>5. Criação de Equipes e Torneios</h2>
+            <p>O registo de uma equipa num campeonato constitui um compromisso. O utilizador reconhece que os Capitães das equipas são responsáveis por inserir e-mails corretos dos jogadores e por gerir os membros no Discord. A administração reserva-se o direito de remover qualquer equipa ou desqualificar jogadores caso seja detetada fraude, contas smurf (falsas) ou comportamento antidesportivo.</p>
+
+            <h2>6. Isenção de Responsabilidade</h2>
+            <p>A plataforma é fornecida "tal como está". A nossa administração faz os possíveis para manter tudo sincronizado e funcional (incluindo as integrações com os Webhooks do Discord e base de dados), mas não se responsabiliza por perdas de dados imprevistas, falhas na Firebase, encerramentos temporários da plataforma ou alterações de saldo de torneio decorrentes de erros de sistema.</p>
+
+            <h2>7. Alterações aos Termos</h2>
+            <p>O <em>Refúgio da Névoa</em> reserva-se o direito de atualizar, modificar ou substituir qualquer parte destes Termos de Uso em qualquer altura. Recomendamos que reveja esta página periodicamente. A continuação da utilização da plataforma após quaisquer alterações constitui a sua aceitação das mesmas.</p>
+        </div>
+    </main>
+
+    <footer class="custom-footer">
+        <div class="footer-top-glow"></div>
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <div class="logo">REFÚGIO DA NÉVOA</div>
+                <p>O servidor da comunidade mais sombrio da Névoa. Junte-se a nós para campeonatos, discussões e muito mais.</p>
+            </div>
+            <div class="footer-nav">
+                <h4>NAVEGAÇÃO</h4>
+                <div class="nav-links">
+                    <a href="#">Sobre a Comunidade</a>
+                    <a href="regras_servidor.html">Regras do Servidor</a>
+                    <a href="termos.html">Termos de Uso</a>
+                    <a href="privacidade.html">Privacidade</a>
+                </div>
+            </div>
+            <div class="footer-connect">
+                <h4>CONECTE-SE</h4>
+                <div class="social-buttons">
+                    <a href="https://discord.gg/YvzKApj7DJ" target="_blank" class="social-btn discord-btn"><i class="fab fa-discord"></i> Entrar no Discord</a>
+                    <a href="#" class="social-btn mail-btn"><i class="far fa-envelope"></i> Contato</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">
+            <div class="container bottom-flex">
+                <span class="copy">&copy; 2026 Refúgio da Névoa. Desenvolvido por <strong style="color:#fff;">Anthonny Michael</strong>.</span>
+                <span class="disclaimer">Não afiliado à Behaviour Interactive ou a Dead by Daylight™</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/navbar.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyARpVKfzOMm-v0pv9-7w9xahvhItosrI2Q",
+            authDomain: "dbd-camp.firebaseapp.com",
+            projectId: "dbd-camp",
+            storageBucket: "dbd-camp.firebasestorage.app",
+            messagingSenderId: "357760091556",
+            appId: "1:357760091556:web:4d9191b487baf240e92d31",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        
+        onAuthStateChanged(auth, (user) => {
+            const dn = document.getElementById('display-name');
+            if (!user) {
+                window.location.href = "login.html";
+            } else if (dn) {
+                dn.textContent = (user.displayName || user.email.split("@")[0]).toUpperCase();
+            }
+        });
+
+        document.getElementById("logout-btn").onclick = () => signOut(auth);
+    </script>
+</body>
+</html>

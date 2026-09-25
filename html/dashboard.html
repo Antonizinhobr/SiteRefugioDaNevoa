@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REFÚGIO DA NÉVOA</title>
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/modal.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="icon" href="../assets/icon.jpg" type="image/jpg" />
+</head>
+
+<body>
+
+  <header id="navbar" class="dashboard-header navbar-transparent">
+    <div class="logo">REFÚGIO DA NÉVOA</div>
+
+    <nav class="nav-menu pill-nav">
+      <a href="dashboard.html" class="nav-item">Início</a>
+
+      <div class="nav-item has-dropdown">
+        <span class="dropdown-trigger">Campeonato <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i></span>
+
+        <div class="mega-menu">
+          <div class="mega-menu-grid">
+            <a href="home.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-map-marked-alt"></i></div>
+              <div class="mega-text">
+                <span class="mega-title">Votação de Reinos</span>
+                <span class="mega-desc">Defina o palco do próximo massacre.</span>
+              </div>
+            </a>
+            <a href="teams.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-users"></i></div>
+              <div class="mega-text">
+                <span class="mega-title">Equipes</span>
+                <span class="mega-desc">Veja os sobreviventes e assassinos.</span>
+              </div>
+            </a>
+            <a href="bracket.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-sitemap"></i></div>
+              <div class="mega-text">
+                <span class="mega-title">Chaves</span>
+                <span class="mega-desc">Acompanhe os confrontos do torneio.</span>
+              </div>
+            </a>
+            <a href="perks.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-ban"></i></div>
+              <div class="mega-text">
+                <span class="mega-title">Perks Banidas</span>
+                <span class="mega-desc">O que é proibido pela Entidade.</span>
+              </div>
+            </a>
+            <a href="regras.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-star"></i></div>
+              <div class="mega-text">
+                <span class="mega-title">Sistema de Pontuação</span>
+                <span class="mega-desc">Regras do campeonato e penalidades.</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="regras_servidor.html" class="nav-item">Regras</a>
+      <a href="mapas.html" class="nav-item">Numeração Mapas</a>
+      <a href="santuario.html" class="nav-item">Santuário</a>
+      <a href="codigos.html" class="nav-item">Códigos</a>
+      <a href="desafios.html" class="nav-item">Desafios</a>
+      <a href="builds.html" class="nav-item">Builds</a>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="user-container" id="user-profile-trigger">
+        <span id="display-name">CARREGANDO...</span>
+        <div class="avatar-circle">
+          <img src="../assets/icon.jpg" alt="User Profile" />
+        </div>
+      </div>
+    </div>
+
+    <div id="user-submenu" class="dropdown-menu">
+      <button id="logout-btn">
+        <i class="fas fa-sign-out-alt"></i> SAIR DA NÉVOA
+      </button>
+    </div>
+  </header>
+
+  <div class="fade-in">
+
+    <section class="hero-section unified-hero">
+      <div class="hero-overlay-global"></div>
+
+      <div class="container hero-centered-container">
+
+        <div class="hero-content-centered reveal">
+          <div class="badge-pill">A NÉVOA CHAMA</div>
+          <h1 class="glitch-text">REFÚGIO DA NÉVOA</h1>
+          <p>
+            O servidor da comunidade de <span class="glitch-text">Dead By Daylight</span> mais sombrio da Névoa.
+            Junte-se a nós.
+          </p>
+          <div class="hero-buttons-centered">
+            <a href="#discord-invite" class="cta-btn outline">DISCORD</a>
+          </div>
+        </div>
+
+        <div class="feature-showcase reveal">
+          <div class="showcase-tabs">
+            <div class="tab-slider"></div>
+
+            <button class="showcase-tab active" data-target="tab-server">
+              <i class="fas fa-server"></i> Server
+            </button>
+            <button class="showcase-tab" data-target="tab-support">
+              <i class="fas fa-headset"></i> Support
+            </button>
+            <button class="showcase-tab" data-target="tab-bots">
+              <i class="fas fa-robot"></i> Bots
+            </button>
+            <button class="showcase-tab" data-target="tab-journal">
+              <i class="fas fa-book"></i> Journal
+            </button>
+            <button class="showcase-tab" data-target="tab-tournament">
+              <i class="fas fa-trophy"></i> Social Media
+            </button>
+          </div>
+
+          <div class="showcase-content-container">
+            <div class="showcase-panel active" id="tab-server">
+              <video src="../assets/videos/servidor.mp4" class="showcase-img" autoplay loop muted playsinline></video>
+            </div>
+
+            <div class="showcase-panel" id="tab-support">
+              <video src="../assets/videos/suporte.mp4" class="showcase-img" autoplay loop muted playsinline></video>
+            </div>
+
+            <div class="showcase-panel" id="tab-bots">
+              <video src="../assets/videos/bots.mp4" class="showcase-img" autoplay loop muted playsinline></video>
+            </div>
+
+            <div class="showcase-panel" id="tab-journal">
+              <video src="../assets/videos/noticias.mp4" class="showcase-img" autoplay loop muted playsinline></video>
+            </div>
+
+            <div class="showcase-panel" id="tab-tournament">
+              <video src="../assets/videos/redesocial.mp4" class="showcase-img" autoplay loop muted playsinline></video>
+            </div>
+          </div>
+        </div>
+
+        <div class="ritual-section-divider" aria-hidden="true">
+          <span class="ritual-divider-line"></span>
+          <span class="ritual-divider-mark">✦</span>
+          <span class="ritual-divider-line"></span>
+        </div>
+
+        <section class="ritual-section reveal" id="santuario-preview" aria-labelledby="ritual-title"
+          onclick="window.location.href='santuario.html'">
+          <div class="ritual-noise" aria-hidden="true"></div>
+          <div class="ritual-mist ritual-mist-one" aria-hidden="true"></div>
+          <div class="ritual-mist ritual-mist-two" aria-hidden="true"></div>
+          <div class="ritual-grid-lines" aria-hidden="true"></div>
+
+          <div class="ritual-bg-mark" aria-hidden="true">NÉVOA</div>
+
+          <div class="ritual-header">
+            <div class="ritual-kicker">
+              <span class="ritual-kicker-line"></span>
+              <span>ARQUIVO DA ENTIDADE</span>
+            </div>
+
+            <h2 id="ritual-title">O Ritual da Névoa</h2>
+
+            <p class="ritual-intro">
+              Quatro oferendas foram escolhidas para esta rotação. Entre na Névoa e
+              descubra quais favores ainda podem ser reivindicados.
+            </p>
+          </div>
+
+          <div class="ritual-layout">
+            <div class="ritual-offerings" id="shrine-preview-icons" aria-label="Vantagens disponíveis">
+              <article class="offering-card offering-card-one">
+                <div class="offering-card-top">
+                  <span class="offering-number">01</span>
+                  <span class="offering-status">ATIVA</span>
+                </div>
+                <div class="offering-icon-wrap">
+                  <i class="fas fa-eye" aria-hidden="true"></i>
+                </div>
+                <div class="offering-info">
+                  <span class="offering-label">OFERENDA</span>
+                  <h3>Olho da Névoa</h3>
+                  <p>Revele os sinais antes que desapareçam.</p>
+                </div>
+              </article>
+
+              <article class="offering-card offering-card-two">
+                <div class="offering-card-top">
+                  <span class="offering-number">02</span>
+                  <span class="offering-status">ATIVA</span>
+                </div>
+                <div class="offering-icon-wrap">
+                  <i class="fas fa-fist-raised" aria-hidden="true"></i>
+                </div>
+                <div class="offering-info">
+                  <span class="offering-label">OFERENDA</span>
+                  <h3>Pulso Brutal</h3>
+                  <p>A força da Entidade nunca chega em silêncio.</p>
+                </div>
+              </article>
+
+              <article class="offering-card offering-card-three">
+                <div class="offering-card-top">
+                  <span class="offering-number">03</span>
+                  <span class="offering-status">ATIVA</span>
+                </div>
+                <div class="offering-icon-wrap">
+                  <i class="fas fa-spider" aria-hidden="true"></i>
+                </div>
+                <div class="offering-info">
+                  <span class="offering-label">OFERENDA</span>
+                  <h3>Teia Faminta</h3>
+                  <p>O caminho mais curto também pode ser uma armadilha.</p>
+                </div>
+              </article>
+
+              <article class="offering-card offering-card-four">
+                <div class="offering-card-top">
+                  <span class="offering-number">04</span>
+                  <span class="offering-status">ATIVA</span>
+                </div>
+                <div class="offering-icon-wrap">
+                  <i class="fas fa-mask" aria-hidden="true"></i>
+                </div>
+                <div class="offering-info">
+                  <span class="offering-label">OFERENDA</span>
+                  <h3>Véu Partido</h3>
+                  <p>Nem tudo o que observa a Névoa pode ser visto.</p>
+                </div>
+              </article>
+            </div>
+
+            <aside class="ritual-seal-panel" aria-label="Informações do período atual">
+              <div class="ritual-seal" aria-hidden="true">
+                <span class="seal-ring seal-ring-outer"></span>
+                <span class="seal-ring seal-ring-inner"></span>
+                <span class="seal-mark">✦</span>
+                <span class="seal-caption">A ENTIDADE<br />OBSERVA</span>
+              </div>
+
+              <div class="ritual-period-box">
+                <span class="period-label">CICLO ATUAL</span>
+                <strong class="period-dates shrine-dates">Calculando a Entidade...</strong>
+                <span class="period-divider"></span>
+                <span class="period-note">A rotação será renovada ao fim do ciclo.</span>
+              </div>
+
+              <span class="ritual-progress-label">A Névoa está se fechando</span>
+              <div class="ritual-progress" aria-hidden="true">
+                <span class="ritual-progress-fill"></span>
+              </div>
+
+              <a class="ritual-access-button" href="santuario.html" aria-label="Abrir o Santuário"
+                onclick="event.stopPropagation()">
+                <span>ABRIR O SANTUÁRIO</span>
+                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              </a>
+            </aside>
+          </div>
+
+          <span class="ritual-corner ritual-corner-tl" aria-hidden="true"></span>
+          <span class="ritual-corner ritual-corner-tr" aria-hidden="true"></span>
+          <span class="ritual-corner ritual-corner-bl" aria-hidden="true"></span>
+          <span class="ritual-corner ritual-corner-br" aria-hidden="true"></span>
+        </section>
+
+      </div>
+    </section>
+
+    <div class="ritual-section-divider" aria-hidden="true">
+      <span class="ritual-divider-line"></span>
+      <span class="ritual-divider-mark">✦</span>
+      <span class="ritual-divider-line"></span>
+    </div>
+
+    <section class="fog-stats-section reveal" aria-labelledby="fog-stats-title">
+      <div class="fog-stats-bg-mark" aria-hidden="true">NÉVOA</div>
+      <div class="fog-stats-orbit fog-stats-orbit-one" aria-hidden="true"></div>
+      <div class="fog-stats-orbit fog-stats-orbit-two" aria-hidden="true"></div>
+
+      <div class="fog-stats-heading">
+        <div class="fog-stats-kicker">
+          <span class="fog-stats-kicker-dot"></span>
+          MONITORAMENTO DA ENTIDADE
+        </div>
+
+        <h2 id="fog-stats-title" class="stats-title">Estatísticas da Névoa</h2>
+
+        <p class="fog-stats-description">
+          Os números mudam. A Névoa observa. A comunidade permanece.
+        </p>
+      </div>
+
+      <div class="fog-status-line" aria-label="Status do servidor">
+        <span class="fog-status-pulse"></span>
+        <span>SISTEMA ATIVO</span>
+        <span class="fog-status-separator">/</span>
+        <span>ÚLTIMA LEITURA EM TEMPO REAL</span>
+      </div>
+
+      <div class="container fog-stats-grid">
+        <article class="fog-stat-card fog-stat-members reveal">
+          <div class="fog-stat-card-top">
+            <span class="fog-stat-index">01</span>
+            <span class="fog-stat-tag">COMUNIDADE</span>
+          </div>
+
+          <div class="fog-stat-main">
+            <div class="fog-stat-icon-wrap">
+              <i class="fas fa-users fog-stat-icon-users" aria-hidden="true"></i>
+            </div>
+            <div class="fog-stat-value-wrap">
+              <h3 id="stat-members">0</h3>
+              <p>MEMBROS TOTAIS</p>
+            </div>
+          </div>
+
+          <div class="fog-stat-footer">
+            <span>Presenças registradas na Névoa</span>
+            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+          </div>
+          <span class="fog-stat-glow" aria-hidden="true"></span>
+        </article>
+
+        <article class="fog-stat-card fog-stat-online reveal" style="animation-delay: 0.12s">
+          <div class="fog-stat-card-top">
+            <span class="fog-stat-index">02</span>
+            <span class="fog-stat-tag fog-tag-online">AO VIVO</span>
+          </div>
+
+          <div class="fog-stat-main">
+            <div class="fog-stat-icon-wrap">
+              <i class="fas fa-signal fog-stat-icon-online" aria-hidden="true"></i>
+            </div>
+            <div class="fog-stat-value-wrap">
+              <h3 id="stat-online" class="stat-text-online">0</h3>
+              <p class="stat-label-white">ONLINE AGORA</p>
+            </div>
+          </div>
+
+          <div class="fog-stat-footer">
+            <span>Sobreviventes detectados agora</span>
+            <i class="fas fa-wifi" aria-hidden="true"></i>
+          </div>
+          <span class="fog-stat-glow" aria-hidden="true"></span>
+        </article>
+
+        <article class="fog-stat-card fog-stat-boosts reveal boost-card-wrapper" style="animation-delay: 0.24s">
+          <button id="edit-boost-btn" class="fog-edit-stat-button hidden" type="button"
+            aria-label="Editar quantidade de boosters">
+            <i class="fas fa-pen" aria-hidden="true"></i>
+          </button>
+
+          <div class="fog-stat-card-top">
+            <span class="fog-stat-index">03</span>
+            <span class="fog-stat-tag fog-tag-boost">APOIO</span>
+          </div>
+
+          <div class="fog-stat-main">
+            <div class="fog-stat-icon-wrap">
+              <i class="fas fa-gem fog-stat-icon-boosts" aria-hidden="true"></i>
+            </div>
+            <div class="fog-stat-value-wrap">
+              <h3 id="stat-boosts" class="stat-text-boosts">0</h3>
+              <p class="stat-label-white">BOOSTERS</p>
+            </div>
+          </div>
+
+          <div class="fog-stat-footer">
+            <span>Favores oferecidos à comunidade</span>
+            <i class="fas fa-gem" aria-hidden="true"></i>
+          </div>
+          <span class="fog-stat-glow" aria-hidden="true"></span>
+        </article>
+      </div>
+
+      <div class="fog-stats-bottom-line">
+        <span></span>
+        <small>A ENTIDADE MANTÉM O REGISTRO</small>
+        <span></span>
+      </div>
+    </section>
+
+    <section class="community-disclaimer-section reveal">
+      <div class="container">
+        <div class="disclaimer-banner">
+          <div class="disclaimer-bg-text">NÉVOA</div>
+
+          <div class="disclaimer-content">
+            <span class="disclaimer-label">PROJETO DA COMUNIDADE</span>
+            <h2 class="disclaimer-title">Forjado na Névoa.</h2>
+            <p class="disclaimer-text">
+              O Refúgio da Névoa é um espaço independente criado pela comunidade. Não possuímos
+              vínculos oficiais com a Behaviour Interactive.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="staff-section reveal">
+      <div class="container">
+        <div class="section-header-styled">
+          <span class="header-kicker">OS ARQUITETOS DA NÉVOA</span>
+          <h2 class="section-title-styled">A Entidade (Staff)</h2>
+          <button id="add-staff-btn" class="cta-btn hidden" style="margin-top: 15px; padding: 10px 20px; font-size: 0.8rem;" onclick="openAdminStaffModal()">+ ADICIONAR MEMBRO</button>
+        </div>
+
+        <div class="staff-grid" id="staff-grid-container">
+          <p style="color: #888; text-align: center; width: 100%;">Convocando a Entidade...</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="discord-invite" class="discord-portal-section reveal">
+      <div class="container">
+        <div class="discord-portal-card">
+          <div class="discord-portal-glow" aria-hidden="true"></div>
+          
+          <div class="discord-portal-content">
+            <div class="discord-icon-wrapper">
+              <span class="pulse-ring ring-1"></span>
+              <span class="pulse-ring ring-2"></span>
+              <i class="fab fa-discord"></i>
+            </div>
+            
+            <div class="discord-text-block">
+              <h2>O Chamado da Névoa</h2>
+              <p>Os geradores não vão se consertar sozinhos. Sobreviva com amigos ou cace em grupo no nosso servidor oficial.</p>
+            </div>
+            
+            <a href="#" target="_blank" class="discord-action-btn" id="btn-invite">
+              <span>ENTRAR NO DISCORD</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="custom-footer">
+      <div class="footer-top-glow"></div>
+
+      <div class="container footer-content">
+        <div class="footer-brand">
+          <div class="logo">REFÚGIO DA NÉVOA</div>
+          <p>O servidor da comunidade mais sombrio da Névoa. Junte-se a nós para campeonatos, discussões e muito mais.</p>
+        </div>
+
+        <div class="footer-nav">
+          <h4>NAVEGAÇÃO</h4>
+          <div class="nav-links">
+            <a href="dashboard.html">Sobre a Comunidade</a>
+            <a href="regras_servidor.html">Regras do Servidor</a>
+            <a href="termos.html">Termos de Uso</a>
+            <a href="privacidade.html">Privacidade</a>
+          </div>
+        </div>
+
+        <div class="footer-connect">
+          <h4>CONECTE-SE</h4>
+          <div class="social-buttons">
+            <a href="#" class="social-btn discord-btn">
+              <i class="fab fa-discord"></i> Entrar no Discord
+            </a>
+            <a href="#" class="social-btn mail-btn">
+              <i class="far fa-envelope"></i> Contato
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="container bottom-flex">
+          <span class="copy">&copy; 2026 Refúgio da Névoa. Desenvolvido por <strong style="color:#fff;">Anthonny Michael</strong>.</span>
+          <span class="disclaimer">Não afiliado à Behaviour Interactive ou a Dead by Daylight™</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <div id="staff-modal" class="perk-modal staff-modal-overlay" onclick="closeStaffModalOut(event)" aria-hidden="true">
+    <div class="perk-modal-content staff-modal-content" role="dialog" aria-modal="true" aria-labelledby="staff-modal-name">
+      <button class="close-modal-btn staff-modal-close" type="button" onclick="closeStaffModal()" aria-label="Fechar modal">
+        <i class="fas fa-xmark"></i>
+      </button>
+
+      <div class="modal-image-side modal-col-side staff-modal-profile">
+        <div class="staff-modal-avatar-wrapper">
+          <span class="staff-modal-avatar-glow"></span>
+          <span class="staff-modal-avatar-ring"></span>
+          <img id="staff-modal-img" src="" alt="Perfil do membro da staff" />
+        </div>
+
+        <span id="staff-modal-role" class="staff-modal-role">CARGO</span>
+
+        <div class="staff-modal-status">
+          <span class="staff-status-dot"></span>
+          PRESENTE NA NÉVOA
+        </div>
+      </div>
+
+      <div class="modal-info-side staff-modal-info">
+        <span class="staff-modal-eyebrow">ARQUIVO DO SOBREVIVENTE</span>
+        <h2 id="staff-modal-name" class="modal-perk-name staff-modal-title">NOME</h2>
+        <p id="staff-modal-desc" class="modal-perk-desc staff-modal-subtitle">Descrição do membro.</p>
+        <div class="staff-modal-divider"></div>
+
+        <div class="staff-details-horizontal">
+          <div class="detail-item staff-detail-card">
+            <strong class="staff-detail-label">IDADE</strong>
+            <span id="staff-age">--</span>
+          </div>
+          <div class="detail-item staff-detail-card">
+            <strong class="staff-detail-label">LOCAL</strong>
+            <span id="staff-loc">--</span>
+          </div>
+          <div class="detail-item staff-detail-card">
+            <strong class="staff-detail-label">TEMPO DE JOGO</strong>
+            <span id="staff-time">--</span>
+          </div>
+        </div>
+
+        <div class="staff-main-card">
+          <strong class="staff-detail-label">MAIN</strong>
+          <span id="staff-main">--</span>
+        </div>
+
+        <div class="staff-social-section">
+          <div class="staff-social-heading">
+            <span class="social-title">REDES SOCIAIS</span>
+            <span class="staff-social-line"></span>
+          </div>
+          <div class="staff-socials">
+            <a id="link-insta" href="#" target="_blank" rel="noopener noreferrer" class="staff-social-link social-instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a id="link-tiktok" href="#" target="_blank" rel="noopener noreferrer" class="staff-social-link social-tiktok">
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <a id="link-steam" href="#" target="_blank" rel="noopener noreferrer" class="staff-social-link social-steam">
+              <i class="fab fa-steam-symbol"></i>
+            </a>
+            <a id="link-twitch" href="#" target="_blank" rel="noopener noreferrer" class="staff-social-link social-twitch">
+              <i class="fab fa-twitch"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="admin-staff-modal" class="perk-modal">
+    <div class="perk-modal-content admin-modal-premium">
+      <button class="close-modal-btn" onclick="closeAdminStaffModal()">&times;</button>
+      <div class="admin-modal-header">
+        <i class="fas fa-user-shield"></i>
+        <h2>GERENCIAR STAFF</h2>
+        <p>Adicione ou edite um arquiteto da Névoa.</p>
+      </div>
+      
+      <form id="admin-staff-form" onsubmit="saveStaffMember(event)">
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label>ID (ex: ravik, sem espaços)</label>
+            <input type="text" id="staff-form-id" required>
+          </div>
+          <div class="admin-form-group">
+            <label>Nome Visível</label>
+            <input type="text" id="staff-form-name" required>
+          </div>
+        </div>
+
+        <div class="admin-form-row">
+          <div class="admin-form-group">
+            <label>Cargo</label>
+            <select id="staff-form-role" required>
+              <option value="DONO">DONO</option>
+              <option value="ADMINISTRADOR(A)">ADMINISTRADOR(A)</option>
+              <option value="MODERADOR(A)">MODERADOR(A)</option>
+              <option value="DEV">DEV</option>
+            </select>
+          </div>
+          <div class="admin-form-group">
+            <label>Foto de Perfil (JPG/PNG)</label>
+            <input type="file" id="staff-form-img" accept="image/png, image/jpeg" class="file-input-premium" required>
+          </div>
+        </div>
+
+        <div class="admin-form-group">
+          <label>Descrição (Biografia)</label>
+          <textarea id="staff-form-desc" rows="2" required></textarea>
+        </div>
+
+        <div class="admin-form-row">
+          <div class="admin-form-group"><label>Idade</label><input type="text" id="staff-form-age"></div>
+          <div class="admin-form-group"><label>Localidade</label><input type="text" id="staff-form-loc"></div>
+        </div>
+
+        <div class="admin-form-row">
+          <div class="admin-form-group"><label>Tempo de Jogo</label><input type="text" id="staff-form-time"></div>
+          <div class="admin-form-group"><label>Main (Personagem)</label><input type="text" id="staff-form-main"></div>
+        </div>
+
+        <div class="admin-form-row">
+          <div class="admin-form-group"><label>Instagram URL</label><input type="url" id="staff-form-insta" placeholder="Opcional"></div>
+          <div class="admin-form-group"><label>TikTok URL</label><input type="url" id="staff-form-tiktok" placeholder="Opcional"></div>
+        </div>
+
+        <div class="admin-form-row">
+          <div class="admin-form-group"><label>Steam URL</label><input type="url" id="staff-form-steam" placeholder="Opcional"></div>
+          <div class="admin-form-group"><label>Twitch URL</label><input type="url" id="staff-form-twitch" placeholder="Opcional"></div>
+        </div>
+
+        <button type="submit" id="submit-staff-btn" class="cta-btn btn-full" style="margin-top: 20px;">SALVAR MEMBRO</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/navbar.js"></script>
+  <script src="../js/shrine.js"></script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { getFirestore, doc, onSnapshot, setDoc, deleteDoc, collection } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const DISCORD_SERVER_ID = "1443645419853840559";
+    const DISCORD_INVITE_CODE = "YvzKApj7DJ";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyARpVKfzOMm-v0pv9-7w9xahvhItosrI2Q",
+      authDomain: "dbd-camp.firebaseapp.com",
+      projectId: "dbd-camp",
+      storageBucket: "dbd-camp.firebasestorage.app",
+      messagingSenderId: "357760091556",
+      appId: "1:357760091556:web:4d9191b487baf240e92d31",
+      measurementId: "G-THBBGJTTMJ",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const ADMIN_UIDS = [
+      "discord:1037035142860001400",
+      "discord:1400218900284571689",
+      "discord:743696235248091206"
+    ];
+
+    let currentUserIsAdmin = false;
+    window.staffData = {}; 
+
+    const displayNameEl = document.getElementById('display-name');
+    let authChecked = false;
+
+    if (displayNameEl) {
+      displayNameEl.textContent = 'CARREGANDO...';
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      authChecked = true;
+
+      if (!user) {
+        window.location.href = "login.html";
+      } else {
+        const userName = user.displayName || (user.email ? user.email.split("@")[0] : "Usuário");
+        if (displayNameEl) {
+          displayNameEl.textContent = userName.toUpperCase();
+        }
+
+        currentUserIsAdmin = ADMIN_UIDS.includes(user.uid);
+        if (currentUserIsAdmin) {
+          const btnEdit = document.getElementById("edit-boost-btn");
+          const btnAddStaff = document.getElementById("add-staff-btn");
+          if (btnEdit) btnEdit.classList.remove("hidden");
+          if (btnAddStaff) btnAddStaff.classList.remove("hidden");
+        }
+      }
+    });
+
+    setTimeout(() => {
+      if (!authChecked && displayNameEl) {
+        displayNameEl.textContent = '...';
+      }
+    }, 3000);
+
+    document.getElementById("logout-btn").onclick = () => signOut(auth);
+
+    onSnapshot(collection(db, "staff"), (snapshot) => {
+      const grid = document.getElementById("staff-grid-container");
+      if(!grid) return;
+      grid.innerHTML = "";
+      window.staffData = {};
+
+      const staffArray = [];
+      snapshot.forEach(docSnap => {
+        staffArray.push({ id: docSnap.id, ...docSnap.data() });
+      });
+
+      const roleOrder = { "DONO": 1, "ADMINISTRADOR(A)": 2, "MODERADOR(A)": 3, "DEV": 4 };
+      staffArray.sort((a,b) => (roleOrder[a.role] || 99) - (roleOrder[b.role] || 99));
+
+      staffArray.forEach(data => {
+        window.staffData[data.id] = data;
+
+        let roleClass = "role-MOD";
+        let icon = "fa-shield-alt";
+        let roleColor = "#d45ce8";
+
+        if(data.role === "DONO") { roleClass = "role-DONO"; icon = "fa-crown"; roleColor = "#ffd700"; }
+        else if(data.role === "ADMINISTRADOR(A)") { roleClass = "role-ADMIN"; icon = "fa-gavel"; roleColor = "#ff4545"; }
+        else if(data.role === "DEV") { roleClass = "role-DEV"; icon = "fa-code"; roleColor = "#5865f2"; }
+
+        window.staffData[data.id].color = roleColor;
+
+        const adminControls = currentUserIsAdmin ? `<button class="delete-staff-btn" onclick="event.stopPropagation(); deleteStaffMember('${data.id}')" title="Remover Membro"><i class="fas fa-trash"></i></button>` : '';
+
+        grid.innerHTML += `
+          <div class="staff-card ${roleClass} reveal active" onclick="openStaffModal('${data.id}')">
+            ${adminControls}
+            <div class="staff-card-inner">
+              <div class="staff-avatar-wrapper">
+                <div class="staff-avatar-ring"></div>
+                <img src="${data.img}" alt="${data.name}" class="staff-avatar-img" />
+              </div>
+              <div class="staff-info">
+                <h3>${data.name}</h3>
+                <span class="staff-role">
+                  <i class="fas ${icon}"></i> ${data.role}
+                </span>
+                <p class="staff-bio">${data.desc}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    });
+
+    window.openAdminStaffModal = () => {
+      document.getElementById("admin-staff-modal").classList.add("open");
+      document.getElementById("admin-staff-form").reset();
+    };
+
+    window.closeAdminStaffModal = () => {
+      document.getElementById("admin-staff-modal").classList.remove("open");
+    };
+
+    window.saveStaffMember = async (e) => {
+      e.preventDefault();
+      const idInput = document.getElementById("staff-form-id").value.trim().toLowerCase().replace(/\s+/g, '-');
+      const fileInput = document.getElementById("staff-form-img");
+      const btnSubmit = document.getElementById("submit-staff-btn");
+
+      btnSubmit.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ENVIANDO PARA A NÉVOA...';
+      btnSubmit.disabled = true;
+
+      try {
+        let imageUrl = "https://i.ibb.co/ch2qxHcP/Peachy-20250911-015431303.jpg";
+
+        if (fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            const formData = new FormData();
+            formData.append("image", file);
+            
+            const IMGBB_API_KEY = "02ac971f74c655e88eb932d14930342f";
+            
+            const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+                method: "POST",
+                body: formData
+            });
+            
+            const imgbbData = await response.json();
+            
+            if (imgbbData.success) {
+                imageUrl = imgbbData.data.url; 
+            } else {
+                throw new Error("O servidor de imagens recusou o arquivo.");
+            }
+        } else {
+            throw new Error("Por favor, selecione uma imagem.");
+        }
+
+        const payload = {
+          name: document.getElementById("staff-form-name").value,
+          role: document.getElementById("staff-form-role").value,
+          img: imageUrl,
+          desc: document.getElementById("staff-form-desc").value,
+          age: document.getElementById("staff-form-age").value || "--",
+          loc: document.getElementById("staff-form-loc").value || "--",
+          time: document.getElementById("staff-form-time").value || "--",
+          main: document.getElementById("staff-form-main").value || "--",
+          links: {
+            insta: document.getElementById("staff-form-insta").value || "#",
+            tiktok: document.getElementById("staff-form-tiktok").value || "#",
+            steam: document.getElementById("staff-form-steam").value || "#",
+            twitch: document.getElementById("staff-form-twitch").value || "#",
+          }
+        };
+
+        await setDoc(doc(db, "staff", idInput), payload);
+        closeAdminStaffModal();
+        alert("Membro da Staff salvo com sucesso!");
+      } catch (err) {
+        alert("Erro ao salvar: " + err.message);
+      } finally {
+        btnSubmit.innerText = "SALVAR MEMBRO";
+        btnSubmit.disabled = false;
+      }
+    };
+
+    window.deleteStaffMember = async (id) => {
+      if(confirm(`A Entidade exige sacrifícios... Deseja remover o membro '${id}' da Staff?`)) {
+        await deleteDoc(doc(db, "staff", id));
+      }
+    };
+
+    window.openStaffModal = function (id) {
+      const data = window.staffData?.[id];
+
+      if (!data) return;
+
+      const modal = document.getElementById("staff-modal");
+      const image = document.getElementById("staff-modal-img");
+      const name = document.getElementById("staff-modal-name");
+      const role = document.getElementById("staff-modal-role");
+      const description = document.getElementById("staff-modal-desc");
+
+      image.src = data.img || "";
+      image.alt = data.name ? `Foto de ${data.name}` : "Perfil do membro da staff";
+
+      name.textContent = data.name || "NOME";
+      role.textContent = data.role || "CARGO";
+      description.textContent = `"${data.desc || "Descrição do membro."}"`;
+
+      if (data.color) {
+        role.style.setProperty("--staff-role-color", data.color);
+        role.style.setProperty("--staff-role-background", `${data.color}1A`);
+        role.style.setProperty("--staff-role-border", `${data.color}66`);
+      }
+
+      document.getElementById("staff-age").textContent = data.age || "--";
+      document.getElementById("staff-loc").textContent = data.loc || "--";
+      document.getElementById("staff-time").textContent = data.time || "--";
+      document.getElementById("staff-main").textContent = data.main || "--";
+
+      const links = data.links || {};
+
+      const socialMapping = {
+        "link-insta": links.insta,
+        "link-tiktok": links.tiktok,
+        "link-steam": links.steam,
+        "link-twitch": links.twitch
+      };
+
+      Object.entries(socialMapping).forEach(([linkId, url]) => {
+        const element = document.getElementById(linkId);
+        const socialUrl = url || "#";
+
+        if (!element) return;
+
+        element.href = socialUrl;
+
+        if (socialUrl === "#") {
+          element.classList.add("disabled-social");
+          element.removeAttribute("target");
+        } else {
+          element.classList.remove("disabled-social");
+          element.setAttribute("target", "_blank");
+        }
+      });
+
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("modal-is-open");
+    };
+
+    window.closeStaffModal = function () {
+      const modal = document.getElementById("staff-modal");
+      if (!modal) return;
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-is-open");
+    };
+
+    window.closeStaffModalOut = function (event) {
+      if (event.target.id === "staff-modal") {
+        window.closeStaffModal();
+      }
+    };
+
+    document.addEventListener("keydown", function (event) {
+      const modal = document.getElementById("staff-modal");
+      if (event.key === "Escape" && modal && modal.classList.contains("open")) {
+        window.closeStaffModal();
+      }
+    });
+
+    window.addEventListener("scroll", reveal);
+    function reveal() {
+      var reveals = document.querySelectorAll(".reveal");
+      for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        if (elementTop < windowHeight - 150) { reveals[i].classList.add("active"); }
+      }
+    }
+    reveal();
+
+    function animateValue(id, start, end, duration) {
+      const obj = document.getElementById(id);
+      if (!obj) return;
+      if (end === 0 || end === undefined) { obj.innerText = "0"; return; }
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) window.requestAnimationFrame(step);
+        else obj.innerHTML = end;
+      };
+      window.requestAnimationFrame(step);
+    }
+
+    async function fetchDiscordStats() {
+      let onlineCount = 0, totalMembers = 0;
+      try {
+        const widgetRes = await fetch(`https://discord.com/api/guilds/${DISCORD_SERVER_ID}/widget.json`);
+        if (widgetRes.ok) onlineCount = (await widgetRes.json()).presence_count || 0;
+      } catch (e) {}
+      try {
+        const inviteRes = await fetch(`https://discord.com/api/v9/invites/${DISCORD_INVITE_CODE}?with_counts=true`);
+        if (inviteRes.ok) totalMembers = (await inviteRes.json()).approximate_member_count || 0;
+      } catch (e) {}
+      
+      const btn = document.getElementById("btn-invite");
+      if (btn) btn.href = `https://discord.gg/${DISCORD_INVITE_CODE}`;
+      
+      setTimeout(() => {
+        animateValue("stat-members", 0, totalMembers, 2000);
+        animateValue("stat-online", 0, onlineCount, 2000);
+      }, 500);
+    }
+
+    document.getElementById("edit-boost-btn").onclick = async (e) => {
+      e.stopPropagation();
+      const el = document.getElementById("stat-boosts");
+      const currentVal = el.innerText;
+      const newVal = prompt("Digite a quantidade atual de Boosts:", currentVal);
+      
+      if (newVal !== null && newVal.trim() !== "") {
+        const num = parseInt(newVal, 10);
+        if (!isNaN(num)) {
+          el.innerText = num;
+          try {
+            await setDoc(doc(db, "sistema", "discord_stats"), { boosts: num }, { merge: true });
+          } catch (err) {
+            console.error(err);
+            alert("Erro de conexão ou falta de permissão no Firebase. As alterações não foram salvas.");
+          }
+        } else { 
+          alert("Por favor, digite apenas números."); 
+        }
+      }
+    };
+
+    onSnapshot(doc(db, "sistema", "discord_stats"), (docSnapshot) => {
+      if (docSnapshot.exists()) {
+        const data = docSnapshot.data();
+        const endVal = data.boosts || 0;
+        const currentVal = parseInt(document.getElementById("stat-boosts").innerText, 10) || 0;
+        
+        if (currentVal !== endVal) {
+          animateValue("stat-boosts", 0, endVal, 2000);
+        }
+      } else {
+        document.getElementById("stat-boosts").innerText = "0";
+      }
+    });
+
+    fetchDiscordStats();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const tabs = document.querySelectorAll('.showcase-tab');
+      const panels = document.querySelectorAll('.showcase-panel');
+      const slider = document.querySelector('.tab-slider');
+
+      function updateSlider(tab) {
+        if (!slider || !tab) return;
+        slider.style.width = `${tab.offsetWidth}px`;
+        slider.style.transform = `translateX(${tab.offsetLeft}px)`;
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          panels.forEach(p => p.classList.remove('active'));
+          tab.classList.add('active');
+          const targetPanel = document.getElementById(tab.getAttribute('data-target'));
+          if (targetPanel) targetPanel.classList.add('active');
+          updateSlider(tab);
+        });
+      });
+
+      const initialActiveTab = document.querySelector('.showcase-tab.active');
+      if (initialActiveTab) setTimeout(() => updateSlider(initialActiveTab), 50);
+      window.addEventListener('resize', () => {
+        const currentActive = document.querySelector('.showcase-tab.active');
+        if (currentActive) updateSlider(currentActive);
+      });
+    });
+  </script>
+</body>
+
+</html>

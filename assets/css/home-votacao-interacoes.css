@@ -1,0 +1,173 @@
+.map-card {
+  --map-glow: rgba(227, 49, 69, 0.34);
+  --map-scan-opacity: 0;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+}
+
+.map-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--map-scan-opacity);
+  background:
+    linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 42%,
+      rgba(255, 255, 255, 0.13) 49%,
+      rgba(227, 49, 69, 0.2) 50%,
+      transparent 58%,
+      transparent 100%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 31px,
+      rgba(255, 255, 255, 0.04) 32px 33px
+    );
+  background-size:
+    240% 100%,
+    100% 100%;
+  background-position:
+    120% 0,
+    0 0;
+  mix-blend-mode: screen;
+  transition: opacity 0.35s ease;
+}
+
+.map-card:hover {
+  --map-scan-opacity: 1;
+  border-color: rgba(255, 89, 107, 0.8) !important;
+  box-shadow:
+    0 26px 55px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(227, 49, 69, 0.25),
+    0 0 28px var(--map-glow) !important;
+  transform: translateY(-8px) rotateX(1.2deg) rotateY(-1.2deg);
+}
+
+.map-card:hover::before {
+  animation: cartographySweep 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes cartographySweep {
+  0% {
+    background-position:
+      120% 0,
+      0 0;
+  }
+  48%,
+  100% {
+    background-position:
+      -80% 0,
+      0 0;
+  }
+}
+
+.map-card .map-name::before,
+.map-card .map-name::after {
+  position: absolute;
+  bottom: 17px;
+  width: 13px;
+  height: 13px;
+  content: "";
+  border-color: rgba(255, 89, 107, 0.7);
+  opacity: 0.45;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.map-card .map-name::before {
+  left: 17px;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.map-card .map-name::after {
+  right: 17px;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+
+.map-card:hover .map-name::before {
+  opacity: 1;
+  transform: translate(-3px, 3px);
+}
+
+.map-card:hover .map-name::after {
+  opacity: 1;
+  transform: translate(3px, 3px);
+}
+
+.map-card .map-name {
+  transition:
+    transform 0.35s ease,
+    letter-spacing 0.35s ease;
+}
+
+.map-card:hover .map-name {
+  letter-spacing: 0.15em;
+  transform: translateY(-2px);
+}
+
+.map-card:hover .map-name::marker {
+  content: none;
+}
+
+.map-card:hover .vote-badge {
+  animation: voteBeacon 1.8s ease-in-out infinite;
+}
+
+@keyframes voteBeacon {
+  0%,
+  100% {
+    box-shadow:
+      0 7px 18px rgba(0, 0, 0, 0.38),
+      0 0 0 0 rgba(227, 49, 69, 0.34);
+  }
+  50% {
+    box-shadow:
+      0 7px 18px rgba(0, 0, 0, 0.38),
+      0 0 0 7px rgba(227, 49, 69, 0);
+  }
+}
+
+.map-card.map-vote-selected {
+  border-color: #f3c96a !important;
+  box-shadow:
+    0 0 0 2px rgba(243, 201, 106, 0.28),
+    0 0 38px rgba(243, 201, 106, 0.18) !important;
+  transform: translateY(-8px) scale(1.015);
+}
+
+.map-card.map-vote-selected::after {
+  content: "ESCOLHIDO  ✦";
+  opacity: 1;
+  transform: none;
+  border-color: #f3c96a;
+  color: #f3c96a;
+  background: rgba(29, 24, 12, 0.82);
+}
+
+.map-card.map-vote-selected .vote-badge {
+  background: #f3c96a !important;
+  color: #17120a !important;
+  border-color: #fff !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-card:hover,
+  .map-card:hover::before,
+  .map-card:hover .vote-badge {
+    animation: none !important;
+    transform: translateY(-3px);
+  }
+}

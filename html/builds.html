@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forja da Névoa | Refúgio da Névoa</title>
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/modal.css">
+    <link rel="stylesheet" href="../assets/css/builds.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="../assets/icon.jpg" type="image/jpg">
+</head>
+
+<body>
+    <header id="navbar" class="dashboard-header navbar-transparent forge-navbar">
+        <div class="logo">REFÚGIO DA NÉVOA</div>
+        <nav class="nav-menu pill-nav">
+            <a href="dashboard.html" class="nav-item">Início</a>
+            <div class="nav-item has-dropdown">
+                <span class="dropdown-trigger">Campeonato <i class="fas fa-chevron-down dropdown-icon"></i></span>
+                <div class="mega-menu">
+                    <div class="mega-menu-grid">
+                        <a href="home.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-map-marked-alt"></i></div>
+                            <div class="mega-text"><span class="mega-title">Votação de Reinos</span><span
+                                    class="mega-desc">Defina o palco do próximo massacre.</span></div>
+                        </a>
+                        <a href="teams.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-users"></i></div>
+                            <div class="mega-text"><span class="mega-title">Equipes</span><span class="mega-desc">Veja
+                                    os sobreviventes e assassinos.</span></div>
+                        </a>
+                        <a href="bracket.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-sitemap"></i></div>
+                            <div class="mega-text"><span class="mega-title">Chaves</span><span
+                                    class="mega-desc">Acompanhe os confrontos do torneio.</span></div>
+                        </a>
+                        <a href="perks.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-ban"></i></div>
+                            <div class="mega-text"><span class="mega-title">Perks Banidas</span><span
+                                    class="mega-desc">O que é proibido pela Entidade.</span></div>
+                        </a>
+                        <a href="regras.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-star"></i></div>
+                            <div class="mega-text"><span class="mega-title">Sistema de Pontuação</span><span
+                                    class="mega-desc">Regras do campeonato e penalidades.</span></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a href="regras_servidor.html" class="nav-item">Regras</a>
+            <a href="mapas.html" class="nav-item">Numeração Mapas</a>
+            <a href="santuario.html" class="nav-item">Santuário</a>
+            <a href="codigos.html" class="nav-item">Códigos</a>
+            <a href="desafios.html" class="nav-item">Desafios</a>
+            <a href="builds.html" class="nav-item active">Builds</a>
+        </nav>
+        <div class="nav-actions">
+            <div class="user-container" id="user-profile-trigger">
+                <span id="display-name">CARREGANDO...</span>
+                <i class="fas fa-chevron-down profile-chevron"></i>
+                <div class="avatar-circle"><img src="../assets/icon.jpg" alt="Perfil do usuário"></div>
+            </div>
+        </div>
+        <div id="user-submenu" class="dropdown-menu">
+            <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> SAIR DA NÉVOA</button>
+        </div>
+    </header>
+
+    <div class="builds-page-body" data-role="survivor">
+        <main class="forge-shell">
+            <section class="forge-hero">
+                <div class="hero-ambient hero-ambient-a"></div>
+                <div class="hero-ambient hero-ambient-b"></div>
+                <div class="hero-copy">
+                    <div class="eyebrow"><span class="eyebrow-pulse"></span> ACESSO AUTORIZADO · CÂMARA 07</div>
+                    <h1>A FORJA <em>DA NÉVOA</em></h1>
+                    <p>Uma estratégia não nasce pronta. Ela é temperada, testada e lançada no mundo.</p>
+                </div>
+                <div class="hero-signal">
+                    <span class="signal-dot"></span>
+                    <div><strong>ENTIDADE ONLINE</strong><small>O acervo observa sua construção</small></div>
+                </div>
+                <div class="hero-coordinate">RNV-07<br><span>∞ / 04</span></div>
+            </section>
+
+            <section class="forge-console" aria-label="Câmara de criação de builds">
+                <div class="console-topline"><span>PROTOCOLO DE CONSTRUÇÃO</span><span class="console-line"></span><span
+                        id="forge-stage-label">FASE 01 · ALINHAMENTO</span></div>
+                <div class="forge-grid">
+                    <aside class="forge-brief panel-surface">
+                        <div class="panel-index">01 <span>IDENTIDADE</span></div>
+                        <div class="role-mark"><i class="fas fa-running"></i><span
+                                id="role-mark-label">SOBREVIVENTE</span>
+                        </div>
+                        <h2>Nomeie<br><strong>sua lenda.</strong></h2>
+                        <p>Escolha uma função, dê um nome ao seu plano e deixe uma instrução para quem ousar seguir seus
+                            passos.</p>
+                        <div class="role-switch" role="tablist">
+                            <button id="btn-survivor" class="f-role-btn active" data-action="setRole"
+                                data-role="survivor"><i class="fas fa-running"></i><span>SOBREVIVENTE</span></button>
+                            <button id="btn-killer" class="f-role-btn" data-action="setRole" data-role="killer"><i
+                                    class="fas fa-skull"></i><span>ASSASSINO</span></button>
+                        </div>
+                        <div class="field-wrap">
+                            <label for="build-title">NOME DO REGISTRO</label>
+                            <div class="field-icon"><i class="fas fa-pen-nib"></i><input type="text" id="build-title"
+                                    maxlength="48" placeholder="Ex.: Último Gerador"></div>
+                            <span class="field-hint"><b id="title-counter">0</b> / 48 caracteres</span>
+                        </div>
+                        <div class="field-wrap">
+                            <label for="build-desc">NOTA TÁTICA</label>
+                            <textarea id="build-desc" maxlength="360" rows="5"
+                                placeholder="Escreva a lógica, o ritmo e o momento certo para esta build..."></textarea>
+                            <span class="field-hint"><b id="desc-counter">0</b> / 360 caracteres</span>
+                        </div>
+                        <button class="forge-submit" id="btn-save-build">
+                            <span class="submit-icon"><i class="fas fa-fire-flame-curved"></i></span>
+                            <span><b>FORJAR REGISTRO</b><small>Publicar no acervo e no Discord</small></span>
+                            <i class="fas fa-arrow-right submit-arrow"></i>
+                        </button>
+                    </aside>
+
+                    <section class="loadout-core panel-surface">
+                        <div class="panel-index">02 <span>NÚCLEO DO LOADOUT</span></div>
+                        <div class="core-heading">
+                            <div><span class="micro-label">CONFIGURAÇÃO ATUAL</span>
+                                <h2 id="preview-title">REGISTRO SEM NOME</h2>
+                            </div>
+                            <div class="core-status"><span></span><b id="core-status-label">AGUARDANDO ARTEFATOS</b>
+                            </div>
+                        </div>
+                        <div class="character-stage">
+                            <div class="stage-ring ring-outer"></div>
+                            <div class="stage-ring ring-inner"></div>
+                            <div class="stage-cross"></div>
+                            <div class="character-slot square-slot large-slot" id="slot-character"
+                                data-action="openSelection" data-type="character">
+                                <i class="fas fa-user-plus placeholder-icon"></i>
+                            </div>
+                            <div class="stage-caption"><span id="label-character">PERSONAGEM</span><b
+                                    id="core-character-name">SELECIONE UM VÍNCULO</b></div>
+                        </div>
+                        <div class="loadout-line">
+                            <div class="line-node active"></div>
+                            <div class="line-segment"></div>
+                            <div class="line-node"></div>
+                            <div class="line-segment"></div>
+                            <div class="line-node"></div>
+                        </div>
+                        <div class="equipment-row">
+                            <div class="equipment-block" id="group-item">
+                                <div class="slot-heading"><span>ITEM BASE</span><i class="fas fa-box-open"
+                                        style="margin-left:5px;"></i></div>
+                                <div class="square-slot" id="slot-item" data-action="openSelection" data-type="item"><i
+                                        class="fas fa-box-open placeholder-icon"></i></div>
+                            </div>
+                            <div class="equipment-block addons-block">
+                                <div class="slot-heading"><span>ADDONS</span><i
+                                        class="fas fa-wand-magic-sparkles" style="margin-left:5px;"></i></div>
+                                <div class="addons-row-gap" id="addons-container">
+                                    <div class="square-slot addon-slot" id="slot-addon-0" data-action="openSelection"
+                                        data-type="addon" data-index="0"><i class="fas fa-plus placeholder-icon"></i>
+                                    </div>
+                                    <div class="square-slot addon-slot" id="slot-addon-1" data-action="openSelection"
+                                        data-type="addon" data-index="1"><i class="fas fa-plus placeholder-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="perk-zone">
+                            <div class="perk-zone-heading"><span>CONHECIMENTO PROIBIDO</span><b><i
+                                        class="fas fa-diamond"></i> 4 SLOTS</b></div>
+                            <div id="forge-perk-slots">
+                                <div class="perk-slot mini-diamond-wrapper empty-diamond" id="slot-perk-0"
+                                    data-action="openSelection" data-type="perk" data-index="0">
+                                    <div class="mini-diamond-bg"></div><i
+                                        class="fas fa-diamond placeholder-icon icon-z2"></i><span>01</span>
+                                </div>
+                                <div class="perk-slot mini-diamond-wrapper empty-diamond" id="slot-perk-1"
+                                    data-action="openSelection" data-type="perk" data-index="1">
+                                    <div class="mini-diamond-bg"></div><i
+                                        class="fas fa-diamond placeholder-icon icon-z2"></i><span>02</span>
+                                </div>
+                                <div class="perk-slot mini-diamond-wrapper empty-diamond" id="slot-perk-2"
+                                    data-action="openSelection" data-type="perk" data-index="2">
+                                    <div class="mini-diamond-bg"></div><i
+                                        class="fas fa-diamond placeholder-icon icon-z2"></i><span>03</span>
+                                </div>
+                                <div class="perk-slot mini-diamond-wrapper empty-diamond" id="slot-perk-3"
+                                    data-action="openSelection" data-type="perk" data-index="3">
+                                    <div class="mini-diamond-bg"></div><i
+                                        class="fas fa-diamond placeholder-icon icon-z2"></i><span>04</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <aside class="forge-insight panel-surface">
+                        <div class="panel-index">03 <span>LEITURA DA ENTIDADE</span></div>
+                        <div class="insight-orbit">
+                            <div class="orbit-core"><i class="fas fa-eye"></i></div>
+                            <div class="orbit-dot"></div>
+                        </div>
+                        <span class="micro-label">ÍNDICE DE FORJA</span>
+                        <div class="forge-meter">
+                            <div id="forge-meter-fill"></div>
+                        </div>
+                        <div class="meter-readout"><strong id="forge-meter-value">0%</strong><span
+                                id="forge-meter-copy">Aguardando início</span></div>
+                        <div class="insight-list">
+                            <div><i class="fas fa-circle-notch"></i><span>Vínculo principal</span><b
+                                    id="insight-character">PENDENTE</b></div>
+                            <div><i class="fas fa-bolt"></i><span>Sinergia</span><b id="insight-synergy">INDEFINIDA</b>
+                            </div>
+                            <div><i class="fas fa-signal"></i><span>Estado do ritual</span><b
+                                    id="insight-state">INCOMPLETO</b></div>
+                        </div>
+                        <div class="hotkey-card"><span>ATALHO</span><b>Pressione <kbd>ESC</kbd> para fechar qualquer
+                                câmara</b></div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="archive-section">
+                <div class="archive-heading">
+                    <div>
+                        <div class="eyebrow"><span class="eyebrow-pulse"></span> REGISTROS RECENTES</div>
+                        <h2>O ACERVO <em>VIVO</em></h2>
+                    </div>
+                    <div class="archive-note"><i class="fas fa-tower-broadcast"></i><span>Sincronizado em tempo
+                            real<br><b>com a Névoa e o Discord</b></span></div>
+                </div>
+                <div class="archive-filter">
+                    <div class="filter-rail">
+                        <div class="tab-slider" id="filter-slider"></div>
+                        <button class="showcase-tab active" data-action="filterBuilds" data-filter="all"><i
+                                class="fas fa-globe"></i> ACERVO GLOBAL</button>
+                        <button class="showcase-tab" data-action="filterBuilds" data-filter="survivor"><i
+                                class="fas fa-running"></i> SOBREVIVENTES</button>
+                        <button class="showcase-tab" data-action="filterBuilds" data-filter="killer"><i
+                                class="fas fa-skull"></i> ASSASSINOS</button>
+                    </div>
+                    <span class="archive-filter-caption">CLIQUE EM UM REGISTRO PARA INSPECIONAR</span>
+                </div>
+                <div id="builds-container" class="builds-grid-community"></div>
+            </section>
+        </main>
+
+        <div id="selection-modal" class="perk-modal" data-action="closeOut">
+            <div class="perk-modal-content selection-shell">
+                <button class="close-modal-btn" data-action="closeModal" data-target="selection-modal">&times;</button>
+                <div class="modal-ornament">◈</div>
+                <div class="modal-kicker">CÂMARA DE SELEÇÃO</div>
+                <h2 id="modal-selection-title">SELECIONE O ARTEFATO</h2>
+                <div class="modal-search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" class="modal-search-input"
+                        placeholder="Pesquisar pelo nome...">
+                </div>
+                <div class="selection-meta">
+                    <span>ARTEFATOS DISPONÍVEIS</span>
+                    <span><i class="fas fa-fingerprint"></i> ARQUIVO DA ENTIDADE</span>
+                </div>
+                <div id="selection-grid" class="selection-grid"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/navbar.js"></script>
+    <script type="module" src="../js/builds.js"></script>
+</body>
+
+</html>

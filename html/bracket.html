@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAVES DE TORNEIO</title>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/navbar.css" />
+    <link rel="stylesheet" href="../assets/css/bracket.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="../assets/icon.jpg" type="image/jpg">
+</head>
+
+<body class="fade-in">
+
+    <header id="navbar" class="dashboard-header navbar-transparent">
+        <div class="logo">REFÚGIO DA NÉVOA</div>
+
+        <nav class="nav-menu pill-nav">
+            <a href="dashboard.html" class="nav-item">Início</a>
+
+            <div class="nav-item has-dropdown">
+                <span class="dropdown-trigger">Ferramentas <i class="fas fa-chevron-down"
+                        style="font-size: 0.7em; margin-left: 5px;"></i></span>
+
+                <div class="mega-menu">
+                    <div class="mega-menu-grid">
+                        <a href="home.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-map-marked-alt"></i></div>
+                            <div class="mega-text">
+                                <span class="mega-title">Votação de Reinos</span>
+                                <span class="mega-desc">Defina o palco do próximo massacre.</span>
+                            </div>
+                        </a>
+                        <a href="teams.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-users"></i></div>
+                            <div class="mega-text">
+                                <span class="mega-title">Equipes</span>
+                                <span class="mega-desc">Veja os sobreviventes e assassinos.</span>
+                            </div>
+                        </a>
+                        <a href="bracket.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-sitemap"></i></div>
+                            <div class="mega-text">
+                                <span class="mega-title">Chaves</span>
+                                <span class="mega-desc">Acompanhe os confrontos do torneio.</span>
+                            </div>
+                        </a>
+                        <a href="perks.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-ban"></i></div>
+                            <div class="mega-text">
+                                <span class="mega-title">Perks Banidas</span>
+                                <span class="mega-desc">O que é proibido pela Entidade.</span>
+                            </div>
+                        </a>
+                        <a href="regras.html" class="mega-menu-item">
+                            <div class="mega-icon"><i class="fas fa-star"></i></div>
+                            <div class="mega-text">
+                                <span class="mega-title">Sistema de Pontuação</span>
+                                <span class="mega-desc">Regras do campeonato e penalidades.</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="regras_servidor.html" class="nav-item">Regras</a>
+            <a href="mapas.html" class="nav-item">Numeração Mapas</a>
+            <a href="santuario.html" class="nav-item">Santuário</a>
+            <a href="desafios.html" class="nav-item">Desafios</a>
+            <a href="builds.html" class="nav-item active">Builds</a>
+        </nav>
+
+        <div class="nav-actions">
+            <div class="user-container" id="user-profile-trigger">
+                <span id="display-name">CARREGANDO...</span>
+                <div class="avatar-circle">
+                    <img src="../assets/icon.jpg" alt="User Profile" />
+                </div>
+            </div>
+        </div>
+
+        <div id="user-submenu" class="dropdown-menu">
+            <button id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> SAIR DA NÉVOA
+            </button>
+        </div>
+    </header>
+
+    <div class="video-bg-container">
+        <div class="video-overlay"></div>
+        <video autoplay muted loop playsinline>
+            <source
+                src="https://assets.deadbydaylight.com/DBD_CHAPTER_Ice_Cream_Web_Screenshots_Video_Beauty_04_8d864790b8.mp4"
+                type="video/mp4">
+        </video>
+    </div>
+
+    <main class="main-padding" style="padding-top: 100px;">
+        <div class="info-section transparent-bg">
+            <h1 id="page-main-title">CHAVES DO TORNEIO</h1>
+            <p id="admin-hint">A escalada para a Grande Final da Névoa começa aqui.</p>
+        </div>
+
+        <div class="tree-container" id="bracket-container">
+            <ul class="tree">
+                <li>
+                    <div class="match-box champion-box">
+                        <i class="fas fa-trophy trophy-icon"></i>
+                        <div class="team-slot champion-slot" id="slot-champ"
+                            onclick="window.handleSlotClick(event, 'champ')">Vazio</div>
+                        <h3 class="winner-title">GRANDE CAMPEÃO</h3>
+                    </div>
+
+                    <ul>
+                        <li>
+                            <div class="match-box">
+                                <div class="team-slot" id="slot-f1" onclick="window.handleSlotClick(event, 'f1')">Vazio
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="match-box">
+                                        <div class="team-slot" id="slot-s1"
+                                            onclick="window.handleSlotClick(event, 's1')">Vazio</div>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <div class="match-box">
+                                                <div class="team-slot" id="slot-q1"
+                                                    onclick="window.handleSlotClick(event, 'q1')">Vazio</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="match-box">
+                                                <div class="team-slot" id="slot-q2"
+                                                    onclick="window.handleSlotClick(event, 'q2')">Vazio</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="match-box">
+                                        <div class="team-slot" id="slot-s2"
+                                            onclick="window.handleSlotClick(event, 's2')">Vazio</div>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <div class="match-box">
+                                                <div class="team-slot" id="slot-q3"
+                                                    onclick="window.handleSlotClick(event, 'q3')">Vazio</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="match-box">
+                                                <div class="team-slot" id="slot-q4"
+                                                    onclick="window.handleSlotClick(event, 'q4')">Vazio</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="match-box">
+                                <div class="team-slot" id="slot-f2" onclick="window.handleSlotClick(event, 'f2')">Vazio
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="match-box">
+                                        <div class="team-slot" id="slot-s3"
+                                            onclick="window.handleSlotClick(event, 's3')">Vazio</div>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <div class="match-box">
+                                                <div class="team-slot" id="slot-q5"
+                                                    onclick="window.handleSlotClick(event, 'q5')">Vazio</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="match-box">
+                                                <div class="team-slot" id="slot-q6"
+                                                    onclick="window.handleSlotClick(event, 'q6')">Vazio</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="match-box">
+                                        <div class="team-slot" id="slot-s4"
+                                            onclick="window.handleSlotClick(event, 's4')">Vazio</div>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <div class="match-box">
+                                                <div class="team-slot" id="slot-q7"
+                                                    onclick="window.handleSlotClick(event, 'q7')">Vazio</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="match-box">
+                                                <div class="team-slot" id="slot-q8"
+                                                    onclick="window.handleSlotClick(event, 'q8')">Vazio</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <div id="select-team-modal" class="perk-modal" onclick="window.closeModalOut(event, 'select-team-modal')">
+        <div class="perk-modal-content modal-wizard-box">
+            <button class="close-modal-btn" onclick="window.closeModal('select-team-modal')">×</button>
+            <h2 class="wizard-title">SELECIONAR EQUIPE</h2>
+            <p class="step-indicator">Defina qual equipe vai ocupar esta vaga nas Quartas de Final.</p>
+
+            <button id="btn-remove-team-modal" class="cta-btn outline btn-full mb-10"
+                style="border-color: red; color: red;" onclick="window.clearSlot()">
+                REMOVER EQUIPE DESTA VAGA
+            </button>
+
+            <div class="modal-team-list" id="modal-team-list"></div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/bracket.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import {
+            getAuth,
+            signOut,
+            onAuthStateChanged,
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyARpVKfzOMm-v0pv9-7w9xahvhItosrI2Q",
+            authDomain: "dbd-camp.firebaseapp.com",
+            projectId: "dbd-camp",
+            storageBucket: "dbd-camp.firebasestorage.app",
+            messagingSenderId: "357760091556",
+            appId: "1:357760091556:web:4d9191b487baf240e92d31",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const displayNameEl = document.getElementById('display-name');
+        let authChecked = false;
+
+        if (displayNameEl) {
+            displayNameEl.textContent = 'CARREGANDO...';
+        }
+
+        onAuthStateChanged(auth, (user) => {
+            authChecked = true;
+
+            if (!user) {
+                window.location.href = "login.html";
+            } else {
+                const userName = user.displayName || (user.email ? user.email.split("@")[0] : "Usuário");
+                if (displayNameEl) {
+                    displayNameEl.textContent = userName.toUpperCase();
+                }
+            }
+        });
+
+        setTimeout(() => {
+            if (!authChecked && displayNameEl) {
+                displayNameEl.textContent = '...';
+            }
+        }, 3000);
+
+        const userTrigger = document.getElementById('user-profile-trigger');
+        const userSubmenu = document.getElementById('user-submenu');
+        let isMenuOpen = false;
+        let animationTimeout = null;
+
+        if (userTrigger) {
+            userTrigger.addEventListener('click', function (e) {
+                e.stopPropagation();
+
+                userSubmenu.classList.remove('hiding');
+
+                if (isMenuOpen) {
+                    userSubmenu.classList.remove('show');
+                    userSubmenu.classList.add('hiding');
+                    userTrigger.classList.remove('open');
+
+                    clearTimeout(animationTimeout);
+                    animationTimeout = setTimeout(() => {
+                        userSubmenu.classList.remove('hiding');
+                    }, 250);
+
+                    isMenuOpen = false;
+                } else {
+                    userSubmenu.classList.remove('hiding');
+                    userSubmenu.classList.add('show');
+                    userTrigger.classList.add('open');
+                    isMenuOpen = true;
+                }
+            });
+        }
+
+        document.addEventListener('click', function (e) {
+            if (userTrigger && userSubmenu) {
+                if (!userTrigger.contains(e.target) && !userSubmenu.contains(e.target)) {
+                    if (isMenuOpen) {
+                        userSubmenu.classList.remove('show');
+                        userSubmenu.classList.add('hiding');
+                        userTrigger.classList.remove('open');
+
+                        clearTimeout(animationTimeout);
+                        animationTimeout = setTimeout(() => {
+                            userSubmenu.classList.remove('hiding');
+                        }, 250);
+
+                        isMenuOpen = false;
+                    }
+                }
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && isMenuOpen) {
+                userSubmenu.classList.remove('show');
+                userSubmenu.classList.add('hiding');
+                userTrigger.classList.remove('open');
+
+                clearTimeout(animationTimeout);
+                animationTimeout = setTimeout(() => {
+                    userSubmenu.classList.remove('hiding');
+                }, 250);
+
+                isMenuOpen = false;
+            }
+        });
+
+        document.getElementById("logout-btn").onclick = () => signOut(auth);
+
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('navbar-transparent');
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+                navbar.classList.add('navbar-transparent');
+            }
+        });
+
+        if (window.scrollY > 50) {
+            navbar.classList.remove('navbar-transparent');
+            navbar.classList.add('navbar-scrolled');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090a0d">
+    <title>Equipes do Torneio | Refúgio da Névoa</title>
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/components.css">
+    <link rel="stylesheet" href="../assets/css/wizard.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/teams.css">
+    <link rel="stylesheet" href="../assets/css/teams-motion-addon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="../assets/icon.jpg" type="image/jpg">
+</head>
+
+<body class="teams-page">
+    <div class="noise-layer" aria-hidden="true"></div>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+
+    <header id="navbar" class="dashboard-header navbar-transparent">
+        <div class="logo">REFÚGIO DA NÉVOA</div>
+
+        <nav class="nav-menu pill-nav">
+          <a href="dashboard.html" class="nav-item">Início</a>
+    
+          <div class="nav-item has-dropdown active">
+            <span class="dropdown-trigger">Campeonato <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i></span>
+    
+            <div class="mega-menu">
+              <div class="mega-menu-grid">
+                <a href="home.html" class="mega-menu-item">
+                  <div class="mega-icon"><i class="fas fa-map-marked-alt"></i></div>
+                  <div class="mega-text">
+                    <span class="mega-title">Votação de Reinos</span>
+                    <span class="mega-desc">Defina o palco do próximo massacre.</span>
+                  </div>
+                </a>
+                <a href="teams.html" class="mega-menu-item">
+                  <div class="mega-icon"><i class="fas fa-users"></i></div>
+                  <div class="mega-text">
+                    <span class="mega-title">Equipes</span>
+                    <span class="mega-desc">Veja os sobreviventes e assassinos.</span>
+                  </div>
+                </a>
+                <a href="bracket.html" class="mega-menu-item">
+                  <div class="mega-icon"><i class="fas fa-sitemap"></i></div>
+                  <div class="mega-text">
+                    <span class="mega-title">Chaves</span>
+                    <span class="mega-desc">Acompanhe os confrontos do torneio.</span>
+                  </div>
+                </a>
+                <a href="perks.html" class="mega-menu-item">
+                  <div class="mega-icon"><i class="fas fa-ban"></i></div>
+                  <div class="mega-text">
+                    <span class="mega-title">Perks Banidas</span>
+                    <span class="mega-desc">O que é proibido pela Entidade.</span>
+                  </div>
+                </a>
+                <a href="regras.html" class="mega-menu-item">
+                  <div class="mega-icon"><i class="fas fa-star"></i></div>
+                  <div class="mega-text">
+                    <span class="mega-title">Sistema de Pontuação</span>
+                    <span class="mega-desc">Regras do campeonato e penalidades.</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+    
+          <a href="regras_servidor.html" class="nav-item">Regras</a>
+          <a href="mapas.html" class="nav-item">Numeração Mapas</a>
+          <a href="santuario.html" class="nav-item">Santuário</a>
+          <a href="codigos.html" class="nav-item">Códigos</a>
+          <a href="desafios.html" class="nav-item">Desafios</a>
+          <a href="builds.html" class="nav-item">Builds</a>
+        </nav>
+
+        <div class="nav-actions">
+          <div class="user-container" id="user-profile-trigger">
+            <span id="display-name">CARREGANDO...</span>
+            <div class="avatar-circle"><img id="header-avatar" src="../assets/icon.jpg" alt="User Profile"></div>
+          </div>
+        </div>
+
+        <div id="user-submenu" class="dropdown-menu">
+          <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> SAIR DA NÉVOA</button>
+        </div>
+    </header>
+
+    <div class="video-bg-container arena-video">
+        <div class="video-overlay"></div><video autoplay muted loop playsinline>
+            <source
+                src="https://assets.deadbydaylight.com/DBD_CHAPTER_Ice_Cream_Web_Screenshots_Video_Beauty_04_8d864790b8.mp4"
+                type="video/mp4">
+        </video>
+    </div>
+
+    <main class="arena-shell">
+        <section class="arena-hero">
+            <div class="hero-kicker"><span class="pulse-dot"></span> REGISTRO DE COMPETIDORES <span
+                    class="kicker-line"></span> TORNEIO <span id="hero-camp-number">01</span></div>
+            <h1 id="page-main-title">EQUIPES DO TORNEIO 1</h1>
+            <p class="hero-subtitle">Cinco sobreviventes. Uma única chance de escapar da Névoa.</p>
+            <div class="hero-divider"><span></span><i class="fas fa-skull"></i><span></span></div>
+            <div class="hero-metrics">
+                <div><strong id="team-count">—</strong><small>equipes registradas</small></div>
+                <div><strong>05</strong><small>jogadores por equipe</small></div>
+                <div><strong>LIVE</strong><small>placar sincronizado</small></div>
+            </div>
+        </section>
+
+        <section class="command-deck">
+            <div class="deck-copy"><span class="eyebrow">CENTRAL DE COMANDO</span>
+                <h2>Escolha seu esquadrão.</h2>
+                <p>Consulte os dossiês abaixo ou forje uma nova equipe para entrar na arena.</p>
+            </div>
+            <div class="deck-actions"><button id="btn-create-team-main" class="forge-btn"
+                    onclick="window.openCreateTeamModal()"><span class="btn-icon"><i
+                            class="fas fa-plus"></i></span><span><b>FORJAR EQUIPE</b><small>Inscreva seu
+                            esquadrão</small></span><i class="fas fa-arrow-right btn-arrow"></i></button>
+                <div class="command-status"><span class="status-light"></span> INSCRIÇÕES <b>ABERTAS</b></div>
+            </div>
+        </section>
+
+        <div id="admin-camp-controls" class="hidden admin-camp-controls"><span class="admin-title"><i
+                    class="fas fa-crown"></i> MODO ADMINISTRADOR</span><button id="btn-toggle-lock"
+                class="admin-btn-action" onclick="window.toggleLockCamp()"><i class="fas fa-lock"></i> ENCERRAR
+                INSCRIÇÕES</button><button id="btn-delete-camp" class="admin-btn-action admin-btn-delete"
+                onclick="window.deleteCamp()"><i class="fas fa-trash-alt"></i> EXCLUIR CAMPEONATO</button></div>
+        <div id="camp-status-banner" class="hidden camp-status-banner"><i class="fas fa-lock"></i><span><b>ARENA
+                    SELADA</b><small>Inscrições e alterações estão bloqueadas.</small></span></div>
+
+        <section class="roster-section">
+            <div class="section-heading">
+                <div><span class="eyebrow">ARQUIVO DE PARTICIPANTES</span>
+                    <h2>Esquadrões na Névoa</h2>
+                </div>
+                <div class="section-rule"></div><span class="section-index">01 / 04</span>
+            </div>
+            <div class="roster-caption"><span><i class="fas fa-signal"></i> Dados em tempo real</span><span>Selecione um
+                    dossiê para abrir o elenco</span></div>
+            <div id="teams-grid" class="teams-grid">
+                <p class="empty-msg">Carregando equipes da Névoa...</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="team-modal" class="arena-modal" onclick="window.closeModalOut(event, 'team-modal')">
+        <div class="team-modal-card"><button class="close-modal-btn" onclick="window.closeModal('team-modal')"
+                aria-label="Fechar">×</button>
+            <div class="modal-visual"><span class="modal-stamp">DOSSIÊ <b>CONFIDENCIAL</b></span>
+                <div class="modal-logo-ring"><img id="m-team-logo" src="" alt="Logo da equipe"
+                        class="team-logo-display"></div><span class="modal-code">REFÚGIO // <span
+                        id="modal-camp-code">01</span></span>
+                <div class="modal-captain"><small>CAPITÃO DO ESQUADRÃO</small><strong id="m-team-leader">NOME
+                        LÍDER</strong><i class="fas fa-crown"></i></div><button id="delete-team-btn"
+                    class="btn-delete-team hidden" onclick="window.deleteTeam(window.currentViewedTeamId)"><i
+                        class="fas fa-trash"></i> Excluir equipe</button>
+            </div>
+            <div class="modal-info-side"><span class="eyebrow">FICHA DE COMBATE</span>
+                <h2 id="m-team-name">NOME DO TIME</h2>
+                <div class="info-line"><span><i class="fas fa-users"></i> ELENCO CONFIRMADO</span><b>05 / 05</b></div>
+                <div class="modal-section-divider">
+                    <div id="m-members-grid" class="team-members-grid members-grid-4"></div>
+                </div>
+                <div class="modal-footnote"><i class="fas fa-circle-info"></i> O capitão pode designar o papel de
+                    assassino antes da partida.</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="create-team-modal" class="arena-modal" onclick="window.closeModalOut(event, 'create-team-modal')">
+        <div class="wizard-card"><button class="close-modal-btn" onclick="window.closeModal('create-team-modal')"
+                aria-label="Fechar">×</button>
+            <div class="wizard-aside"><span class="eyebrow">PROTOCOLO DE ENTRADA</span>
+                <h2>FORJE<br><em>SEU TIME.</em></h2>
+                <p>A Entidade observa cada movimento. Escolha seus aliados com sabedoria.</p>
+                <div class="wizard-steps"><span class="active"><b>01</b> Identidade</span><span><b>02</b> Elenco</span>
+                </div>
+                <div class="aside-sigil"><i class="fas fa-skull-crossbones"></i></div>
+            </div>
+            <div class="wizard-content">
+                <div class="wizard-heading"><span id="t-step-indicator">Passo 1 de 2</span>
+                    <h2 id="modal-title-camp">INSCRIÇÃO — TORNEIO 1</h2>
+                </div>
+                <div id="t-step-1" class="wizard-step">
+                    <div class="form-group"><label for="t-name">Nome da equipe</label><input type="text" id="t-name"
+                            placeholder="Ex: Os Sobreviventes"></div>
+                    <div class="form-group"><label for="t-logo">Insígnia <small>(opcional · JPG/PNG · máx.
+                                2MB)</small></label><input type="file" id="t-logo" accept="image/png, image/jpeg"
+                            class="input-file-custom"></div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="t-cap-name">Nome do capitão</label><input type="text"
+                                id="t-cap-name" placeholder="Seu nome ou nick"></div>
+                        <div class="form-group"><label for="t-cap-email">E-mail do capitão</label><input type="email"
+                                id="t-cap-email" placeholder="seu@email.com"></div>
+                    </div><button class="primary-action btn-full" onclick="window.nextTeamStep()">Avançar para o elenco
+                        <i class="fas fa-arrow-right"></i></button>
+                </div>
+                <div id="t-step-2" class="wizard-step hidden"><label class="step-label">ELENCO DA EQUIPE <small>—
+                            adicione 4 membros</small></label>
+                    <div id="draft-members-list" class="draft-list-box">
+                        <p class="empty-draft-text">Nenhum membro adicionado ainda.</p>
+                    </div>
+                    <div class="add-member-form">
+                        <div class="form-row">
+                            <div class="form-group mb-10"><label for="m-name">Nome do membro</label><input type="text"
+                                    id="m-name" placeholder="Nick do jogador"></div>
+                            <div class="form-group mb-10"><label for="m-email">E-mail do membro</label><input
+                                    type="email" id="m-email" placeholder="email@jogador.com"></div>
+                        </div><button class="secondary-action btn-full btn-small" onclick="window.addDraftMember()"><i
+                                class="fas fa-plus"></i> Adicionar membro</button>
+                    </div>
+                    <div class="wizard-nav-btns"><button class="secondary-action btn-medium"
+                            onclick="window.prevTeamStep()">Voltar</button><button id="submit-team-btn"
+                            class="primary-action btn-medium" onclick="window.submitTeam()">Finalizar inscrição <i
+                                class="fas fa-check"></i></button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="arena-footer">
+        <div><a class="brand-mark" href="dashboard.html"><span class="brand-symbol"><i
+                        class="fas fa-eye"></i></span><span><b>REFÚGIO</b><small>DA NÉVOA</small></span></a>
+            <p>A comunidade onde cada partida vira uma história.</p>
+        </div>
+        <div class="footer-links"><a href="home.html">Votação</a><a href="perks.html">Perks banidas</a><a
+                href="bracket.html?camp=1">Chaves</a></div><span class="footer-copy">© 2026 Refúgio da Névoa</span>
+    </footer>
+
+    <script src="../js/navbar.js"></script>
+    <script type="module" src="../js/teams.js"></script>
+    <script src="../js/teams-motion-addons.js"></script>
+</body>
+
+</html>

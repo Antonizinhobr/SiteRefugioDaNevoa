@@ -1,0 +1,352 @@
+.teams-page .team-card {
+  --card-rx: 0deg;
+  --card-ry: 0deg;
+  --spot-x: 50%;
+  --spot-y: 50%;
+  transform: perspective(950px) rotateX(var(--card-rx)) rotateY(var(--card-ry));
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition:
+    transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s,
+    border-color 0.3s !important;
+}
+
+.teams-page .team-card::before {
+  transition:
+    color 0.3s,
+    letter-spacing 0.3s;
+  pointer-events: none;
+}
+
+.teams-page .team-card::after {
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+  pointer-events: none;
+}
+
+.teams-page .team-card:hover {
+  transform: perspective(950px) rotateX(var(--card-rx)) rotateY(var(--card-ry))
+    translateY(-9px) scale(1.012) !important;
+  box-shadow:
+    0 24px 55px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(229, 34, 46, 0.28),
+    inset 0 -2px 0 var(--red) !important;
+}
+
+.teams-page .team-card:hover::before {
+  color: #fff;
+  letter-spacing: 2.6px;
+}
+
+.teams-page .team-card .team-info {
+  transform: translateZ(18px);
+  transition: transform 0.3s;
+}
+
+.teams-page .team-card .team-info::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle at var(--spot-x) var(--spot-y),
+    rgba(255, 255, 255, 0.14),
+    transparent 33%
+  );
+  transition: opacity 0.25s;
+}
+
+.teams-page .team-card:hover .team-info {
+  transform: translateZ(26px);
+}
+
+.teams-page .team-card:hover .team-info::after {
+  opacity: 1;
+}
+
+.teams-page .team-card img {
+  transform: scale(1.01) translateZ(-10px);
+  transition:
+    transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.4s !important;
+}
+
+.teams-page .team-card:hover img {
+  transform: scale(1.09) translateZ(-10px) !important;
+}
+
+.teams-page .team-card.motion-enter {
+  animation: teamsCardEnter 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.teams-page .team-card.motion-enter:nth-child(2) {
+  animation-delay: 0.06s;
+}
+
+.teams-page .team-card.motion-enter:nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.teams-page .team-card.motion-enter:nth-child(4) {
+  animation-delay: 0.18s;
+}
+
+.teams-page .team-card.motion-enter:nth-child(5) {
+  animation-delay: 0.24s;
+}
+
+.teams-page .arena-modal.open .team-modal-card {
+  animation: teamsModalEnter 0.48s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.teams-page .arena-modal.open .modal-visual {
+  animation: teamsVisualEnter 0.6s 0.1s both;
+}
+
+.teams-page .modal-logo-ring {
+  animation: teamsSealFloat 5s ease-in-out infinite;
+}
+
+.teams-page .member-card.motion-member {
+  animation: teamsMemberEnter 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.teams-page .member-card.motion-member:nth-child(2) {
+  animation-delay: 0.05s;
+}
+
+.teams-page .member-card.motion-member:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.teams-page .member-card.motion-member:nth-child(4) {
+  animation-delay: 0.15s;
+}
+
+.teams-page .member-card.motion-member:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+.teams-page .member-card {
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.25s,
+    border-color 0.25s,
+    background 0.25s,
+    box-shadow 0.25s !important;
+}
+
+.teams-page .member-card::after {
+  content: "ABRIR FICHA";
+  position: absolute;
+  right: 7px;
+  bottom: 6px;
+  color: var(--red-bright, #ff3b43);
+  font:
+    700 6px Arial,
+    sans-serif;
+  letter-spacing: 0.7px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: 0.25s;
+  pointer-events: none;
+}
+
+.teams-page .member-card:hover,
+.teams-page .member-card.member-focus {
+  transform: translateY(-6px) rotateX(2deg) scale(1.025) !important;
+  border-color: var(--red-bright, #ff3b43) !important;
+  background: linear-gradient(
+    145deg,
+    rgba(229, 34, 46, 0.14),
+    rgba(255, 255, 255, 0.035)
+  ) !important;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.38),
+    0 0 18px rgba(229, 34, 46, 0.13) !important;
+}
+
+.teams-page .member-card:hover::after,
+.teams-page .member-card.member-focus::after {
+  opacity: 1;
+  transform: none;
+}
+
+.teams-page .member-card.member-focus .member-avatar {
+  box-shadow:
+    0 0 0 3px rgba(229, 34, 46, 0.2),
+    0 0 22px rgba(229, 34, 46, 0.4);
+}
+
+.member-inspector {
+  position: fixed;
+  left: 50%;
+  bottom: 26px;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(390px, calc(100vw - 28px));
+  padding: 11px 14px;
+  color: #eee;
+  background: rgba(13, 15, 18, 0.94);
+  border: 1px solid rgba(229, 34, 46, 0.55);
+  border-left: 3px solid var(--red, #e5222e);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(16px);
+  transform: translate(-50%, 18px);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.member-inspector.show {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.member-inspector img {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.member-inspector-copy {
+  min-width: 0;
+}
+
+.member-inspector-copy strong,
+.member-inspector-copy small {
+  display: block;
+}
+
+.member-inspector-copy strong {
+  overflow: hidden;
+  color: #fff;
+  font:
+    700 11px Arial,
+    sans-serif;
+  letter-spacing: 1px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.member-inspector-copy small {
+  margin-top: 4px;
+  color: #a5abb0;
+  font:
+    9px Arial,
+    sans-serif;
+  letter-spacing: 0.7px;
+}
+
+.member-inspector-close {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: #879096;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.member-inspector-close:hover {
+  color: #fff;
+}
+
+.teams-page .pill-nav > .nav-item {
+  transition:
+    transform 0.22s,
+    color 0.22s,
+    background 0.22s;
+}
+
+.teams-page .pill-nav > .nav-item:hover {
+  transform: translateY(-1px);
+}
+
+@keyframes teamsCardEnter {
+  from {
+    opacity: 0;
+    transform: perspective(950px) translateY(24px) rotateX(8deg);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(950px) translateY(0) rotateX(0);
+  }
+}
+
+@keyframes teamsModalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes teamsVisualEnter {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes teamsSealFloat {
+  0%,
+  100% {
+    transform: rotate(45deg) translateY(0);
+  }
+  50% {
+    transform: rotate(45deg) translateY(-7px);
+  }
+}
+
+@keyframes teamsMemberEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .teams-page .team-card:hover {
+    transform: translateY(-5px) scale(1.005) !important;
+  }
+  .member-inspector {
+    bottom: 14px;
+  }
+  .teams-page .member-card::after {
+    content: "VER FICHA";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teams-page .team-card,
+  .teams-page .member-card,
+  .member-inspector {
+    transition: none !important;
+    animation: none !important;
+  }
+  .teams-page .team-card:hover,
+  .teams-page .member-card:hover {
+    transform: none !important;
+  }
+}

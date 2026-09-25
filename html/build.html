@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossiê da Build - DbD</title>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/navbar.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link rel="stylesheet" href="../assets/css/builds.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="../assets/icon.jpg" type="image/jpg">
+    <style>
+        .build-detail-page {
+            padding-top: 160px;
+            padding-bottom: 80px;
+            min-height: 80vh;
+        }
+
+        .build-detail-card {
+            display: flex;
+            background: rgba(17, 17, 22, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            margin-top: 20px;
+        }
+
+        .build-back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--build-color, #69ed84);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .build-back-btn:hover {
+            transform: translateX(-5px);
+        }
+
+        .dossier-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            padding-top: 22px;
+            color: #4c4951;
+            font: 0.55rem monospace;
+            letter-spacing: 0.13em;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="navbar" class="dashboard-header navbar-transparent forge-navbar">
+        <div class="logo">REFÚGIO DA NÉVOA</div>
+        <nav class="nav-menu pill-nav">
+            <a href="dashboard.html" class="nav-item">Início</a>
+            <a href="regras.html" class="nav-item">Regras</a>
+            <a href="mapas.html" class="nav-item">Numeração Mapas</a>
+            <a href="santuario.html" class="nav-item">Santuário</a>
+            <a href="codigos.html" class="nav-item">Códigos</a>
+            <a href="desafios.html" class="nav-item">Desafios</a>
+            <a href="builds.html" class="nav-item active">Builds</a>
+        </nav>
+        <div class="nav-actions">
+            <div class="user-container" id="user-profile-trigger">
+                <span id="display-name">CARREGANDO...</span>
+                <i class="fas fa-chevron-down" style="font-size: 0.8rem; color: #aaa; margin-left: 5px;"></i>
+                <div class="avatar-circle">
+                    <img src="../assets/icon.jpg" alt="User Profile" />
+                </div>
+            </div>
+        </div>
+        <div id="user-submenu" class="dropdown-menu hiding">
+            <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> SAIR DA NÉVOA</button>
+        </div>
+    </header>
+    <div class="fade-in builds-page-body dossier-page" data-role="survivor">
+        <main class="container build-detail-page dossier-shell">
+            <a href="builds.html" class="build-back-btn dossier-back">
+                <i class="fas fa-arrow-left"></i> <span>VOLTAR AO ACERVO</span><small>ESC</small>
+            </a>
+
+            <div class="dossier-intro">
+                <div>
+                    <div class="eyebrow"><span class="eyebrow-pulse"></span> DOCUMENTO RECUPERADO · REGISTRO 07</div>
+                    <h1>DOSSIÊ <em>FORJADO</em></h1>
+                </div>
+                <div class="dossier-stamp"><i class="fas fa-fingerprint"></i><span>LEITURA<br>AUTORIZADA</span></div>
+            </div>
+
+            <div id="build-detail-container" class="build-detail-card" style="display: none;">
+                <div class="dossier-identity v-image-side">
+                    <div class="identity-topline"><span>SUJEITO PRINCIPAL</span><i class="fas fa-ellipsis"></i></div>
+                    <div class="identity-frame">
+                        <div class="identity-scan"></div>
+                        <div class="square-slot large-slot v-char-frame">
+                            <img id="v-character-img">
+                        </div>
+                    </div>
+                    <div class="identity-label"><span>VÍNCULO DETECTADO</span>
+                        <h2 id="v-character-name" class="v-char-name">NOME</h2>
+                        <div class="badge-pill v-role-badge" id="v-role">ROLE</div>
+                    </div>
+                    <div class="v-author-box">
+                        <img id="v-author-img" class="v-author-avatar">
+                        <span id="v-author" class="v-author-text">Autor</span>
+                    </div>
+                </div>
+
+                <div class="dossier-content v-info-side">
+                    <div class="dossier-content-head">
+                        <div class="eyebrow"><span class="eyebrow-pulse"></span> ARQUIVO DE ESTRATÉGIA</div><span
+                            class="dossier-code">RNV / BUILD / 04</span>
+                    </div>
+                    <h2 id="v-title" class="v-title-text">Título</h2>
+                    <div class="dossier-rule"></div>
+                    <div class="dossier-note-label"><i class="fas fa-quote-left"></i> NOTA TÁTICA DO FORJADOR</div>
+                    <div class="period-note v-desc-box" id="v-desc">Descrição...</div>
+
+                    <div class="dossier-equip">
+                        <div class="ritual-kicker">EQUIPAMENTO <span class="ritual-kicker-line"></span></div>
+                        <div id="v-item-addon-section" class="v-addons-section"></div>
+                    </div>
+
+                    <div class="dossier-perks">
+                        <div class="ritual-kicker">CONHECIMENTO PROIBIDO <span class="ritual-kicker-line"></span></div>
+                        <div id="v-perks-section" class="v-perks-row"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="detail-notfound" class="no-perks dossier-notfound" style="display: none;">
+                <i class="fas fa-magnifying-glass"></i>
+                <h3>Build não encontrada</h3>
+                <p>O registro informado não existe ou foi removido da névoa.</p>
+                <a href="builds.html">Retornar ao acervo</a>
+            </div>
+
+            <div class="dossier-footer">
+                <span>REFÚGIO DA NÉVOA</span>
+                <i class="fas fa-skull"></i>
+                <span>ARQUIVO DE ESTRATÉGIAS DA COMUNIDADE</span>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="../js/builds.js"></script>
+    <script src="../js/navbar.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyARpVKfzOMm-v0pv9-7w9xahvhItosrI2Q",
+            authDomain: "dbd-camp.firebaseapp.com",
+            projectId: "dbd-camp",
+            storageBucket: "dbd-camp.firebasestorage.app",
+            messagingSenderId: "357760091556",
+            appId: "1:357760091556:web:4d9191b487baf240e92d31",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                document.getElementById("display-name").innerText = (user.displayName || user.email.split("@")[0]).toUpperCase();
+            } else {
+                window.location.href = "login.html";
+            }
+        });
+
+        document.getElementById("logout-btn").onclick = () => signOut(auth).then(() => window.location.href = "login.html");
+
+        window.openArtefato = (path, type) => {
+            window.location.href = `artefato.html?path=${encodeURIComponent(path)}&type=${type}`;
+        };
+
+        async function loadBuildDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const buildId = params.get('id');
+
+            if (!buildId) {
+                document.getElementById('detail-notfound').style.display = 'grid';
+                return;
+            }
+
+            try {
+                const docRef = doc(db, "comunidade_builds_visual", buildId);
+                const docSnap = await getDoc(docRef);
+
+                if (!docSnap.exists()) {
+                    document.getElementById('detail-notfound').style.display = 'grid';
+                    return;
+                }
+
+                const data = docSnap.data();
+                const isSurv = data.role === "survivor";
+
+                document.body.setAttribute('data-role', data.role);
+                document.documentElement.style.setProperty('--build-color', isSurv ? '#69ed84' : '#e33d3d');
+                document.documentElement.style.setProperty('--build-bg-glow', isSurv ? 'rgba(105, 237, 132, 0.15)' : 'rgba(227, 61, 61, 0.15)');
+
+                document.getElementById("v-title").innerText = data.title;
+                document.getElementById("v-role").innerText = isSurv ? "SOBREVIVENTE" : "ASSASSINO";
+                document.getElementById("v-author-img").src = data.authorPhoto || "../assets/icon.jpg";
+                document.getElementById("v-author").innerText = `Criado por: ${data.authorName}`;
+                document.getElementById("v-desc").innerText = data.description || "Nenhuma estratégia descrita.";
+
+                const l = data.loadout;
+                document.getElementById("v-character-img").src = l.character || "../assets/icon.jpg";
+                document.getElementById("v-character-name").innerText = l.character ? window.formatDbdFilename(l.character) : "Desconhecido";
+
+                let perksHtml = "";
+                for (let i = 0; i < 4; i++) {
+                    if (l.perks && l.perks[i]) {
+                        perksHtml += `<div class="mini-diamond-wrapper filled-diamond" style="width:80px; height:80px; cursor:pointer;" onclick="window.openArtefato('${l.perks[i]}', 'perk')"><div class="mini-diamond-bg"></div><img src="${l.perks[i]}" class="mini-shrine-perk-img"></div>`;
+                    } else {
+                        perksHtml += `<div class="mini-diamond-wrapper empty-diamond" style="width:80px; height:80px;"><div class="mini-diamond-bg"></div><i class="fas fa-diamond placeholder-icon icon-z2"></i></div>`;
+                    }
+                }
+                document.getElementById("v-perks-section").innerHTML = perksHtml;
+
+                const section = document.getElementById("v-item-addon-section");
+                let addonsHtml = '';
+                for (let i = 0; i < 2; i++) {
+                    addonsHtml += (l.addons && l.addons[i]) ? `<div class="square-slot" style="transform: scale(0.8); cursor: pointer;" onclick="window.openArtefato('${l.addons[i]}', 'addon')"><img src="${l.addons[i]}"></div>` : `<div class="square-slot" style="transform: scale(0.8);"></div>`;
+                }
+
+                if (isSurv) {
+                    const itm = l.item ? `<div class="square-slot" style="cursor: pointer;" onclick="window.openArtefato('${l.item}', 'item')"><img src="${l.item}"></div>` : `<div class="square-slot"></div>`;
+                    section.innerHTML = `
+                        <div style="display:flex; gap:30px;">
+                            <div><div class="period-label">ITEM BASE</div>${itm}</div>
+                            <div><div class="period-label">ADD-ONS</div><div style="display:flex; gap:10px;">${addonsHtml}</div></div>
+                        </div>`;
+                } else {
+                    section.innerHTML = `<div><div class="period-label">ADD-ONS DO PODER</div><div style="display:flex; gap:10px;">${addonsHtml}</div></div>`;
+                }
+
+                document.getElementById('build-detail-container').style.display = 'flex';
+            } catch (e) {
+                console.error(e);
+                document.getElementById('detail-notfound').style.display = 'grid';
+            }
+        }
+
+        window.addEventListener('load', () => {
+            loadBuildDetails();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,590 @@
+:root {
+  --vote-red: #e33145;
+  --vote-red-bright: #ff596b;
+  --vote-red-soft: rgba(227, 49, 69, 0.14);
+  --vote-bg: #08090b;
+  --vote-panel: rgba(17, 18, 22, 0.84);
+  --vote-line: rgba(255, 255, 255, 0.105);
+  --vote-muted: #99969c;
+  --vote-white: #f6f3f2;
+}
+
+body.fade-in {
+  min-height: 100vh;
+  color: var(--vote-white);
+  background:
+    radial-gradient(
+      circle at 50% -12%,
+      rgba(227, 49, 69, 0.13),
+      transparent 34rem
+    ),
+    radial-gradient(circle at 5% 54%, rgba(91, 47, 79, 0.1), transparent 28rem),
+    #08090b !important;
+}
+
+body.fade-in::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.017) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.017) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 80%);
+}
+
+main[style*="padding-top"] {
+  width: min(1200px, calc(100% - 40px));
+  margin: 0 auto;
+  padding-top: 125px !important;
+}
+
+.info-section {
+  position: relative;
+  width: 100%;
+  padding: 0 0 40px !important;
+  text-align: center;
+}
+
+.info-section::before {
+  content: "CAMPEONATO  /  FASE DE VOTAÇÃO";
+  display: inline-block;
+  padding: 8px 15px;
+  margin-bottom: 18px;
+  border: 1px solid rgba(227, 49, 69, 0.38);
+  border-radius: 999px;
+  color: var(--vote-red-bright);
+  background: rgba(227, 49, 69, 0.07);
+  font: 700 0.62rem/1 var(--font-game, Arial Black, sans-serif);
+  letter-spacing: 0.19em;
+}
+
+.info-section h1 {
+  margin: 0 0 13px !important;
+  color: #fff !important;
+  font-size: clamp(2.2rem, 5vw, 4.2rem) !important;
+  line-height: 1;
+  letter-spacing: 0.045em;
+  text-shadow: 0 0 34px rgba(227, 49, 69, 0.13);
+}
+
+.info-section p {
+  margin: 0 auto !important;
+  color: #a8a5aa !important;
+  font-size: 0.84rem !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+#admin-controls {
+  align-items: center;
+  margin: 26px auto 0 !important;
+  padding: 10px;
+  width: max-content;
+  max-width: 100%;
+  border: 1px solid var(--vote-line);
+  border-radius: 12px;
+  background: rgba(15, 16, 19, 0.7);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
+}
+
+#admin-controls button {
+  width: auto !important;
+  min-width: 155px;
+  padding: 12px 18px !important;
+  border: 1px solid var(--vote-line) !important;
+  border-radius: 7px;
+  color: #ccc !important;
+  background: transparent !important;
+  font-size: 0.65rem;
+  letter-spacing: 0.11em;
+  transition: 0.25s ease;
+}
+
+#admin-controls button:hover {
+  color: #fff !important;
+  border-color: var(--vote-red) !important;
+  background: var(--vote-red-soft) !important;
+  transform: translateY(-2px);
+}
+
+#admin-controls #start-btn:hover {
+  border-color: #65c996 !important;
+  background: rgba(101, 201, 150, 0.1) !important;
+}
+
+#admin-controls #finish-btn:hover {
+  border-color: var(--vote-red-bright) !important;
+  background: var(--vote-red-soft) !important;
+}
+
+.map-grid {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 17px !important;
+  width: 100%;
+  max-width: none !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+}
+
+.map-grid::before {
+  content: "MAPAS DISPONÍVEIS";
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0 0 4px;
+  color: #77747b;
+  font: 700 0.61rem/1 var(--font-game, Arial Black, sans-serif);
+  letter-spacing: 0.2em;
+}
+
+.map-grid::after {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(227, 49, 69, 0.45),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.map-card {
+  position: relative;
+  width: auto !important;
+  height: 268px !important;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 13px !important;
+  background: #0e0f12 !important;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.26);
+  cursor: pointer;
+  isolation: isolate;
+  transition:
+    transform 0.36s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.36s ease,
+    box-shadow 0.36s ease;
+}
+
+.map-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.map-card::after {
+  content: "VOTAR NESTE MAPA  →";
+  position: absolute;
+  z-index: 4;
+  left: 18px;
+  bottom: 46px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  font: 700 0.55rem/1 var(--font-game, Arial Black, sans-serif);
+  letter-spacing: 0.12em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.map-card:hover {
+  z-index: 3;
+  border-color: var(--vote-red-bright) !important;
+  box-shadow:
+    0 24px 52px rgba(0, 0, 0, 0.48),
+    0 0 24px rgba(227, 49, 69, 0.13);
+  transform: translateY(-7px);
+}
+
+.map-card:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.map-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.68;
+  filter: saturate(0.78) contrast(1.04);
+  transform: scale(1.01);
+  transition:
+    opacity 0.45s ease,
+    transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.45s ease;
+}
+
+.map-card:hover img {
+  opacity: 0.98;
+  filter: saturate(1.05) contrast(1.08);
+  transform: scale(1.08);
+}
+
+.map-name {
+  z-index: 2;
+  padding: 58px 16px 17px !important;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(5, 5, 7, 0.96) 78%) !important;
+  font-size: 0.65rem !important;
+  line-height: 1.35;
+  letter-spacing: 0.11em;
+  text-shadow: 0 2px 9px #000;
+}
+
+.vote-badge {
+  top: 13px !important;
+  right: 13px !important;
+  width: 34px !important;
+  height: 34px !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  background: var(--vote-red) !important;
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.45),
+    0 0 17px rgba(227, 49, 69, 0.28) !important;
+}
+
+.map-card.selected,
+.map-card.voted,
+.map-card.active {
+  border-color: var(--vote-red-bright) !important;
+  box-shadow:
+    0 0 0 2px rgba(227, 49, 69, 0.2),
+    0 18px 42px rgba(227, 49, 69, 0.18);
+}
+
+.map-card.winner,
+.map-card.winning,
+.map-card.vencedor {
+  border-color: #f3c96a !important;
+  box-shadow:
+    0 0 0 2px rgba(243, 201, 106, 0.24),
+    0 20px 52px rgba(243, 201, 106, 0.17);
+}
+
+.map-card.winner::after,
+.map-card.winning::after,
+.map-card.vencedor::after {
+  content: "MAPA VENCEDOR  ✦";
+  opacity: 1;
+  transform: none;
+  border-color: #f3c96a;
+  color: #f3c96a;
+}
+
+.map-card.locked,
+.map-card.disabled {
+  filter: grayscale(0.72);
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.map-card.locked:hover,
+.map-card.disabled:hover {
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: none;
+}
+
+.map-card-anim {
+  animation: mapReveal 0.62s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes mapReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.custom-footer {
+  position: relative;
+  margin-top: 110px !important;
+  border-top: 1px solid rgba(227, 49, 69, 0.25);
+}
+
+.custom-footer::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 18%;
+  right: 18%;
+  height: 1px;
+  background: var(--vote-red);
+  box-shadow: 0 0 18px rgba(227, 49, 69, 0.45);
+}
+
+@media (max-width: 1040px) {
+  .map-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  main[style*="padding-top"] {
+    width: calc(100% - 28px);
+    padding-top: 105px !important;
+  }
+  .map-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px !important;
+  }
+  .map-card {
+    height: 235px !important;
+  }
+  #admin-controls {
+    width: 100%;
+  }
+  #admin-controls button {
+    flex: 1 1 140px;
+  }
+}
+@media (max-width: 460px) {
+  .info-section h1 {
+    font-size: 2rem !important;
+  }
+  .info-section p {
+    font-size: 0.66rem !important;
+    letter-spacing: 0.06em;
+  }
+  .map-grid {
+    grid-template-columns: 1fr;
+  }
+  .map-card {
+    height: 260px !important;
+  }
+  .map-grid::before {
+    margin-top: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+#map-grid:has(.map-card:nth-child(3):last-child) {
+  grid-template-columns: repeat(3, minmax(0, 280px));
+  justify-content: center;
+  gap: 18px !important;
+}
+
+#map-grid:has(.map-card:nth-child(3):last-child)::before {
+  text-align: center;
+}
+
+#map-grid:has(.map-card:nth-child(3):last-child) .map-card {
+  width: 280px !important;
+  justify-self: center;
+}
+
+@media (max-width: 980px) {
+  #map-grid:has(.map-card:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  #map-grid:has(.map-card:nth-child(3):last-child) .map-card {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 760px) {
+  #map-grid:has(.map-card:nth-child(3):last-child) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 460px) {
+  #map-grid:has(.map-card:nth-child(3):last-child) {
+    grid-template-columns: 1fr;
+  }
+}
+
+#map-grid.three-map-layout {
+  grid-template-columns: repeat(3, minmax(0, 280px)) !important;
+  justify-content: center !important;
+  gap: 18px !important;
+}
+
+#map-grid.three-map-layout .map-card {
+  width: 280px !important;
+  justify-self: center;
+}
+
+@media (max-width: 980px) {
+  #map-grid.three-map-layout {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  #map-grid.three-map-layout .map-card {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 760px) {
+  #map-grid.three-map-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 460px) {
+  #map-grid.three-map-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+#map-grid.three-map-layout {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  column-gap: 18px !important;
+  row-gap: 18px !important;
+}
+
+#map-grid.three-map-layout::before {
+  flex: 0 0 100%;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+#map-grid.three-map-layout .map-card {
+  flex: 0 0 280px !important;
+  width: 280px !important;
+  max-width: 280px !important;
+  min-width: 280px !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 980px) {
+  #map-grid.three-map-layout .map-card {
+    flex-basis: min(280px, calc((100% - 36px) / 3)) !important;
+    width: min(280px, calc((100% - 36px) / 3)) !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+  #map-grid.three-map-layout .map-card {
+    flex-basis: calc((100% - 18px) / 2) !important;
+    width: calc((100% - 18px) / 2) !important;
+  }
+}
+
+@media (max-width: 460px) {
+  #map-grid.three-map-layout .map-card {
+    flex-basis: 100% !important;
+    width: 100% !important;
+  }
+}
+
+#map-grid:has(> .map-card:nth-child(3)):not(:has(> .map-card:nth-child(4))) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: 18px !important;
+}
+
+#map-grid:has(> .map-card:nth-child(3)):not(
+    :has(> .map-card:nth-child(4))
+  )::before {
+  flex: 0 0 100%;
+  width: 100%;
+}
+
+#map-grid:has(> .map-card:nth-child(3)):not(:has(> .map-card:nth-child(4)))
+  > .map-card {
+  flex: 0 0 280px !important;
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  margin: 0 !important;
+}
+
+.map-card .vote-badge {
+  position: absolute !important;
+  top: 13px !important;
+  right: 13px !important;
+  left: auto !important;
+  bottom: auto !important;
+  z-index: 12 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: auto !important;
+  min-width: 76px !important;
+  height: 32px !important;
+  padding: 0 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 999px !important;
+  color: #fff !important;
+  background: rgba(13, 14, 18, 0.82) !important;
+  box-shadow:
+    0 7px 18px rgba(0, 0, 0, 0.38),
+    inset 0 0 0 1px rgba(227, 49, 69, 0.18) !important;
+  font: 800 0.78rem/1 var(--font-family, Inter, sans-serif) !important;
+  letter-spacing: 0.02em;
+  transform-origin: center;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.map-card .vote-badge::before {
+  content: "VOTOS";
+  color: #ff9aa5;
+  font: 700 0.51rem/1 var(--font-game, Arial Black, sans-serif);
+  letter-spacing: 0.13em;
+}
+
+.map-card:hover .vote-badge {
+  border-color: rgba(255, 89, 107, 0.72) !important;
+  background: rgba(77, 20, 28, 0.88) !important;
+  transform: translateY(-2px);
+}
+
+.map-card .vote-badge[style*="scale(1.3)"] {
+  background: var(--vote-red) !important;
+  border-color: #fff !important;
+  box-shadow:
+    0 0 0 5px rgba(227, 49, 69, 0.14),
+    0 8px 22px rgba(227, 49, 69, 0.36) !important;
+}
+
+@media (max-width: 460px) {
+  .map-card .vote-badge {
+    top: 10px !important;
+    right: 10px !important;
+    min-width: 68px !important;
+    height: 29px !important;
+    padding: 0 9px !important;
+  }
+}

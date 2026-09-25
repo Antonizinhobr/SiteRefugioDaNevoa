@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arquivo do Artefato | Refúgio da Névoa</title>
+    <link rel="stylesheet" href="../assets/css/global.css" />
+    <link rel="stylesheet" href="../assets/css/navbar.css" />
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+    <link rel="stylesheet" href="../assets/css/components.css" />
+    <link rel="stylesheet" href="../assets/css/responsive.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/perks.css" />
+    <link rel="icon" href="../assets/icon.jpg" type="image/jpg">
+</head>
+
+<body>
+
+    <header id="navbar" class="dashboard-header navbar-transparent">
+        <div class="logo">REFÚGIO DA NÉVOA</div>
+        <nav class="nav-menu pill-nav">
+            <a href="dashboard.html" class="nav-item">Início</a>
+            <a href="regras.html" class="nav-item">Regras</a>
+            <a href="mapas.html" class="nav-item">Numeração Mapas</a>
+            <a href="santuario.html" class="nav-item">Santuário</a>
+            <a href="codigos.html" class="nav-item">Códigos</a>
+            <a href="desafios.html" class="nav-item">Desafios</a>
+            <a href="builds.html" class="nav-item active">Builds</a>
+        </nav>
+        <div class="nav-actions">
+            <div class="user-container" id="user-profile-trigger">
+                <span id="display-name">CARREGANDO...</span>
+                <i class="fas fa-chevron-down" style="font-size: 0.8rem; color: #aaa; margin-left: 5px;"></i>
+                <div class="avatar-circle">
+                    <img src="../assets/icon.jpg" alt="User Profile" />
+                </div>
+            </div>
+        </div>
+        <div id="user-submenu" class="dropdown-menu">
+            <button id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> SAIR DA NÉVOA
+            </button>
+        </div>
+    </header>
+    <div class="fade-in">
+        <main class="ban-page">
+            <section class="ban-detail container">
+                <a href="javascript:history.back()" class="ban-detail-back">
+                    <i class="fas fa-arrow-left"></i> VOLTAR PARA A BUILD
+                </a>
+
+                <div class="ban-detail-grid" id="detail-grid" style="display: none;">
+                    <div class="ban-detail-left">
+                        <img id="detail-img" src="" alt="Artefato">
+                    </div>
+
+                    <div class="ban-detail-right">
+                        <span class="ban-detail-tag">ARQUIVO DE ARTEFATO</span>
+                        <div class="ban-detail-type" id="detail-type">TIPO</div>
+                        <h1 class="ban-detail-title" id="detail-name">NOME</h1>
+                        <p class="ban-detail-desc" id="detail-desc">Descrição...</p>
+                    </div>
+                </div>
+
+                <div id="detail-notfound" class="no-perks" style="display: none;">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <h3>Artefato não encontrado</h3>
+                    <p>A entidade não possui registros sobre este objeto.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="../js/builds.js"></script>
+    <script src="../js/navbar.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyARpVKfzOMm-v0pv9-7w9xahvhItosrI2Q",
+            authDomain: "dbd-camp.firebaseapp.com",
+            projectId: "dbd-camp",
+            storageBucket: "dbd-camp.firebasestorage.app",
+            messagingSenderId: "357760091556",
+            appId: "1:357760091556:web:4d9191b487baf240e92d31",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const displayNameEl = document.getElementById('display-name');
+
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                window.location.href = "login.html";
+            } else {
+                const userName = user.displayName || (user.email ? user.email.split("@")[0] : "Usuário");
+                if (displayNameEl) displayNameEl.textContent = userName.toUpperCase();
+            }
+        });
+
+        document.getElementById("logout-btn").onclick = () => signOut(auth);
+
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            const path = params.get('path');
+            const type = params.get('type');
+
+            const detailGrid = document.getElementById('detail-grid');
+            const notFound = document.getElementById('detail-notfound');
+
+            if (!path) {
+                notFound.style.display = 'grid';
+                return;
+            }
+
+            const fallbackName = window.formatDbdFilename ? window.formatDbdFilename(path) : path.split("/").pop();
+            const info = window.getCustomDescription ? window.getCustomDescription(path, type) : { title: null, description: "Sem descrição disponível." };
+            const finalTitle = info.title || fallbackName;
+
+            document.title = `${finalTitle} - Refúgio da Névoa`;
+            document.getElementById('detail-img').src = decodeURIComponent(path);
+            document.getElementById('detail-img').alt = finalTitle;
+            document.getElementById('detail-type').innerText = type ? type.toUpperCase() : 'ARTEFATO';
+            document.getElementById('detail-name').innerText = finalTitle;
+            document.getElementById('detail-desc').innerText = info.description;
+
+            detailGrid.style.display = 'grid';
+        });
+    </script>
+</body>
+
+</html>
