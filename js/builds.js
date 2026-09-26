@@ -4168,28 +4168,14 @@ window.getCustomDescription = function (path, type) {
   }
 
   if (textoOriginal) {
-    const prefixRegex = /^([^\n]{1,45}?)\s*(?:\.\s+|\s+[—–-]\s+|:\s+)/;
+    const prefixRegex = /^([^\n]{1,60}?)\s*(?:\.\s+|\s+[—–-]\s+|:\s+)/;
     const match = textoOriginal.match(prefixRegex);
+    
     if (match) {
-      const possiblePrefix = match[1].trim();
-      const possiblePrefixClean = possiblePrefix
-        .toLowerCase()
-        .replace(/[\s\-_.:]/g, "");
-      const nameClean = cleanName.toLowerCase().replace(/[\s\-_.:]/g, "");
-      const rawClean = rawFileName.toLowerCase().replace(/[\s\-_.:]/g, "");
-      if (
-        possiblePrefixClean === nameClean ||
-        possiblePrefixClean === rawClean ||
-        nameClean.startsWith(possiblePrefixClean) ||
-        possiblePrefixClean.startsWith(nameClean) ||
-        possiblePrefixClean.includes(rawClean) ||
-        rawClean.includes(possiblePrefixClean)
-      ) {
-        return {
-          title: possiblePrefix,
-          description: textoOriginal.substring(match[0].length).trim(),
-        };
-      }
+      return {
+        title: match[1].trim(),
+        description: textoOriginal.substring(match[0].length).trim(),
+      };
     }
     return { title: null, description: textoOriginal };
   }
