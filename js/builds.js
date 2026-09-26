@@ -4208,7 +4208,7 @@ function getMyGithubUrl(localPath) {
   if (!localPath || typeof localPath !== "string" || localPath === "empty")
     return null;
   const BASE_GITHUB_URL =
-    "https://raw.githubusercontent.com/Antonizinhobr/dbdclan-com/SH4DOW/assets/img/dbd";
+    "https://raw.githubusercontent.com/Antonizinhobr/SiteRefugioDaNevoa/SH4DOW/assets/img/dbd";
   const marker = "/dbd/";
   const index = localPath.indexOf(marker);
 
@@ -4216,7 +4216,7 @@ function getMyGithubUrl(localPath) {
 
   if (index === -1) {
     const cleanPath = localPath.replace(/^(\.\.\/)+/, "");
-    finalUrl = `https://raw.githubusercontent.com/Antonizinhobr/dbdclan-com/SH4DOW/${cleanPath}`;
+    finalUrl = `https://raw.githubusercontent.com/Antonizinhobr/SiteRefugioDaNevoa/SH4DOW/${cleanPath}`;
   } else {
     let relativePath = localPath.substring(index + marker.length);
     let parts = relativePath.split("/");
