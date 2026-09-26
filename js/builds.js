@@ -4121,6 +4121,8 @@ const killerFiles = [
   "Trickster.png",
   "Vecna.png",
   "Wraith.png",
+  "Jason.png",
+  "Judgement"
 ];
 
 const itemFiles = [
