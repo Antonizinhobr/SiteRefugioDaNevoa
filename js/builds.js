@@ -844,7 +844,6 @@ const descricoesCustomizadas = {
   "retardant Jelly": "Reduz a taxa de queima do Mapa em 20%.",
   "unusual Stamp": "Aumenta o alcance de rastreamento do Mapa em 8 metros.",
   "yellow Wire": "Desbloqueia a capacidade de rastrear Portões de Saída.",
-
   "eroded Token": "Aumenta o alcance de leitura de aura da Chave em 24 metros.",
   "gold Token": "Aumenta o alcance de leitura de aura da Chave em 48 metros.",
   "prayer Beads": "Adiciona 15 segundos de uso à Chave.",
