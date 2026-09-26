@@ -2545,6 +2545,86 @@ const descricoesCustomizadas = {
     "Stained Glass Mural. Enquanto estiver em recarga, quebrar Paletes e Paredes Quebráveis diminui o tempo de recarga em 12 segundos.",
   victorsrazorblade:
     "Victor's Razor Blade. Ao final do Quebra-Mundos, Sobreviventes feridos ganham o status Quebrado (Broken) por 20 segundos.",
+  bentwheel:
+    "Bent Wheel. Aumenta a distância a partir da qual podes selecionar um local para reaparecer do Mal Omnipresente.",
+  bloodymagazine:
+    "Bloody Magazine. Lanças falhadas fazem com que os Sobreviventes gritem e revelem as suas auras por um curto período de 3 segundos.",
+  bloodysmile:
+    "Bloody Smile. Aumenta a distância em que o teu poder pode detetar Sobreviventes no Mal Omnipresente e a distância em que eles serão destacados pelo Instinto Assassino ao saíres dele (de 16 para 20 metros).",
+  burntfuse:
+    "Burnt Fuse. Um acessório de final de partida que permite prender um ou vários Sobreviventes junto ao portão de saída.",
+  coronerscoffee:
+    "Coroner's Coffee. As tuas lanças empurram os Sobreviventes ainda mais longe do que o normal e, quando isso acontece, ganhas um bónus de +13% na velocidade de movimento por um breve momento.",
+  deputysbadge:
+    "Deputy's Badge. Permite danificar geradores passivamente no modo Mal Omnipresente apenas ao aproximares-te deles. Se um Sobrevivente o estiver a reparar, enfrentará um teste de perícia especial.",
+  dirtymoney:
+    "Dirty Money. Concede a habilidade de recarregar automaticamente a lança em falta ao saltar ou quebrar uma palete/parede. Também funciona ao realizar estas ações ao reaparecer do modo Mal Omnipresente.",
+  eyegoop:
+    "Eye Goop. Concede 13 segundos de estado Indetetável sempre que recarregas uma lança, incluindo quando enganchas um Sobrevivente e a recarregas automaticamente.",
+  gardenclaw:
+    "Garden Claw. Aumenta a duração do efeito do Instinto Assassino ao detetar Sobreviventes.",
+  imprintedaluminum:
+    "Imprinted Aluminum. Aplica os efeitos de estado Despedaçado (Mangled) e Hemorragia aos Sobreviventes durante 70 segundos.",
+  iridescentboatmotor:
+    "Iridescent Boat Motor. Permite bloquear janelas por breves instantes se passares por elas imediatamente antes de reapareceres do Mal Omnipresente.",
+  knittingneedle:
+    "Knitting Needle. Aumenta o tempo que um Sobrevivente precisa para remover a lança cravada no seu corpo em 20%, elevando o total para 6 segundos.",
+  mirrorshards:
+    "Mirror Shards. Inflige os Sobreviventes com o efeito de estado Quebrado (Broken) durante 30 segundos após removerem a lança.",
+  missingcorkscrew:
+    "Missing Corkscrew. Cria um Raio de Terror falso e concede o estado Indetetável quando um Sobrevivente é empalado. Estes efeitos perduram por 13 segundos após a remoção da lança.",
+  orderlysshoe:
+    "Orderly's Shoe. Aumenta a duração do efeito de Rapidez (Haste) obtido ao usar o teu poder em 5 segundos adicionais.",
+  partynoisemaker:
+    "Party Noisemaker. Revela a aura de Sobreviventes muito distantes se saíres do Mal Omnipresente quebrando uma palete caída ou uma parede quebrável.",
+  saunarock:
+    "Sauna Rock. Inflige o efeito de estado Exaustão por uma curta duração a qualquer Sobrevivente detetado pelo Instinto Assassino ao saíres do Mal Omnipresente.",
+  sleepingbag:
+    "Sleeping Bag. Revela a silhueta (não a aura) dos Sobreviventes perto de ganchos sempre que recarregas enquanto estás no modo Mal Omnipresente.",
+  toxicwaste:
+    "Toxic Waste. Inflige o efeito de estado Alheio (Oblivious) aos Sobreviventes durante 13 segundos se estiverem perto de um gancho ao saíres do Mal Omnipresente.",
+  twonails:
+    "Two Nails. Revela a aura de um Sobrevivente por alguns segundos se a lança arremessada voar perto dele, quer atinja o alvo ou não.",
+  aurorastelereceptor:
+    "Aurora's Telereceptor. Qualquer Sobrevivente que ganhe Heresia tem a sua aura revelada a ti por uma curta duração (e vice-versa).",
+  blindfoldofthedevoted:
+    "Blindfold of the Devoted. Mostra as auras de Sobreviventes distantes, especificamente aqueles com menos fases de gancho que estejam além de 32 metros.",
+  chainsoftheheretic:
+    "Chains of the Heretic. No modo Zeloso (Zealous), a tua Luz Divina viaja na tua direção em vez de se afastar, mas não pode ser curvada.",
+  confessorswarhorn:
+    "Confessor's War Horn. Aplica o efeito de estado Exaustão durante 10 segundos a qualquer Sobrevivente que ganhe Heresia por qualquer meio.",
+  crownofthedestroyer:
+    "Crown of the Destroyer. Sempre que envias um Sobrevivente para o exílio, ganhas o estado Indetetável e projetas uma versão reduzida do teu Raio de Terror numa estátua de santuário falsa.",
+  electrictorch:
+    "Electric Torch. Aumenta a velocidade de posicionamento da Luz Divina antes de a invocar e aumenta ligeiramente a tua velocidade de movimento durante esse processo.",
+  eyesofgerhardt:
+    "Eyes of Gerhardt. Revela a aura de todos os Sobreviventes com Heresia sempre que um deles completa um gerador, abre um portão de saída ou sai de um cacifo.",
+  hereticsmark:
+    "Heretic's Mark. Aumenta a distância de deteção quando a Luz Divina quase atinge um Sobrevivente. Também aumenta o tempo de revelação do Instinto Assassino.",
+  holywingedicon:
+    "Holy Winged Icon. Permite que a Luz Divina regresse a ti ao pressionar o botão de habilidade ativa. O pilar de retorno não causa dano inicial, apenas aplica Heresia aos Sobreviventes.",
+  improviseddetonators:
+    "Improvised Detonators. Ganhas um token ao exilar o Sobrevivente com menos fases de gancho. Com 4 tokens, o gerador com mais progresso explode, perdendo 20% do progresso e começando a regredir.",
+  koenradsgauntlet:
+    "Koenrad's Gauntlet. Dá-te tempo extra para controlar e curvar o teu pilar, mas reduz ligeiramente a velocidade de movimento do mesmo.",
+  magnetisedmanacles:
+    "Magnetised Manacles. Prolonga a duração do modo Zeloso. Acertar Sobreviventes concede um aumento permanente de duração a este modo (acumulável até 5 acertos).",
+  markoftheadherent:
+    "Mark of the Adherent. Aumenta o raio dos teus pilares de Luz Divina em 10% quando não estás no modo Zeloso.",
+  mirrorofthecreators:
+    "Mirror of the Creators. Altera o comportamento dos pilares, fazendo-os ricochetear nas superfícies com um pequeno atraso em vez de atravessarem paredes.",
+  obsidianfeather:
+    "Obsidian Feather. Aumenta massivamente a tua velocidade de movimento ao segurar a Luz Divina, mas o pilar é invocado automaticamente no final da animação, sem a possibilidade de cancelar.",
+  orderofinquisition:
+    "Order of Inquisition. O raio da Luz Divina torna-se dinâmico: começa cerca de 25% menor, mas cresce rapidamente até ficar cerca de 50% maior que o normal.",
+  prayerkneeler:
+    "Prayer Kneeler. A tua Luz Divina fica presa e permanece no lugar se atingir um obstáculo durante a animação de invocação.",
+  searchersskull:
+    "Searcher's Skull. Sobreviventes que te ceguem ganham Heresia. Se o Sobrevivente já tiver Heresia, ele próprio ficará cego em resposta.",
+  superheatedglass:
+    "Superheated Glass. No modo Zeloso, os teus pilares destroem paletes e paredes quebráveis, fazendo os Sobreviventes próximos gritarem e ganharem Heresia, mas isto reduz a duração do modo Zeloso.",
+  undyingflame:
+    "Undying Flame. Durante o modo Zeloso, aumenta significativamente o tempo máximo de viagem da Luz Divina, mas torna o pilar cerca de 20% mais estreito.",
 };
 
 const survivorAddonFiles = {
@@ -3585,6 +3665,52 @@ const killerAddonFiles = {
     "stainedglassmural.png",
     "victorsrazorblade.png",
   ],
+
+  Jason: [
+  "bentwheel.png",
+  "bloodymagazine.png",
+  "bloodysmile.png",
+  "burntfuse.png",
+  "coronerscoffee.png",
+  "deputysbadge.png",
+  "dirtymoney.png",
+  "eyegoop.png",
+  "gardenclaw.png",
+  "imprintedaluminum.png",
+  "iridescentboatmotor.png",
+  "knittingneedle.png",
+  "mirrorshards.png",
+  "missingcorkscrew.png",
+  "orderlysshoe.png",
+  "partynoisemaker.png",
+  "saunarock.png",
+  "sleepingbag.png",
+  "toxicwaste.png",
+  "twonails.png",
+  ],
+
+  Judgement: [
+  "aurorastelereceptor.png",
+  "blindfoldofthedevoted.png",
+  "chainsoftheheretic.png",
+  "confessorswarhorn.png",
+  "crownofthedestroyer.png",
+  "electrictorch.png",
+  "eyesofgerhardt.png",
+  "hereticsmark.png",
+  "holywingedicon.png",
+  "improviseddetonators.png",
+  "koenradsgauntlet.png",
+  "magnetisedmanacles.png",
+  "markoftheadherent.png",
+  "mirrorofthecreators.png",
+  "obsidianfeather.png",
+  "orderofinquisition.png",
+  "prayerkneeler.png",
+  "searchersskull.png",
+  "superheatedglass.png",
+  "undyingflame.png",
+  ]
 };
 
 const survivorPerkFiles = [
