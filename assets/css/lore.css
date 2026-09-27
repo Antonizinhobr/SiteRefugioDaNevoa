@@ -1,0 +1,728 @@
+body.lore-page {
+  background: radial-gradient(circle at center, #1a1a24 0%, #050508 100%);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  overflow: hidden;
+}
+
+#teia-container {
+  width: 100vw;
+  height: calc(100vh - 80px);
+  position: absolute;
+  top: 80px;
+  outline: none;
+}
+
+#painel-lateral {
+  position: absolute;
+  top: 80px;
+  right: -450px;
+  width: 350px;
+  height: calc(100vh - 80px);
+  background: rgba(15, 15, 20, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-left: 2px solid #8a0303;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8), inset 5px 0 15px rgba(138, 3, 3, 0.1);
+  padding: 40px 30px;
+  transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  z-index: 10;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+#painel-lateral.aberto {
+  right: 0;
+}
+
+.fechar-btn-lore {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  color: #ff4444;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5em;
+  transition: transform 0.2s;
+}
+
+.fechar-btn-lore:hover {
+  transform: scale(1.2);
+  color: #ff7777;
+}
+
+.moldura-foto-lore {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #333;
+  margin: 0 auto 20px auto;
+  background-color: #000;
+  background-image: url('../assets/icon.jpg');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+#painel-lateral h2 {
+  color: #ff4444;
+  margin-top: 0;
+  text-align: center;
+  font-size: 1.8em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.4);
+}
+
+.tag-papel-lore {
+  display: block;
+  text-align: center;
+  color: #888;
+  font-size: 0.9em;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#painel-lateral p {
+  line-height: 1.7;
+  color: #cccccc;
+  font-size: 1.05em;
+  text-align: justify;
+}
+
+#lore-search-container {
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  width: 300px;
+  z-index: 20;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#lore-search-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(15, 15, 20, 0.85);
+  border: 2px solid #8a0303;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.95em;
+  outline: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+#lore-search-input:focus {
+  border-color: #ff4444;
+  box-shadow: 0 0 15px rgba(255, 68, 68, 0.5);
+}
+
+#lore-search-input::placeholder {
+  color: #888;
+}
+
+#lore-search-results {
+  margin-top: 5px;
+  background: rgba(15, 15, 20, 0.95);
+  border: 1px solid #333;
+  border-radius: 8px;
+  max-height: 350px;
+  overflow-y: auto;
+  display: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+}
+
+#lore-search-results.ativo {
+  display: block;
+}
+
+.lore-search-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #222;
+  transition: background 0.15s;
+  color: #ddd;
+  font-size: 0.9em;
+}
+
+.lore-search-item:last-child {
+  border-bottom: none;
+}
+
+.lore-search-item:hover {
+  background: rgba(138, 3, 3, 0.3);
+  color: #fff;
+}
+
+.lore-search-item img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #444;
+  object-fit: cover;
+}
+
+.lore-search-item.killer img {
+  border-color: #b30000;
+}
+
+.lore-search-item.survivor img {
+  border-color: #2b90d9;
+}
+
+.lore-search-item .lore-search-role {
+  margin-left: auto;
+  font-size: 0.75em;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.lore-search-empty {
+  padding: 15px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+:root {
+  --lore-red: #d7192e;
+  --lore-red-hot: #ff4353;
+  --lore-blue: #4db8ff;
+  --lore-ink: #07080b;
+  --lore-panel: rgba(12, 14, 18, 0.9);
+}
+
+body.lore-page {
+  background: radial-gradient(circle at 50% 46%, #171921 0%, #08090d 48%, #030406 100%) !important;
+  overflow: hidden;
+}
+
+body.lore-page:before {
+  content: "";
+  position: fixed;
+  inset: 80px 0 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.28;
+  background: linear-gradient(115deg, transparent 20%, rgba(215, 25, 46, 0.08) 50%, transparent 80%), radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+#teia-container {
+  position: absolute !important;
+  inset: 80px 0 0 !important;
+  width: auto !important;
+  height: auto !important;
+  outline: none;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.018), transparent 54%);
+}
+
+#teia-container:after {
+  content: "ARQUIVO VIVO  //  A ENTIDADE OBSERVA";
+  position: absolute;
+  left: 28px;
+  bottom: 24px;
+  color: rgba(255, 255, 255, 0.35);
+  font: 700 9px/1 Arial, sans-serif;
+  letter-spacing: 2px;
+  pointer-events: none;
+}
+
+#lore-search-container {
+  position: fixed !important;
+  top: 102px !important;
+  left: 28px !important;
+  width: min(320px, calc(100vw - 56px)) !important;
+  z-index: 30 !important;
+  font-family: Arial, sans-serif !important;
+}
+
+#lore-search-container:before {
+  content: "CONSULTA DE ARQUIVO";
+  display: block;
+  margin: 0 0 8px 3px;
+  color: #9ca2ad;
+  font: 700 8px Arial, sans-serif;
+  letter-spacing: 2.2px;
+}
+
+#lore-search-input {
+  width: 100% !important;
+  padding: 14px 18px !important;
+  color: #fff !important;
+  background: rgba(9, 11, 15, 0.82) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  border-left: 3px solid var(--lore-red) !important;
+  border-radius: 3px 14px 3px 14px !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35), inset 0 1px rgba(255, 255, 255, 0.05) !important;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s !important;
+}
+
+#lore-search-input:focus {
+  border-color: var(--lore-red-hot) !important;
+  box-shadow: 0 0 0 3px rgba(215, 25, 46, 0.13), 0 15px 40px rgba(0, 0, 0, 0.55) !important;
+  transform: translateY(-2px);
+}
+
+#lore-search-results {
+  margin-top: 8px !important;
+  padding: 5px !important;
+  background: rgba(9, 11, 15, 0.96) !important;
+  border: 1px solid rgba(255, 255, 255, 0.13) !important;
+  border-radius: 4px 16px 4px 16px !important;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+.lore-search-item {
+  padding: 10px !important;
+  border: 0 !important;
+  border-radius: 3px 10px 3px 10px !important;
+  transition: transform 0.2s, background 0.2s !important;
+}
+
+.lore-search-item:hover {
+  transform: translateX(5px) !important;
+  background: rgba(215, 25, 46, 0.15) !important;
+}
+
+.lore-search-item img {
+  width: 35px !important;
+  height: 35px !important;
+}
+
+#painel-lateral {
+  top: 80px !important;
+  right: -470px !important;
+  width: min(430px, 100vw) !important;
+  height: calc(100vh - 80px) !important;
+  padding: 30px 34px !important;
+  background: linear-gradient(145deg, rgba(18, 21, 27, 0.98), rgba(6, 8, 11, 0.97)) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.13) !important;
+  border-right: 4px solid var(--lore-red) !important;
+  box-shadow: -25px 0 80px rgba(0, 0, 0, 0.75), inset 1px 0 rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(20px) !important;
+  transition: right 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 40 !important;
+  --lore-mx: 50%;
+  --lore-my: 35%;
+  isolation: isolate;
+}
+
+#painel-lateral.aberto {
+  right: 0 !important;
+}
+
+#painel-lateral:before {
+  content: "FICHA DE ENTIDADE";
+  display: block;
+  color: rgba(255, 255, 255, 0.45);
+  font: 700 8px Arial, sans-serif;
+  letter-spacing: 2.5px;
+  margin: 2px 0 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 13px;
+  position: relative;
+  z-index: 2;
+}
+
+#painel-lateral:after {
+  content: none !important;
+  display: none !important;
+}
+
+#painel-lateral:has(.lore-panel-tools):after {
+  content: "" !important;
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle 150px at var(--lore-cursor-x, 50%) var(--lore-cursor-y, 35%), rgba(215, 25, 46, 0.13), transparent 72%) !important;
+}
+
+.fechar-btn-lore {
+  top: 25px !important;
+  right: 25px !important;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  color: #fff !important;
+  background: rgba(215, 25, 46, 0.2);
+  border: 1px solid rgba(255, 67, 83, 0.55);
+  border-radius: 50%;
+  font-size: 14px !important;
+  transition: transform 0.25s, background 0.25s !important;
+  z-index: 2;
+}
+
+.fechar-btn-lore:hover {
+  transform: rotate(90deg) !important;
+  background: var(--lore-red) !important;
+  color: #fff !important;
+}
+
+.moldura-foto-lore {
+  width: 184px !important;
+  height: 184px !important;
+  margin: 4px auto 22px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  background-color: #07080a !important;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.025), 0 25px 55px rgba(0, 0, 0, 0.65), 0 0 38px rgba(215, 25, 46, 0.22) !important;
+  transform: rotate(45deg);
+  overflow: hidden;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s !important;
+}
+
+.moldura-foto-lore:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  transform: rotate(-45deg) scale(1.43);
+}
+
+#painel-lateral.aberto .moldura-foto-lore {
+  animation: lorePhotoReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+#painel-lateral h2 {
+  margin: 25px 0 7px !important;
+  color: #fff !important;
+  font: 400 clamp(25px, 3vw, 34px)/1.05 Georgia, serif !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  text-shadow: 0 0 20px rgba(255, 67, 83, 0.25) !important;
+}
+
+#painel-lateral h2:after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  margin-top: 13px;
+  background: var(--lore-red);
+  box-shadow: 0 0 12px var(--lore-red);
+}
+
+.tag-papel-lore {
+  display: inline-block !important;
+  padding: 6px 9px !important;
+  color: #ff8790 !important;
+  background: rgba(215, 25, 46, 0.12) !important;
+  border: 1px solid rgba(215, 25, 46, 0.4) !important;
+  border-radius: 2px 8px 2px 8px !important;
+  font: 700 9px Arial, sans-serif !important;
+  letter-spacing: 1.6px !important;
+}
+
+#painel-lateral p {
+  margin-top: 25px !important;
+  color: #bcc1c9 !important;
+  font: 14px/1.75 Arial, sans-serif !important;
+  text-align: left !important;
+  animation: loreTextReveal 0.55s 0.12s both;
+}
+
+@keyframes lorePhotoReveal {
+  from {
+    opacity: 0;
+    transform: rotate(25deg) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+@keyframes loreTextReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  #teia-container {
+    inset: 70px 0 0 !important;
+  }
+  
+  #teia-container:after {
+    left: 15px;
+    bottom: 12px;
+    font-size: 7px;
+  }
+  
+  #lore-search-container {
+    top: 82px !important;
+    left: 15px !important;
+    width: calc(100vw - 30px) !important;
+  }
+  
+  #painel-lateral {
+    top: 70px !important;
+    height: calc(100vh - 70px) !important;
+    width: 100vw !important;
+    right: -105vw !important;
+    padding: 26px 24px !important;
+  }
+  
+  .moldura-foto-lore {
+    width: 140px !important;
+    height: 140px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #painel-lateral,
+  .moldura-foto-lore,
+  #painel-lateral p {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+#lore-redesign-hud {
+  position: fixed;
+  right: 28px;
+  top: 102px;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 13px;
+  color: #aeb5bd;
+  background: rgba(8, 10, 13, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 3px 12px 3px 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  font: 700 8px Arial, sans-serif;
+  letter-spacing: 1.4px;
+  backdrop-filter: blur(12px);
+}
+
+#lore-redesign-hud b {
+  color: #e6e8eb;
+  font-weight: 400;
+}
+
+#lore-redesign-hud button {
+  margin-left: 7px;
+  padding: 5px 8px;
+  color: #ff6b76;
+  background: rgba(215, 25, 46, 0.12);
+  border: 1px solid rgba(215, 25, 46, 0.4);
+  border-radius: 2px;
+  font: 700 7px Arial, sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+#lore-redesign-hud button:hover {
+  color: #fff;
+  background: var(--lore-red);
+}
+
+.lore-hud-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e5394c;
+  box-shadow: 0 0 0 0 rgba(229, 57, 76, 0.7);
+  animation: loreHudPulse 1.8s infinite;
+}
+
+.lore-node-hover canvas {
+  filter: contrast(1.05);
+}
+
+.lore-node-selected canvas {
+  animation: loreCanvasFlash 0.7s ease;
+}
+
+.lore-panel-refresh #personagem-nome {
+  animation: loreTitleIn 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes loreHudPulse {
+  70% {
+    box-shadow: 0 0 0 7px rgba(229, 57, 76, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(229, 57, 76, 0);
+  }
+}
+
+@keyframes loreCanvasFlash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0.72;
+  }
+}
+
+@keyframes loreTitleIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  #lore-redesign-hud {
+    top: auto;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    justify-content: space-between;
+  }
+  
+  #lore-redesign-hud b {
+    display: none;
+  }
+}
+
+html:has(body.lore-page),
+body.lore-page {
+  background-color: #050508 !important;
+  background-image: radial-gradient(circle at center, #1a1a24 0%, #050508 100%), radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px) !important;
+  background-size: auto, 30px 30px !important;
+  color: #eee !important;
+}
+
+body.lore-page #teia-container {
+  background: transparent !important;
+}
+
+body.lore-page #teia-container canvas {
+  background: transparent !important;
+}
+
+#painel-lateral .lore-reading-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 8;
+}
+
+.lore-reading-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #8a0303, #ff4353);
+  box-shadow: 0 0 12px #ff4353;
+  transition: width 0.18s ease;
+}
+
+#painel-lateral .lore-panel-tools {
+  display: flex;
+  gap: 7px;
+  margin: 20px 0 4px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.35s 0.2s;
+}
+
+#painel-lateral.aberto .lore-panel-tools {
+  opacity: 1;
+  transform: none;
+}
+
+.lore-panel-tools button {
+  flex: 1;
+  padding: 8px 5px;
+  color: #aeb5be;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 3px 9px 3px 9px;
+  font: 700 7px Arial, sans-serif;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.lore-panel-tools button:hover {
+  color: #fff;
+  background: rgba(215, 25, 46, 0.25);
+  border-color: #ff4353;
+  transform: translateY(-2px);
+}
+
+#painel-lateral .moldura-foto-lore {
+  --photo-x: 0px;
+  --photo-y: 0px;
+  --photo-rotate: 45deg;
+  transform: rotate(var(--photo-rotate)) translate(var(--photo-x), var(--photo-y));
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s !important;
+}
+
+#painel-lateral .moldura-foto-lore:hover {
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.04), 0 25px 55px rgba(0, 0, 0, 0.65), 0 0 55px rgba(255, 67, 83, 0.42) !important;
+}
+
+#painel-lateral .lore-ficha-kicker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4px 0 10px;
+  color: rgba(255, 255, 255, 0.38);
+  font: 700 8px Arial, sans-serif;
+  letter-spacing: 1.7px;
+}
+
+.lore-ficha-kicker i {
+  color: #ff4353;
+  font-size: 7px;
+  animation: loreKickerPulse 1.8s infinite;
+}
+
+#painel-lateral #personagem-historia {
+  scroll-margin-top: 20px;
+}
+
+#painel-lateral.lore-panel-refresh #personagem-nome {
+  animation: loreTitleIn 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes loreKickerPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 12px #ff4353;
+  }
+}
+
+@media (max-width: 720px) {
+  #painel-lateral .lore-panel-tools button {
+    font-size: 6px;
+    padding: 9px 3px;
+  }
+}
