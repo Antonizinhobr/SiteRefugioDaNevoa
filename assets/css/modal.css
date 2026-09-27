@@ -144,13 +144,19 @@ body.modal-is-open {
 #staff-modal #staff-modal-img {
   position: relative !important;
   z-index: 2 !important;
-  width: 100% !important;
-  height: 100% !important;
+  width: 160px !important;
+  height: 160px !important;
+  max-width: 160px !important;
+  max-height: 160px !important;
   object-fit: cover !important;
+  object-position: center center !important;
   border-radius: 50% !important;
   border: 5px solid #17191e !important;
   background: #15171b !important;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 16px 38px rgba(0, 0, 0, 0.48) !important;
+  display: block !important;
+  aspect-ratio: 1 / 1 !important;
+  box-sizing: border-box !important;
 }
 
 #staff-modal-role,
