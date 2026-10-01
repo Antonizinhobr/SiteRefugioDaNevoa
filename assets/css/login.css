@@ -959,11 +959,9 @@ body.auth-body:before {
     padding: 14px;
     overflow: auto;
   }
-
   .auth-stage {
     margin: auto;
   }
-
   .main-login-container,
   .main-login-container.signup-mode {
     display: flex;
@@ -972,45 +970,35 @@ body.auth-body:before {
     border-radius: 22px 6px 22px 6px !important;
     transform: none !important;
   }
-
   .right-panel,
   .signup-mode .right-panel {
     order: -1;
     min-height: 275px;
   }
-
   .content-wrapper {
     padding: 35px 25px 10px;
   }
-
   .text-content h2 {
     font-size: 31px;
   }
-  
   .graphic-3d-container {
     height: 170px;
   }
-
   .killer-image {
     height: 125%;
   }
-
   .left-panel {
     padding: 27px 26px 23px;
   }
-
   .form-section {
     margin: 25px auto 20px;
   }
-
   .ritual-rail {
     display: none;
   }
-
   .panel-footer {
     margin-top: 10px;
   }
-
   .auth-legend {
     font-size: 6px;
   }
@@ -1020,46 +1008,36 @@ body.auth-body:before {
   .auth-legend {
     display: none;
   }
-
   .right-panel {
     min-height: 230px;
   }
-
   .content-wrapper {
     padding-top: 25px;
   }
-
   .text-content h2 {
     font-size: 26px;
   }
-
   .graphic-3d-container {
     height: 135px;
   }
-
   .left-panel {
     padding-inline: 19px;
   }
-
   .brand-logo {
     font-size: 13px;
   }
-
   .session-status {
     font-size: 6px;
   }
-
   .social-btn {
     min-height: 44px;
     min-height: 56px !important;
     font-size: 11px !important;
   }
-
   .social-btn img {
     width: 23px !important;
     height: 23px !important;
   }
-
   .main-btn {
     height: 56px !important;
   }
@@ -1074,14 +1052,46 @@ body.auth-body:before {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
-
   .social-btn,
   .main-btn {
     transition: none !important;
   }
-
   .social-btn:before,
   .social-btn:after {
     display: none !important;
   }
+}
+
+.killer-image.flipping {
+  animation: spinSwap 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+}
+
+@keyframes spinSwap {
+  0% {
+    transform: perspective(600px) rotateY(0deg) scale(1);
+    opacity: 1;
+    filter: blur(0px) drop-shadow(0 24px 25px rgba(0, 0, 0, 0.75));
+  }
+  49% {
+    transform: perspective(600px) rotateY(90deg) scale(0.8);
+    opacity: 0;
+    filter: blur(12px);
+  }
+  51% {
+    transform: perspective(600px) rotateY(-90deg) scale(0.8);
+    opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    transform: perspective(600px) rotateY(0deg) scale(1);
+    opacity: 1;
+    filter: blur(0px) drop-shadow(0 24px 25px rgba(0, 0, 0, 0.75));
+  }
+}
+
+.killer-image.survivor-scale {
+  height: 75%;
+  max-width: 90%;
+  margin-bottom: 15%;
+  object-position: center bottom;
 }
