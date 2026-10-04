@@ -1,7 +1,3 @@
-* {
-  cursor: pointer;
-}
-
 .maps-archive-page {
   --m-black: #08080a;
   --m-ink: #101014;
@@ -602,6 +598,10 @@
 #maps-main-grid .map-card:hover .map-card-title {
   color: #ffffff !important;
   background: linear-gradient(90deg, #28151b, #131115) !important;
+}
+
+.map-card {
+  cursor: pointer;
 }
 
 #maps-grid .map-card,
