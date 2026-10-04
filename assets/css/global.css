@@ -629,18 +629,3 @@ html, body.auth-body {
 a, button, input, select, textarea, .nav-item, .showcase-tab, .discord-portal-card, .staff-card, .cta-btn, .discord-btn {
   cursor: pointer;
 }
-
-.cursor-glow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 150px; 
-  height: 150px;
-  pointer-events: none;
-  z-index: 9999;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 70%);
-  mix-blend-mode: color-dodge; 
-  transition: opacity 0.15s ease, width 0.2s ease, height 0.2s ease;
-  will-change: left, top, transform;
-}
