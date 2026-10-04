@@ -1,3 +1,7 @@
+* {
+  cursor: pointer;
+}
+
 .maps-archive-page {
   --m-black: #08080a;
   --m-ink: #101014;
