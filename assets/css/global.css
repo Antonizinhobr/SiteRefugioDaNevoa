@@ -618,14 +618,6 @@ body {
   }
 }
 
-html, body {
-  cursor: none;
-}
-
-html, body.auth-body {
-  cursor: default !important;
-}
-
 a, button, input, select, textarea, .nav-item, .showcase-tab, .discord-portal-card, .staff-card, .cta-btn, .discord-btn {
   cursor: pointer;
 }
