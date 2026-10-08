@@ -18,7 +18,7 @@ const BOTS = [
     categoryLabel: 'DEAD BY DAYLIGHT',
     icon: 'fa-spider',
     color: '#ff3650',
-    description: 'Acompanhe o Santuário do Dead By Daylight, as 4 habilidades que são rotacionadas a cada semana.',
+    description: 'Um bot para Discord focado no universo de Dead by Daylight. Ele se conecta à API do Nightlight.gg para buscar e exibir as vantagens (perks) disponíveis no Santuário dos Segredos da semana, com imagens, custos em fragmentos e taxas de uso.',
     features: ['Santuário', 'Rotações', 'Alertas', 'Discord'],
     githubUrl: 'https://github.com/Antonizinhobr/bot-santuario-dbd',
     inviteUrl: 'https://discord.com/oauth2/authorize?client_id=1499493101255786668&permissions=8&integration_type=0&scope=bot+applications.commands'
