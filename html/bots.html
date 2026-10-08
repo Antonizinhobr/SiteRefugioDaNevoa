@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conheça os bots do Refúgio da Névoa e adicione-os ao seu servidor Discord." />
+  <title>Bots | REFÚGIO DA NÉVOA</title>
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/modal.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/css/bots.css" />
+  <link rel="icon" href="../assets/icon.jpg" type="image/jpg" />
+</head>
+
+<body>
+  <div class="bot-atmosphere" aria-hidden="true">
+    <div class="bot-grid"></div>
+    <div class="bot-orb bot-orb-one"></div>
+    <div class="bot-orb bot-orb-two"></div>
+    <div id="particle-field"></div>
+  </div>
+
+  <header id="navbar" class="dashboard-header navbar-transparent">
+    <div class="logo">REFÚGIO DA NÉVOA</div>
+
+    <nav class="nav-menu pill-nav">
+      <a href="dashboard.html" class="nav-item">Início</a>
+      <div class="nav-item has-dropdown">
+        <span class="dropdown-trigger">Campeonato <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i></span>
+        <div class="mega-menu">
+          <div class="mega-menu-grid">
+            <a href="home.html" class="mega-menu-item"><div class="mega-icon"><i class="fas fa-map-marked-alt"></i></div><div class="mega-text"><span class="mega-title">Votação de Reinos</span><span class="mega-desc">Defina o palco do próximo massacre.</span></div></a>
+            <a href="teams.html" class="mega-menu-item"><div class="mega-icon"><i class="fas fa-users"></i></div><div class="mega-text"><span class="mega-title">Equipes</span><span class="mega-desc">Veja os sobreviventes e assassinos.</span></div></a>
+            <a href="bracket.html" class="mega-menu-item"><div class="mega-icon"><i class="fas fa-sitemap"></i></div><div class="mega-text"><span class="mega-title">Chaves</span><span class="mega-desc">Acompanhe os confrontos do torneio.</span></div></a>
+            <a href="perks.html" class="mega-menu-item"><div class="mega-icon"><i class="fas fa-ban"></i></div><div class="mega-text"><span class="mega-title">Perks Banidas</span><span class="mega-desc">O que é proibido pela Entidade.</span></div></a>
+            <a href="regras.html" class="mega-menu-item"><div class="mega-icon"><i class="fas fa-star"></i></div><div class="mega-text"><span class="mega-title">Sistema de Pontuação</span><span class="mega-desc">Regras do campeonato e penalidades.</span></div></a>
+          </div>
+        </div>
+      </div>
+      <a href="regras_servidor.html" class="nav-item">Regras</a>
+      <a href="mapas.html" class="nav-item">Numeração Mapas</a>
+      <a href="santuario.html" class="nav-item">Santuário</a>
+      <a href="codigos.html" class="nav-item">Códigos</a>
+      <a href="desafios.html" class="nav-item">Desafios</a>
+      <a href="builds.html" class="nav-item">Builds</a>
+      <a href="lore.html" class="nav-item">Lore</a>
+      <a href="mmr.html" class="nav-item">MMR</a>
+      <a href="bots.html" class="nav-item active">Bots</a>
+
+    </nav>
+
+    <div class="nav-actions">
+      <div class="user-container" id="user-profile-trigger">
+        <span id="display-name">CARREGANDO...</span>
+        <div class="avatar-circle"><img src="../assets/icon.jpg" alt="User Profile" /></div>
+      </div>
+    </div>
+
+    <div id="user-submenu" class="dropdown-menu">
+      <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> SAIR DA NÉVOA</button>
+    </div>
+  </header>
+
+  <main class="bots-page">
+    <section class="bots-hero">
+      <div class="hero-eyebrow"><span class="signal-dot"></span> SISTEMA DE AUTOMAÇÃO DA NÉVOA <span class="hero-line"></span></div>
+      <h1>SEUS SERVIDORES.<br /><span>NOSSAS CRIATURAS.</span></h1>
+      <p>Uma coleção de bots criados para transformar cada servidor Discord em uma experiência viva, útil e um pouco mais perigosa.</p>
+      <div class="hero-actions">
+        <a href="#catalogo" class="hero-cta primary"><i class="fas fa-layer-group"></i> EXPLORAR BOTS</a>
+        <a href="https://github.com/SEU-USUARIO" target="_blank" rel="noopener noreferrer" class="hero-cta ghost"><i class="fab fa-github"></i> VER NO GITHUB</a>
+      </div>
+      <div class="hero-status"><span><i class="fas fa-circle"></i> SISTEMA ONLINE</span><span class="slash">/</span><span id="hero-bot-count">04 ENTIDADES DISPONÍVEIS</span></div>
+    </section>
+
+    <section class="command-deck" aria-label="Resumo dos bots">
+      <div class="deck-panel deck-panel-large">
+        <span class="deck-label">CENTRAL DE COMANDO</span>
+        <strong>Ferramentas que trabalham<br /><em>enquanto a Névoa observa.</em></strong>
+        <div class="deck-orbit"><span></span><i class="fas fa-robot"></i></div>
+      </div>
+      <div class="deck-metric"><span class="metric-icon"><i class="fas fa-robot"></i></span><strong id="metric-bots">04</strong><small>BOTS ATIVOS</small></div>
+      <div class="deck-metric"><span class="metric-icon purple"><i class="fas fa-bolt"></i></span><strong>24/7</strong><small>DISPONIBILIDADE</small></div>
+      <div class="deck-metric"><span class="metric-icon gold"><i class="fas fa-code-branch"></i></span><strong>OPEN</strong><small>NO GITHUB</small></div>
+    </section>
+
+    <section id="catalogo" class="catalog-section">
+      <div class="catalog-header">
+        <div>
+          <div class="section-kicker"><span></span> ARQUIVO DE ENTIDADES</div>
+          <h2>Escolha seu <em>companheiro.</em></h2>
+        </div>
+        <div class="catalog-controls">
+          <label class="search-box"><i class="fas fa-search"></i><input id="bot-search" type="search" placeholder="Buscar bot..." aria-label="Buscar bot" /></label>
+          <div class="filter-tabs" role="tablist" aria-label="Filtrar bots">
+            <button class="filter-tab active" data-filter="all">Todos</button>
+            <button class="filter-tab" data-filter="music">Música</button>
+            <button class="filter-tab" data-filter="dbd">DBD</button>
+            <button class="filter-tab" data-filter="utility">Utilidade</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="bot-grid" class="bot-grid" aria-live="polite"></div>
+      <div id="empty-state" class="empty-state" hidden><i class="fas fa-ghost"></i><h3>Nenhuma entidade encontrada</h3><p>A Névoa não reconheceu esse sinal. Tente outro nome ou categoria.</p></div>
+    </section>
+
+    <section class="developer-cta">
+      <div class="developer-symbol"><i class="fas fa-terminal"></i><span></span></div>
+      <div><span class="section-kicker"><span></span> PARA DESENVOLVEDORES</span><h2>Quer construir algo na Névoa?</h2><p>Todos os projetos vivem no GitHub. Explore o código, sugira melhorias ou crie sua própria entidade.</p></div>
+      <a href="https://github.com/SEU-USUARIO" target="_blank" rel="noopener noreferrer" class="hero-cta ghost"><i class="fab fa-github"></i> ABRIR GITHUB</a>
+    </section>
+  </main>
+
+  <div id="bot-modal" class="bot-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal aria-label="Fechar detalhes"><i class="fas fa-xmark"></i></button>
+      <div id="modal-icon" class="modal-icon"></div>
+      <span id="modal-category" class="modal-category"></span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-description"></p>
+      <div id="modal-features" class="modal-features"></div>
+      <div class="modal-links" id="modal-links"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyARpVKfzOMm-v0pv9-7w9xahvhItosrI2Q",
+      authDomain: "dbd-camp.firebaseapp.com",
+      projectId: "dbd-camp",
+      storageBucket: "dbd-camp.firebasestorage.app",
+      messagingSenderId: "357760091556",
+      appId: "1:357760091556:web:4d9191b487baf240e92d31",
+      measurementId: "G-THBBGJTTMJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    window.firebaseAuth = auth;
+    const displayNameEl = document.getElementById('display-name');
+    const logoutBtn = document.getElementById('logout-btn');
+    let authChecked = false;
+
+    onAuthStateChanged(auth, (user) => {
+      authChecked = true;
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+      const userName = user.displayName || (user.email ? user.email.split('@')[0] : 'Usuário');
+      if (displayNameEl) displayNameEl.textContent = userName.toUpperCase();
+    });
+
+    setTimeout(() => {
+      if (!authChecked && displayNameEl) displayNameEl.textContent = '...';
+    }, 3000);
+
+    if (logoutBtn) logoutBtn.onclick = () => signOut(auth);
+  </script>
+
+  <script src="../js/bots.js"></script>
+</body>
+</html>
