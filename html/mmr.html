@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../assets/css/modal.css" />
   <link rel="stylesheet" href="../assets/css/responsive.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="stylesheet" href="./bots.css" />
+  <link rel="stylesheet" href="../assets/css/bots.css" />
   <link rel="icon" href="../assets/icon.jpg" type="image/jpg" />
 </head>
 
@@ -64,15 +64,17 @@
           </div>
         </div>
       </div>
+
       <a href="regras_servidor.html" class="nav-item">Regras</a>
       <a href="mapas.html" class="nav-item">Numeração Mapas</a>
       <a href="santuario.html" class="nav-item">Santuário</a>
       <a href="codigos.html" class="nav-item">Códigos</a>
-      <a href="bots.html" class="nav-item active">Bots</a>
       <a href="desafios.html" class="nav-item">Desafios</a>
       <a href="builds.html" class="nav-item">Builds</a>
       <a href="lore.html" class="nav-item">Lore</a>
       <a href="mmr.html" class="nav-item">MMR</a>
+      <a href="bots.html" class="nav-item active">Bots</a>
+
     </nav>
 
     <div class="nav-actions">
@@ -96,7 +98,7 @@
         mais perigosa.</p>
       <div class="hero-actions">
         <a href="#catalogo" class="hero-cta primary"><i class="fas fa-layer-group"></i> EXPLORAR BOTS</a>
-        <a href="https://github.com/SEU-USUARIO" target="_blank" rel="noopener noreferrer" class="hero-cta ghost"><i
+        <a href="https://github.com/Antonizinhobr" target="_blank" rel="noopener noreferrer" class="hero-cta ghost"><i
             class="fab fa-github"></i> VER NO GITHUB</a>
       </div>
       <div class="hero-status"><span><i class="fas fa-circle"></i> SISTEMA ONLINE</span><span
@@ -135,49 +137,6 @@
         </div>
       </div>
 
-
-      <section id="bot-admin-panel" class="bot-admin-panel" hidden>
-        <div class="admin-panel-heading">
-          <div>
-            <div class="section-kicker"><span></span> ÁREA DO PROPRIETÁRIO</div>
-            <h3>Registrar nova entidade</h3>
-            <p>Este painel só aparece para o UID autorizado no Firebase Auth.</p>
-          </div>
-          <i class="fas fa-fingerprint"></i>
-        </div>
-        <form id="bot-admin-form" class="bot-admin-form">
-          <div class="admin-field"><label for="bot-name">Nome do bot</label><input id="bot-name" name="name" required
-              placeholder="Ex.: Maestro da Névoa" /></div>
-          <div class="admin-field"><label for="bot-category">Categoria</label><select id="bot-category" name="category">
-              <option value="music">Música</option>
-              <option value="dbd">DBD</option>
-              <option value="utility">Utilidade</option>
-            </select></div>
-          <div class="admin-field"><label for="bot-category-label">Rótulo</label><input id="bot-category-label"
-              name="categoryLabel" placeholder="MÚSICA / AUDIO" /></div>
-          <div class="admin-field"><label for="bot-icon">Ícone Font Awesome</label><input id="bot-icon" name="icon"
-              value="fa-robot" placeholder="fa-robot" /></div>
-          <div class="admin-field"><label for="bot-color">Cor</label><input id="bot-color" name="color" type="color"
-              value="#ff3650" /></div>
-          <div class="admin-field admin-field-wide"><label for="bot-description">Descrição</label><textarea
-              id="bot-description" name="description" required rows="3" placeholder="O que esse bot faz?"></textarea>
-          </div>
-          <div class="admin-field admin-field-wide"><label for="bot-features">Recursos separados por
-              vírgula</label><input id="bot-features" name="features" placeholder="Alertas, Comandos, Logs" /></div>
-          <div class="admin-field admin-field-wide"><label for="bot-github">Link do GitHub</label><input id="bot-github"
-              name="githubUrl" type="url" placeholder="https://github.com/..." /></div>
-          <div class="admin-field admin-field-wide"><label for="bot-invite">Link para adicionar ao
-              servidor</label><input id="bot-invite" name="inviteUrl" type="url"
-              placeholder="https://discord.com/oauth2/authorize?..." /></div>
-          <label class="admin-toggle"><input id="bot-active" name="active" type="checkbox" checked /><span></span>
-            Publicar no catálogo</label>
-          <div class="admin-form-actions"><button id="submit-bot" class="hero-cta primary" type="submit"><i
-                class="fas fa-plus"></i> CADASTRAR BOT</button><button id="cancel-edit" class="hero-cta ghost"
-              type="button" hidden>Cancelar edição</button><span id="admin-status" role="status"></span></div>
-        </form>
-      </section>
-      <p id="admin-gate-note" class="admin-gate-note" hidden></p>
-
       <div id="bot-grid" class="bot-grid" aria-live="polite"></div>
       <div id="empty-state" class="empty-state" hidden><i class="fas fa-ghost"></i>
         <h3>Nenhuma entidade encontrada</h3>
@@ -191,7 +150,7 @@
         <h2>Quer construir algo na Névoa?</h2>
         <p>Todos os projetos vivem no GitHub. Explore o código, sugira melhorias ou crie sua própria entidade.</p>
       </div>
-      <a href="https://github.com/Antonizinhobr" target="_blank" rel="noopener noreferrer" class="hero-cta ghost"><i
+      <a href="https://github.com/SEU-USUARIO" target="_blank" rel="noopener noreferrer" class="hero-cta ghost"><i
           class="fab fa-github"></i> ABRIR GITHUB</a>
     </section>
   </main>
@@ -209,7 +168,45 @@
     </div>
   </div>
 
-  <script type="module" src="./bots.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyARpVKfzOMm-v0pv9-7w9xahvhItosrI2Q",
+      authDomain: "dbd-camp.firebaseapp.com",
+      projectId: "dbd-camp",
+      storageBucket: "dbd-camp.firebasestorage.app",
+      messagingSenderId: "357760091556",
+      appId: "1:357760091556:web:4d9191b487baf240e92d31",
+      measurementId: "G-THBBGJTTMJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    window.firebaseAuth = auth;
+    const displayNameEl = document.getElementById('display-name');
+    const logoutBtn = document.getElementById('logout-btn');
+    let authChecked = false;
+
+    onAuthStateChanged(auth, (user) => {
+      authChecked = true;
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+      const userName = user.displayName || (user.email ? user.email.split('@')[0] : 'Usuário');
+      if (displayNameEl) displayNameEl.textContent = userName.toUpperCase();
+    });
+
+    setTimeout(() => {
+      if (!authChecked && displayNameEl) displayNameEl.textContent = '...';
+    }, 3000);
+
+    if (logoutBtn) logoutBtn.onclick = () => signOut(auth);
+  </script>
+
+  <script src="../js/bots.js"></script>
 </body>
 
 </html>
