@@ -4,7 +4,7 @@ const BOTS = [
     name: 'Bot de XP',
     category: 'xp',
     categoryLabel: 'XP / RANKING',
-    icon: 'fa-ranking-star',
+    icon: 'fa-trophy',
     color: '#6de1e9',
     description: 'Um bot completo de nivelamento e ranqueamento para o Discord, com uma temática imersiva inspirada no universo de sobrevivência e terror (Névoa/Entidade). Ele recompensa usuários ativos no chat de texto e nas chamadas de voz com XP, Níveis e Cargos Automáticos',
     features: ['Xp', 'Level', 'Ranking', 'Commands'],
