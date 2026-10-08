@@ -1,15 +1,15 @@
 const BOTS = [
   {
-    id: 'maestro-nevoa',
-    name: 'Maestro da Névoa',
-    category: 'music',
-    categoryLabel: 'MÚSICA / AUDIO',
-    icon: 'fa-music',
+    id: 'xp-bot',
+    name: 'Bot de XP',
+    category: 'xp',
+    categoryLabel: 'XP / RANKING',
+    icon: 'fas fa-ranking-star',
     color: '#6de1e9',
-    description: 'Música, playlists e ambientação para transformar qualquer call em uma experiência cinematográfica.',
-    features: ['YouTube', 'Playlists', 'Queue', 'Volume'],
-    githubUrl: 'https://github.com/SEU-USUARIO/maestro-da-nevoa',
-    inviteUrl: 'https://discord.com/oauth2/authorize?client_id=SEU_CLIENT_ID&permissions=36700160&scope=bot%20applications.commands'
+    description: 'Um bot completo de nivelamento e ranqueamento para o Discord, com uma temática imersiva inspirada no universo de sobrevivência e terror (Névoa/Entidade). Ele recompensa usuários ativos no chat de texto e nas chamadas de voz com XP, Níveis e Cargos Automáticos',
+    features: ['Xp', 'Level', 'Ranking', 'Commands'],
+    githubUrl: 'https://github.com/Antonizinhobr/XP-BOT-DISCORD',
+    inviteUrl: 'https://discord.com/oauth2/authorize?client_id=1495612929754664960&permissions=8&integration_type=0&scope=bot+applications.commands'
   },
   {
     id: 'santuario-dbd',
@@ -18,10 +18,10 @@ const BOTS = [
     categoryLabel: 'DEAD BY DAYLIGHT',
     icon: 'fa-spider',
     color: '#ff3650',
-    description: 'Acompanhe o Santuário, rotações, oferendas e informações da Entidade direto no seu servidor.',
+    description: 'Acompanhe o Santuário do Dead By Daylight, as 4 habilidades que são rotacionadas a cada semana.',
     features: ['Santuário', 'Rotações', 'Alertas', 'Discord'],
-    githubUrl: 'https://github.com/SEU-USUARIO/santuario-dbd',
-    inviteUrl: 'https://discord.com/oauth2/authorize?client_id=SEU_CLIENT_ID&permissions=2147485696&scope=bot%20applications.commands'
+    githubUrl: 'https://github.com/Antonizinhobr/bot-santuario-dbd',
+    inviteUrl: 'https://discord.com/oauth2/authorize?client_id=1499493101255786668&permissions=8&integration_type=0&scope=bot+applications.commands'
   },
   {
     id: 'grimorio-codigos',
@@ -30,23 +30,61 @@ const BOTS = [
     categoryLabel: 'CÓDIGOS / RECOMPENSAS',
     icon: 'fa-scroll',
     color: '#ffc56d',
-    description: 'Nunca mais perca um código de DBD. O Grimório avisa a comunidade assim que uma nova recompensa surge.',
+    description: 'O projeto acessa a página de códigos do NightLight, coleta os códigos disponíveis, identifica recompensa, data de expiração e data de adição, remove duplicados e salva os registros na coleção codigos do Firestore.',
     features: ['Códigos', 'Notificações', 'Filtros', 'Histórico'],
-    githubUrl: 'https://github.com/SEU-USUARIO/grimorio-de-codigos',
-    inviteUrl: 'https://discord.com/oauth2/authorize?client_id=SEU_CLIENT_ID&permissions=2147485696&scope=bot%20applications.commands'
+    githubUrl: 'https://github.com/Antonizinhobr/dbd-scrapper-codes',
   },
   {
-    id: 'vigia-comunidade',
-    name: 'Vigia da Comunidade',
-    category: 'utility',
-    categoryLabel: 'UTILIDADE / MODERAÇÃO',
-    icon: 'fa-eye',
-    color: '#ad72ff',
-    description: 'Moderação, cargos, logs e ferramentas de comunidade para manter o seu servidor vivo e organizado.',
-    features: ['Moderação', 'Logs', 'Cargos', 'Tickets'],
-    githubUrl: 'https://github.com/SEU-USUARIO/vigia-da-comunidade',
-    inviteUrl: 'https://discord.com/oauth2/authorize?client_id=SEU_CLIENT_ID&permissions=8&scope=bot%20applications.commands'
-  }
+    id: 'ticket-support',
+    name: 'Ticket Bot',
+    category: 'discord',
+    categoryLabel: 'DISCORD',
+    icon: 'fa-song',
+    color: '#ff3650',
+    description: 'O Bot Ticket automatiza o suporte dentro de um servidor Discord. Um administrador configura os canais do sistema, os usuários abrem tickets por botão, a equipe de atendimento assume os chamados e, ao final, o usuário avalia o atendimento. O bot salva os dados no Firestore e envia o histórico completo para o canal de logs.',
+    features: ['Ticket', 'Support', 'Discord'],
+    githubUrl: 'https://github.com/Antonizinhobr/bot-ticket',
+    inviteUrl: 'https://discord.com/oauth2/authorize?client_id=1495914731695898744&permissions=8&integration_type=0&scope=bot+applications.commands'
+  },
+  {
+  id: 'kage-bunshin',
+  name: 'Kage Bunshin',
+  category: 'music',
+  categoryLabel: 'MÚSICA / MULTI-CLONE',
+  icon: 'fa-music',
+  color: '#ff3650',
+  description: 'Bot de música para Discord com arquitetura multi-clone, capaz de tocar em múltiplos canais de voz simultaneamente dentro do mesmo servidor. Desenvolvido em Node.js com discord.js e discord-player.',
+  features: [
+    'Multi-clone',
+    '4 workers',
+    'Múltiplos canais de voz',
+    'Discord.js',
+    'Discord Player'
+  ],
+  githubUrl: 'https://github.com/Antonizinhobr/kage-bunshin-bot',
+  inviteUrls: [
+    {
+      name: 'Bot Principal',
+      url: 'https://discord.com/oauth2/authorize?client_id=1495914731695898744&permissions=8&integration_type=0&scope=bot+applications.commands'
+    },
+    {
+      name: 'Kage 1',
+      url: 'https://discord.com/oauth2/authorize?client_id=1554155581302906900&permissions=8&integration_type=0&scope=bot+applications.commands'
+    },
+    {
+      name: 'Kage 2',
+      url: 'https://discord.com/oauth2/authorize?client_id=1554156897953644565&permissions=8&integration_type=0&scope=bot+applications.commands'
+    },
+    {
+      name: 'Kage 3',
+      url: 'https://discord.com/oauth2/authorize?client_id=1554157378751037470&permissions=8&integration_type=0&scope=bot+applications.commands'
+    },
+    {
+      name: 'Kage 4',
+      url: 'https://discord.com/oauth2/authorize?client_id=1554157740178280509&permissions=8&integration_type=0&scope=bot+applications.commands'
+    }
+  ]
+}
 ];
 
 const botGrid = document.getElementById('bot-grid');

@@ -10,25 +10,18 @@ const privateKey = process.env.FIREBASE_PRIVATE_KEY
   ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n') 
   : undefined;
 
-// ==========================================
-// DEBUG E VERIFICAÇÃO DE SEGURANÇA
-// ==========================================
 console.log("--- DEBUG DISCLOUD ---");
 console.log("PROJECT_ID:", process.env.FIREBASE_PROJECT_ID);
 console.log("CLIENT_EMAIL:", process.env.FIREBASE_CLIENT_EMAIL);
 console.log("PRIVATE_KEY existe?", !!privateKey);
 console.log("----------------------");
 
-// Verificação para evitar que o servidor quebre silenciosamente
 if (!process.env.FIREBASE_PROJECT_ID || !process.env.FIREBASE_CLIENT_EMAIL || !privateKey) {
   console.error("❌ ERRO FATAL: Variáveis de ambiente do Firebase não foram carregadas corretamente!");
   console.error("Verifique se as variáveis estão configuradas no painel da Discloud.");
-  process.exit(1); // Mata o processo para forçar a Discloud a reiniciar
+  process.exit(1);
 }
 
-// ==========================================
-// INICIALIZAÇÃO DO FIREBASE
-// ==========================================
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
@@ -39,9 +32,6 @@ if (!admin.apps.length) {
   });
 }
 
-// ==========================================
-// ROTAS E SERVIDOR
-// ==========================================
 app.use(express.static(path.join(__dirname, '..')));
 
 app.get('/api/callback', async (req, res) => {
