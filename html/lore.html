@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../assets/css/lore.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="icon" href="../assets/icon.jpg" type="image/jpg" />
-  
+
   <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
 </head>
 
@@ -23,7 +23,8 @@
       <a href="dashboard.html" class="nav-item">Início</a>
 
       <div class="nav-item has-dropdown">
-        <span class="dropdown-trigger">Campeonato <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i></span>
+        <span class="dropdown-trigger">Campeonato <i class="fas fa-chevron-down"
+            style="font-size: 0.7em; margin-left: 5px;"></i></span>
         <div class="mega-menu">
           <div class="mega-menu-grid">
             <a href="home.html" class="mega-menu-item">
@@ -74,7 +75,8 @@
       <a href="lore.html" class="nav-item active">Lore</a>
       <a href="mmr.html" class="nav-item">MMR</a>
       <a href="bots.html" class="nav-item">Bots</a>
-      
+      <a href="reshades.html" class="nav-item">Reshades</a>
+
     </nav>
 
     <div class="nav-actions">
@@ -113,31 +115,32 @@
   <script src="../js/entity.js"></script>
 
   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyARpVKfzOMm-v0pv9-7w9xahvhItosrI2Q",
-    authDomain: "dbd-camp.firebaseapp.com",
-    projectId: "dbd-camp",
-    storageBucket: "dbd-camp.firebasestorage.app",
-    messagingSenderId: "357760091556",
-    appId: "1:357760091556:web:4d9191b487baf240e92d31",
-    measurementId: "G-THBBGJTTMJ",
-  };
+    const firebaseConfig = {
+      apiKey: "AIzaSyARpVKfzOMm-v0pv9-7w9xahvhItosrI2Q",
+      authDomain: "dbd-camp.firebaseapp.com",
+      projectId: "dbd-camp",
+      storageBucket: "dbd-camp.firebasestorage.app",
+      messagingSenderId: "357760091556",
+      appId: "1:357760091556:web:4d9191b487baf240e92d31",
+      measurementId: "G-THBBGJTTMJ",
+    };
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-  onAuthStateChanged(auth, (user) => {
-    if (window.inicializarNavbarUser) {
-      window.inicializarNavbarUser(user);
-    }
-    if (window.configurarLogout) {
-      window.configurarLogout(auth, signOut);
-    }
-  });
-</script>
+    onAuthStateChanged(auth, (user) => {
+      if (window.inicializarNavbarUser) {
+        window.inicializarNavbarUser(user);
+      }
+      if (window.configurarLogout) {
+        window.configurarLogout(auth, signOut);
+      }
+    });
+  </script>
 
 </body>
+
 </html>

@@ -4,31 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Conheça os bots do Refúgio da Névoa e adicione-os ao seu servidor Discord." />
-  <title>Bots | REFÚGIO DA NÉVOA</title>
-
+  <title>Community MMR | REFÚGIO DA NÉVOA</title>
   <link rel="stylesheet" href="../assets/css/global.css" />
   <link rel="stylesheet" href="../assets/css/navbar.css" />
   <link rel="stylesheet" href="../assets/css/dashboard.css" />
   <link rel="stylesheet" href="../assets/css/components.css" />
   <link rel="stylesheet" href="../assets/css/modal.css" />
   <link rel="stylesheet" href="../assets/css/responsive.css" />
+  <link rel="stylesheet" href="../assets/css/mmr.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="stylesheet" href="../assets/css/bots.css" />
   <link rel="icon" href="../assets/icon.jpg" type="image/jpg" />
+
+
 </head>
 
 <body>
-  <div class="bot-atmosphere" aria-hidden="true">
-    <div class="atmosphere-grid"></div>
-    <div class="bot-orb bot-orb-one"></div>
-    <div class="bot-orb bot-orb-two"></div>
-    <div id="particle-field"></div>
-  </div>
+  <div class="mist-field"></div>
 
   <header id="navbar" class="dashboard-header navbar-transparent">
     <div class="logo">REFÚGIO DA NÉVOA</div>
-
     <nav class="nav-menu pill-nav">
       <a href="dashboard.html" class="nav-item">Início</a>
       <div class="nav-item has-dropdown">
@@ -72,101 +66,108 @@
       <a href="desafios.html" class="nav-item">Desafios</a>
       <a href="builds.html" class="nav-item">Builds</a>
       <a href="lore.html" class="nav-item">Lore</a>
-      <a href="mmr.html" class="nav-item">MMR</a>
-      <a href="bots.html" class="nav-item active">Bots</a>
+      <a href="mmr.html" class="nav-item active">MMR</a>
+      <a href="bots.html" class="nav-item">Bots</a>
+      <a href="reshades.html" class="nav-item">Reshades</a>
 
     </nav>
-
     <div class="nav-actions">
       <div class="user-container" id="user-profile-trigger">
         <span id="display-name">CARREGANDO...</span>
         <div class="avatar-circle"><img src="../assets/icon.jpg" alt="User Profile" /></div>
       </div>
     </div>
-
-    <div id="user-submenu" class="dropdown-menu">
-      <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> SAIR DA NÉVOA</button>
-    </div>
+    <div id="user-submenu" class="dropdown-menu"><button id="logout-btn"><i class="fas fa-sign-out-alt"></i> SAIR DA
+        NÉVOA</button></div>
   </header>
 
-  <main class="bots-page">
-    <section class="bots-hero">
-      <div class="hero-eyebrow"><span class="signal-dot"></span> SISTEMA DE AUTOMAÇÃO DA NÉVOA <span
-          class="hero-line"></span></div>
-      <h1>SEUS SERVIDORES.<br /><span>NOSSAS CRIATURAS.</span></h1>
-      <p>Uma coleção de bots criados para transformar cada servidor Discord em uma experiência viva, útil e um pouco
-        mais perigosa.</p>
-      <div class="hero-actions">
-        <a href="#catalogo" class="hero-cta primary"><i class="fas fa-layer-group"></i> EXPLORAR BOTS</a>
-        <a href="https://github.com/Antonizinhobr" target="_blank" rel="noopener noreferrer" class="hero-cta ghost"><i
-            class="fab fa-github"></i> VER NO GITHUB</a>
-      </div>
-      <div class="hero-status"><span><i class="fas fa-circle"></i> SISTEMA ONLINE</span><span
-          class="slash">/</span><span id="hero-bot-count">04 ENTIDADES DISPONÍVEIS</span></div>
+  <main class="mmr-page">
+    <section class="hero-copy">
+      <span class="hero-kicker">Sistema de classificação</span>
+      <h1>COMMUNITY <span>MMR</span></h1>
+      <p>Entrega a tua partida à Entidade e descobre o teu verdadeiro nível dentro da Névoa.</p>
     </section>
 
-    <section class="command-deck" aria-label="Resumo dos bots">
-      <div class="deck-panel deck-panel-large">
-        <span class="deck-label">CENTRAL DE COMANDO</span>
-        <strong>Ferramentas que trabalham<br /><em>enquanto a Névoa observa.</em></strong>
-        <div class="deck-orbit"><span></span><i class="fas fa-robot"></i></div>
+    <section class="mmr-layout">
+      <div class="side-rail">
+        <article class="side-card"><span class="label">Protocolo</span><span class="value"><i
+              class="fas fa-shield-halved"></i>Análise segura</span></article>
+        <article class="side-card"><span class="label">Formato aceito</span><span class="value"><i
+              class="fas fa-file-video"></i>MP4 / gameplay</span></article>
       </div>
-      <div class="deck-metric"><span class="metric-icon"><i class="fas fa-robot"></i></span><strong
-          id="metric-bots">04</strong><small>BOTS ATIVOS</small></div>
-      <div class="deck-metric"><span class="metric-icon purple"><i
-            class="fas fa-bolt"></i></span><strong>24/7</strong><small>DISPONIBILIDADE</small></div>
-      <div class="deck-metric"><span class="metric-icon gold"><i
-            class="fas fa-code-branch"></i></span><strong>OPEN</strong><small>NO GITHUB</small></div>
-    </section>
 
-    <section id="catalogo" class="catalog-section">
-      <div class="catalog-header">
-        <div>
-          <div class="section-kicker"><span></span> ARQUIVO DE ENTIDADES</div>
-          <h2>Escolha seu <em>companheiro.</em></h2>
-        </div>
-        <div class="catalog-controls">
-          <label class="search-box"><i class="fas fa-search"></i><input id="bot-search" type="search"
-              placeholder="Buscar bot..." aria-label="Buscar bot" /></label>
-          <div class="filter-tabs" role="tablist" aria-label="Filtrar bots">
-            <button class="filter-tab active" data-filter="all">Todos</button>
-            <button class="filter-tab" data-filter="music">Música</button>
-            <button class="filter-tab" data-filter="dbd">DBD</button>
-            <button class="filter-tab" data-filter="utility">Utilidade</button>
-          </div>
+      <div class="upload-card">
+        <div class="upload-inner">
+          <div class="card-topline"><span class="dot"></span> Portal de oferenda</div>
+          <label class="drop-zone" for="videoInput" id="dropZone">
+            <span class="drop-icon"><i class="fas fa-cloud-arrow-up"></i></span>
+            <span class="drop-title" id="fileName">Escolher arquivo da partida</span>
+            <span class="drop-help">Arrasta o vídeo até aqui ou clica para procurar · MP4</span>
+          </label>
+          <input type="file" id="videoInput" accept="video/mp4" class="file-input-premium">
+
+          <div class="status-label"><span>Status do envio</span><span>MMR-ANALYSIS</span></div>
+          <div id="statusTexto">Nenhum arquivo selecionado.</div>
+
+          <button id="btnEnviar" class="cta-btn btn-full" style="margin-top: 20px; width: 100%;">
+            <i class="fas fa-upload"></i> INICIAR OFERENDA
+          </button>
+          <div class="progress-line"><span></span></div>
         </div>
       </div>
 
-      <div id="bot-grid" class="bot-grid" aria-live="polite"></div>
-      <div id="empty-state" class="empty-state" hidden><i class="fas fa-ghost"></i>
-        <h3>Nenhuma entidade encontrada</h3>
-        <p>A Névoa não reconheceu esse sinal. Tente outro nome ou categoria.</p>
+      <div class="side-rail">
+        <article class="side-card"><span class="label">Destino</span><span class="value"><i
+              class="fas fa-cloud"></i>Fila da Névoa</span></article>
+        <article class="side-card"><span class="label">Resultado</span><span class="value"><i
+              class="fas fa-chart-line"></i>Nível real da comunidade</span></article>
       </div>
-    </section>
-
-    <section class="developer-cta">
-      <div class="developer-symbol"><i class="fas fa-terminal"></i><span></span></div>
-      <div><span class="section-kicker"><span></span> PARA DESENVOLVEDORES</span>
-        <h2>Quer construir algo na Névoa?</h2>
-        <p>Todos os projetos vivem no GitHub. Explore o código, sugira melhorias ou crie sua própria entidade.</p>
-      </div>
-      <a href="https://github.com/SEU-USUARIO" target="_blank" rel="noopener noreferrer" class="hero-cta ghost"><i
-          class="fab fa-github"></i> ABRIR GITHUB</a>
     </section>
   </main>
 
-  <div id="bot-modal" class="bot-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
-    <div class="modal-backdrop" data-close-modal></div>
-    <div class="modal-card">
-      <button class="modal-close" data-close-modal aria-label="Fechar detalhes"><i class="fas fa-xmark"></i></button>
-      <div id="modal-icon" class="modal-icon"></div>
-      <span id="modal-category" class="modal-category"></span>
-      <h2 id="modal-title"></h2>
-      <p id="modal-description"></p>
-      <div id="modal-features" class="modal-features"></div>
-      <div class="modal-links" id="modal-links"></div>
+  <footer class="custom-footer">
+    <div class="footer-top-glow"></div>
+
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <div class="logo">REFÚGIO DA NÉVOA</div>
+        <p>O servidor da comunidade mais sombrio da Névoa. Junte-se a nós para campeonatos, discussões e
+          muito mais.</p>
+      </div>
+
+      <div class="footer-nav">
+        <h4>NAVEGAÇÃO</h4>
+        <div class="nav-links">
+          <a href="dashboard.html">Sobre a Comunidade</a>
+          <a href="regras_servidor.html">Regras do Servidor</a>
+          <a href="termos.html">Termos de Uso</a>
+          <a href="privacidade.html">Privacidade</a>
+        </div>
+      </div>
+
+      <div class="footer-connect">
+        <h4>CONECTE-SE</h4>
+        <div class="social-buttons">
+          <a href="#" class="social-btn discord-btn">
+            <i class="fab fa-discord"></i> Entrar no Discord
+          </a>
+          <a href="#" class="social-btn mail-btn">
+            <i class="far fa-envelope"></i> Contato
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
+
+    <div class="footer-bottom-bar">
+      <div class="container bottom-flex">
+        <span class="copy">&copy; 2026 Refúgio da Névoa. Desenvolvido por <strong style="color:#fff;">Anthonny
+            Michael</strong>.</span>
+        <span class="disclaimer">Não afiliado à Behaviour Interactive ou a Dead by Daylight™</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/navbar.js"></script>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -185,17 +186,22 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     window.firebaseAuth = auth;
+
     const displayNameEl = document.getElementById('display-name');
     const logoutBtn = document.getElementById('logout-btn');
     let authChecked = false;
 
+    if (displayNameEl) displayNameEl.textContent = 'CARREGANDO...';
+
     onAuthStateChanged(auth, (user) => {
       authChecked = true;
+
       if (!user) {
-        window.location.href = 'login.html';
+        window.location.href = "login.html";
         return;
       }
-      const userName = user.displayName || (user.email ? user.email.split('@')[0] : 'Usuário');
+
+      const userName = user.displayName || (user.email ? user.email.split("@")[0] : "Usuário");
       if (displayNameEl) displayNameEl.textContent = userName.toUpperCase();
     });
 
@@ -203,10 +209,101 @@
       if (!authChecked && displayNameEl) displayNameEl.textContent = '...';
     }, 3000);
 
-    if (logoutBtn) logoutBtn.onclick = () => signOut(auth);
+    if (logoutBtn) {
+      logoutBtn.onclick = () => signOut(auth);
+    }
   </script>
 
-  <script src="../js/bots.js"></script>
+  <script>
+    const videoInput = document.getElementById('videoInput');
+    const dropZone = document.getElementById('dropZone');
+    const fileName = document.getElementById('fileName');
+
+    videoInput.addEventListener('change', () => {
+      if (videoInput.files.length > 0) {
+        fileName.innerHTML = `<i class="fas fa-film"></i> ${videoInput.files[0].name}`;
+        dropZone.classList.add('selected');
+      }
+    });
+
+    ['dragenter', 'dragover'].forEach(eventName => dropZone.addEventListener(eventName, (event) => {
+      event.preventDefault();
+      dropZone.classList.add('dragging');
+    }));
+
+    ['dragleave', 'drop'].forEach(eventName => dropZone.addEventListener(eventName, (event) => {
+      event.preventDefault();
+      dropZone.classList.remove('dragging');
+    }));
+
+    document.getElementById('btnEnviar').addEventListener('click', async () => {
+      const fileInput = document.getElementById('videoInput');
+      const statusTexto = document.getElementById('statusTexto');
+      const btnEnviar = document.getElementById('btnEnviar');
+
+      if (fileInput.files.length === 0) {
+        statusTexto.innerText = "A Entidade exige um sacrifício. Seleciona um vídeo primeiro.";
+        statusTexto.style.color = "#ff4545";
+        return;
+      }
+
+      const ficheiro = fileInput.files[0];
+      const user = window.firebaseAuth?.currentUser;
+
+      if (!user) {
+        statusTexto.innerText = "A sessão expirou. Faz login novamente para enviar a partida.";
+        statusTexto.style.color = "#ff4545";
+        return;
+      }
+
+      const jogadorId = user.uid;
+
+      btnEnviar.disabled = true;
+      btnEnviar.style.background = "#333";
+      btnEnviar.style.borderColor = "#333";
+
+      statusTexto.innerHTML = `<i class="fas fa-circle-notch fa-spin"></i> A conectar com a API...`;
+      statusTexto.style.color = "#fff";
+
+      try {
+        const respostaApi = await fetch('https://botmmr.discloud.dev/api/gerar-link', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nomeFicheiro: ficheiro.name, jogadorId: jogadorId })
+        });
+
+        const dados = await respostaApi.json();
+
+        if (dados.urlUpload) {
+          statusTexto.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> A enviar vídeo para a Cloudflare. Pode demorar consoante a tua internet...`;
+          statusTexto.style.color = "#d45ce8";
+
+          const upload = await fetch(dados.urlUpload, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'video/mp4' },
+            body: ficheiro
+          });
+
+          if (upload.ok) {
+            statusTexto.innerHTML = `<i class="fas fa-check-circle"></i> SUCESSO! A partida está na nuvem e entrou na fila para análise.`;
+            statusTexto.style.color = "#69ed84";
+            statusTexto.style.borderColor = "rgba(105, 237, 132, 0.28)";
+          } else {
+            throw new Error("Erro no upload final.");
+          }
+        } else {
+          throw new Error("Não foi possível gerar o link.");
+        }
+      } catch (erro) {
+        statusTexto.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Falha no envio. Verifica a ligação à API.`;
+        statusTexto.style.color = "#ff4545";
+
+        btnEnviar.disabled = false;
+        btnEnviar.style.background = "var(--accent-red)";
+        btnEnviar.style.borderColor = "var(--accent-red)";
+      }
+    });
+  </script>
 </body>
 
 </html>

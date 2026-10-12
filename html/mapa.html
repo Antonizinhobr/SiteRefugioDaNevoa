@@ -22,7 +22,8 @@
         <nav class="nav-menu pill-nav">
             <a href="dashboard.html" class="nav-item">Início</a>
             <div class="nav-item has-dropdown">
-                <span class="dropdown-trigger">Campeonato <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i></span>
+                <span class="dropdown-trigger">Campeonato <i class="fas fa-chevron-down"
+                        style="font-size: 0.7em; margin-left: 5px;"></i></span>
                 <div class="mega-menu">
                     <div class="mega-menu-grid">
                         <a href="home.html" class="mega-menu-item">
@@ -63,16 +64,17 @@
                     </div>
                 </div>
             </div>
-            
+
             <a href="regras_servidor.html" class="nav-item">Regras</a>
             <a href="mapas.html" class="nav-item active">Numeração Mapas</a>
             <a href="santuario.html" class="nav-item">Santuário</a>
             <a href="codigos.html" class="nav-item">Códigos</a>
             <a href="desafios.html" class="nav-item">Desafios</a>
-            <a href="builds.html" class="nav-item active">Builds</a>
+            <a href="builds.html" class="nav-item">Builds</a>
             <a href="lore.html" class="nav-item">Lore</a>
             <a href="mmr.html" class="nav-item">MMR</a>
             <a href="bots.html" class="nav-item">Bots</a>
+            <a href="reshades.html" class="nav-item">Reshades</a>
 
         </nav>
 
@@ -102,8 +104,9 @@
                         <span class="ban-detail-tag">REGISTRO CARTOGRÁFICO</span>
                         <div class="ban-detail-type" id="detail-type">AGUARDE...</div>
                         <h1 class="ban-detail-title" id="detail-realm">CARREGANDO REINO</h1>
-                        <p class="ban-detail-desc" id="detail-desc">Selecione uma das variações abaixo para carregar a topografia e callouts do território.</p>
-                        
+                        <p class="ban-detail-desc" id="detail-desc">Selecione uma das variações abaixo para carregar a
+                            topografia e callouts do território.</p>
+
                         <div id="map-variations-list" class="map-variations-list">
                         </div>
                     </div>
@@ -129,7 +132,8 @@
             <div class="container footer-content">
                 <div class="footer-brand">
                     <div class="logo">REFÚGIO DA NÉVOA</div>
-                    <p>O servidor da comunidade mais sombrio da Névoa. Junte-se a nós para campeonatos, discussões e muito mais.</p>
+                    <p>O servidor da comunidade mais sombrio da Névoa. Junte-se a nós para campeonatos, discussões e
+                        muito mais.</p>
                 </div>
                 <div class="footer-nav">
                     <h4>NAVEGAÇÃO</h4>
@@ -150,7 +154,8 @@
             </div>
             <div class="footer-bottom-bar">
                 <div class="container bottom-flex">
-                    <span class="copy">&copy; 2026 Refúgio da Névoa. Desenvolvido por <strong style="color:#fff;">Anthonny Michael</strong>.</span>
+                    <span class="copy">&copy; 2026 Refúgio da Névoa. Desenvolvido por <strong
+                            style="color:#fff;">Anthonny Michael</strong>.</span>
                     <span class="disclaimer">Não afiliado à Behaviour Interactive ou a Dead by Daylight™</span>
                 </div>
             </div>
@@ -160,7 +165,7 @@
     <script src="../js/mapas.js"></script>
     <script src="../js/navbar.js"></script>
     <script src="../js/entity.js"></script>
-    
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
@@ -189,5 +194,18 @@
 
         document.getElementById("logout-btn").onclick = () => signOut(auth);
     </script>
+    
+    <script>
+        setTimeout(() => {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                if(item.getAttribute('href') === 'mapas.html') {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }, 50);
+    </script>
 </body>
+
 </html>

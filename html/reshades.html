@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Baixe os melhores presets de Reshade para Dead by Daylight no Refúgio da Névoa." />
+  <title>Reshades | REFÚGIO DA NÉVOA</title>
+
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/css/bots.css" />
+  <link rel="stylesheet" href="../assets/css/reshades.css" />
+  <link rel="icon" href="../assets/icon.jpg" type="image/jpg" />
+</head>
+
+<body>
+  <div class="bot-atmosphere" aria-hidden="true">
+    <div class="bot-grid"></div>
+    <div class="bot-orb bot-orb-one"></div>
+    <div class="bot-orb bot-orb-two"></div>
+    <div id="particle-field"></div>
+  </div>
+
+  <header id="navbar" class="dashboard-header navbar-transparent">
+    <div class="logo">REFÚGIO DA NÉVOA</div>
+
+    <nav class="nav-menu pill-nav">
+      <a href="dashboard.html" class="nav-item">Início</a>
+      <div class="nav-item has-dropdown">
+        <span class="dropdown-trigger">Campeonato <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i></span>
+        <div class="mega-menu">
+          <div class="mega-menu-grid">
+            <a href="home.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-map-marked-alt"></i></div>
+              <div class="mega-text"><span class="mega-title">Votação de Reinos</span><span class="mega-desc">Defina o palco do próximo massacre.</span></div>
+            </a>
+            <a href="teams.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-users"></i></div>
+              <div class="mega-text"><span class="mega-title">Equipes</span><span class="mega-desc">Veja os sobreviventes e assassinos.</span></div>
+            </a>
+            <a href="bracket.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-sitemap"></i></div>
+              <div class="mega-text"><span class="mega-title">Chaves</span><span class="mega-desc">Acompanhe os confrontos do torneio.</span></div>
+            </a>
+            <a href="perks.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-ban"></i></div>
+              <div class="mega-text"><span class="mega-title">Perks Banidas</span><span class="mega-desc">O que é proibido pela Entidade.</span></div>
+            </a>
+            <a href="regras.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-star"></i></div>
+              <div class="mega-text"><span class="mega-title">Sistema de Pontuação</span><span class="mega-desc">Regras do campeonato e penalidades.</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="regras_servidor.html" class="nav-item">Regras</a>
+      <a href="mapas.html" class="nav-item">Numeração Mapas</a>
+      <a href="santuario.html" class="nav-item">Santuário</a>
+      <a href="codigos.html" class="nav-item">Códigos</a>
+      <a href="desafios.html" class="nav-item">Desafios</a>
+      <a href="builds.html" class="nav-item">Builds</a>
+      <a href="lore.html" class="nav-item">Lore</a>
+      <a href="mmr.html" class="nav-item">MMR</a>
+      <a href="bots.html" class="nav-item">Bots</a>
+      <a href="reshades.html" class="nav-item active">Reshades</a>
+
+    </nav>
+
+    <div class="nav-actions">
+      <div class="user-container" id="user-profile-trigger">
+        <span id="display-name">CARREGANDO...</span>
+        <div class="avatar-circle"><img src="../assets/icon.jpg" alt="User Profile" /></div>
+      </div>
+    </div>
+
+    <div id="user-submenu" class="dropdown-menu">
+      <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> SAIR DA NÉVOA</button>
+    </div>
+  </header>
+  
+  <div class="fade-in">
+    <main class="bots-page">
+      <section class="bots-hero">
+        <div class="hero-eyebrow"><span class="signal-dot"></span> SISTEMA DE VISUAL DA NÉVOA <span class="hero-line"></span></div>
+        <h1>SEU JOGO.<br /><span>NOVAS CORES.</span></h1>
+        <p>Uma coleção de presets de Reshade criados para transformar a atmosfera de Dead by Daylight, melhorando a visibilidade, nitidez e a imersão.</p>
+        <div class="hero-actions">
+          <a href="#catalogo" class="hero-cta primary"><i class="fas fa-eye"></i> EXPLORAR RESHADES</a>
+          <a href="https://reshade.me/" target="_blank" rel="noopener noreferrer" class="hero-cta ghost"><i class="fas fa-download"></i> BAIXAR RESHADE OFICIAL</a>
+        </div>
+      </section>
+
+      <section id="catalogo" class="catalog-section">
+        <div class="catalog-header">
+          <div>
+            <div class="section-kicker"><span></span> ARQUIVO DE PRESETS</div>
+            <h2>Escolha a sua <em>visão.</em></h2>
+          </div>
+          <div class="catalog-controls">
+            <label class="search-box"><i class="fas fa-search"></i><input id="reshade-search" type="search" placeholder="Buscar preset..." aria-label="Buscar reshade" /></label>
+            <div class="filter-tabs" role="tablist" aria-label="Filtrar reshades">
+              <button class="filter-tab active" data-filter="all">Todos</button>
+              <button class="filter-tab" data-filter="competitive">Competitivo</button>
+              <button class="filter-tab" data-filter="cinematic">Cinemático</button>
+              <button class="filter-tab" data-filter="dark">Sombrio</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="reshade-grid" class="bot-grid" aria-live="polite"></div>
+
+        <div id="empty-state" class="empty-state" hidden>
+          <i class="fas fa-eye-slash"></i>
+          <h3>Nenhum visual encontrado</h3>
+          <p>A Névoa obscureceu essa busca. Tente outro nome ou filtro.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyARpVKfzOMm-v0pv9-7w9xahvhItosrI2Q",
+      authDomain: "dbd-camp.firebaseapp.com",
+      projectId: "dbd-camp",
+      storageBucket: "dbd-camp.firebasestorage.app",
+      messagingSenderId: "357760091556",
+      appId: "1:357760091556:web:4d9191b487baf240e92d31",
+      measurementId: "G-THBBGJTTMJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    window.firebaseAuth = auth;
+    const displayNameEl = document.getElementById('display-name');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+      const userName = user.displayName || (user.email ? user.email.split('@')[0] : 'Usuário');
+      if (displayNameEl) displayNameEl.textContent = userName.toUpperCase();
+    });
+
+    if (logoutBtn) logoutBtn.onclick = () => signOut(auth);
+  </script>
+
+  <script src="../js/reshades.js"></script>
+  <script src="../js/navbar.js"></script>
+</body>
+
+</html>

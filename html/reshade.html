@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparação | REFÚGIO DA NÉVOA</title>
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <link rel="stylesheet" href="../assets/css/navbar.css" />
+  <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/responsive.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/bots.css" />
+  <link rel="stylesheet" href="../assets/css/reshades.css" />
+  <link rel="icon" href="../assets/icon.jpg" type="image/jpg">
+  
+  <style>
+    body {
+      background-color: #050505;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    
+    .bot-atmosphere {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .fade-in {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .bots-page {
+      padding-top: 120px;
+      padding-bottom: 80px;
+      min-height: 100vh;
+    }
+    
+    .reshade-detail-container {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    @keyframes slideUpFade {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-up {
+      opacity: 0;
+      animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    
+    .comparison-container {
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
+
+    .comparison-column {
+      position: relative;
+    }
+
+    .comparison-container img {
+      max-height: 42vh;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .comparison-container img:hover {
+      transform: scale(1.03);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .comparison-label {
+      transition: color 0.3s ease;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .comparison-column:hover .comparison-label {
+      color: #fff;
+    }
+
+    .comparison-column:hover .comparison-label.after {
+      text-shadow: 0 0 10px rgba(255, 54, 80, 0.5);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+      color: #aaa;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.80rem;
+      letter-spacing: 1.5px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .back-link i {
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .back-link:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .back-link:hover i {
+      transform: translateX(-5px);
+    }
+
+    .map-comparison-title {
+      font-size: 1.2rem;
+      color: #fff;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+
+<body>
+  
+  <div class="bot-atmosphere" aria-hidden="true">
+    <div class="bot-grid"></div>
+    <div class="bot-orb bot-orb-one" style="opacity: 0.5;"></div>
+    <div class="bot-orb bot-orb-two" style="opacity: 0.3;"></div>
+    <div id="particle-field"></div>
+  </div>
+
+  <header id="navbar" class="dashboard-header navbar-transparent">
+    <div class="logo">REFÚGIO DA NÉVOA</div>
+
+    <nav class="nav-menu pill-nav">
+      <a href="dashboard.html" class="nav-item">Início</a>
+      <div class="nav-item has-dropdown">
+        <span class="dropdown-trigger">Campeonato <i class="fas fa-chevron-down" style="font-size: 0.7em; margin-left: 5px;"></i></span>
+        <div class="mega-menu">
+          <div class="mega-menu-grid">
+            <a href="home.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-map-marked-alt"></i></div>
+              <div class="mega-text"><span class="mega-title">Votação de Reinos</span><span class="mega-desc">Defina o palco do próximo massacre.</span></div>
+            </a>
+            <a href="teams.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-users"></i></div>
+              <div class="mega-text"><span class="mega-title">Equipes</span><span class="mega-desc">Veja os sobreviventes e assassinos.</span></div>
+            </a>
+            <a href="bracket.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-sitemap"></i></div>
+              <div class="mega-text"><span class="mega-title">Chaves</span><span class="mega-desc">Acompanhe os confrontos do torneio.</span></div>
+            </a>
+            <a href="perks.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-ban"></i></div>
+              <div class="mega-text"><span class="mega-title">Perks Banidas</span><span class="mega-desc">O que é proibido pela Entidade.</span></div>
+            </a>
+            <a href="regras.html" class="mega-menu-item">
+              <div class="mega-icon"><i class="fas fa-star"></i></div>
+              <div class="mega-text"><span class="mega-title">Sistema de Pontuação</span><span class="mega-desc">Regras do campeonato e penalidades.</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="regras_servidor.html" class="nav-item">Regras</a>
+      <a href="mapas.html" class="nav-item">Numeração Mapas</a>
+      <a href="santuario.html" class="nav-item">Santuário</a>
+      <a href="codigos.html" class="nav-item">Códigos</a>
+      <a href="desafios.html" class="nav-item">Desafios</a>
+      <a href="builds.html" class="nav-item">Builds</a>
+      <a href="lore.html" class="nav-item">Lore</a>
+      <a href="mmr.html" class="nav-item">MMR</a>
+      <a href="bots.html" class="nav-item">Bots</a>
+      <a href="reshades.html" class="nav-item active">Reshades</a>
+
+    </nav>
+
+    <div class="nav-actions">
+      <div class="user-container" id="user-profile-trigger">
+        <span id="display-name">CARREGANDO...</span>
+        <div class="avatar-circle">
+          <img src="../assets/icon.jpg" alt="User Profile" />
+        </div>
+      </div>
+    </div>
+
+    <div id="user-submenu" class="dropdown-menu">
+      <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> SAIR DA NÉVOA</button>
+    </div>
+  </header>
+
+  <div class="fade-in">
+    <main class="bots-page">
+      <section class="container reshade-detail-container">
+        
+        <a href="reshades.html" class="back-link animate-up">
+          <i class="fas fa-arrow-left"></i> VOLTAR PARA A LISTA
+        </a>
+        
+        <div id="detail-content">
+          <div class="reshade-detail-header animate-up delay-1">
+            <span id="detail-category" class="bot-category"></span>
+            <h1 id="detail-title" class="reshade-detail-title" style="margin-top: 5px; margin-bottom: 15px;"></h1>
+          </div>
+
+          <div id="detail-features" class="bot-features animate-up delay-2" style="margin-bottom: 35px;"></div>
+
+          <div class="animate-up delay-3">
+            <a id="detail-download" href="#" download target="_blank" rel="noopener noreferrer" class="bot-action primary" style="display: inline-flex; width: auto; padding: 14px 28px; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+              <i class="fas fa-download"></i> BAIXAR PRESET (.INI)
+            </a>
+          </div>
+
+          <div id="comparisons-wrapper"></div>
+          
+        </div>
+
+        <div id="detail-notfound" class="empty-state animate-up delay-1" hidden>
+          <i class="fas fa-eye-slash"></i>
+          <h3>Visual não encontrado</h3>
+          <p>O ID informado não corresponde a nenhum preset.</p>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyARpVKfzOMm-v0pv9-7w9xahvhItosrI2Q",
+      authDomain: "dbd-camp.firebaseapp.com",
+      projectId: "dbd-camp",
+      storageBucket: "dbd-camp.firebasestorage.app",
+      messagingSenderId: "357760091556",
+      appId: "1:357760091556:web:4d9191b487baf240e92d31",
+      measurementId: "G-THBBGJTTMJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const displayNameEl = document.getElementById('display-name');
+    const logoutBtn = document.getElementById('logout-btn');
+    
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        displayNameEl.textContent = user.displayName || user.email.split("@")[0].toUpperCase();
+      } else {
+        window.location.href = 'login.html';
+      }
+    });
+    
+    if (logoutBtn) logoutBtn.onclick = () => signOut(auth);
+  </script>
+
+  <script src="../js/reshades.js"></script>
+  <script src="../js/navbar.js"></script>
+  
+  <script>
+    setTimeout(() => {
+      document.querySelectorAll('.nav-item').forEach(item => {
+        if(item.getAttribute('href') === 'reshades.html') {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }, 50);
+
+    const params = new URLSearchParams(window.location.search);
+    const reshadeId = params.get('id');
+    
+    const reshade = window.RESHADES_DATA.find(r => r.id === reshadeId);
+
+    if (!reshade) {
+      document.getElementById('detail-content').setAttribute('hidden', '');
+      document.getElementById('detail-notfound').removeAttribute('hidden');
+    } else {
+      document.title = `${reshade.name} | Refúgio da Névoa`;
+      
+      const catEl = document.getElementById('detail-category');
+      catEl.textContent = reshade.categoryLabel;
+      catEl.style.color = reshade.color;
+      
+      document.getElementById('detail-title').textContent = reshade.name;
+      
+      const btnDownload = document.getElementById('detail-download');
+      btnDownload.href = reshade.downloadUrl;
+      if (reshade.type === 'pack') {
+        btnDownload.innerHTML = '<i class="fas fa-file-zipper"></i> BAIXAR PACOTE (.ZIP)';
+      }
+      
+      document.getElementById('detail-features').innerHTML = (reshade.features || []).map(f => 
+        `<span class="bot-feature">${f}</span>`
+      ).join('');
+
+      const wrapper = document.getElementById('comparisons-wrapper');
+      
+      if (reshade.type === 'pack' && reshade.maps && reshade.maps.length > 0) {
+        wrapper.innerHTML = reshade.maps.map((map, index) => `
+          <div class="animate-up" style="animation-delay: ${0.4 + (index * 0.1)}s">
+            <h3 class="map-comparison-title"><i class="fas fa-map" style="color: ${reshade.color}; margin-right: 8px;"></i> ${map.name}</h3>
+            <div class="comparison-container">
+              <div class="comparison-column">
+                <span class="comparison-label">SEM RESHADE</span>
+                <img src="${map.imgBefore}" alt="Sem Reshade - ${map.name}">
+              </div>
+              <div class="comparison-column">
+                <span class="comparison-label after" style="color: ${reshade.color}; text-shadow: 0 0 10px ${reshade.color}80;">COM RESHADE</span>
+                <img src="${map.imgAfter}" alt="Com Reshade - ${map.name}">
+              </div>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        wrapper.innerHTML = `
+          <div class="comparison-container animate-up delay-4">
+            <div class="comparison-column">
+              <span class="comparison-label">SEM RESHADE</span>
+              <img src="${reshade.imgBefore}" alt="Sem Reshade">
+            </div>
+            <div class="comparison-column">
+              <span class="comparison-label after" style="color: ${reshade.color}; text-shadow: 0 0 10px ${reshade.color}80;">COM RESHADE</span>
+              <img src="${reshade.imgAfter}" alt="Com Reshade">
+            </div>
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+
+</html>

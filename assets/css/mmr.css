@@ -78,13 +78,20 @@
     }
 
     .dashboard-header {
-      border-bottom: 1px solid rgba(255,255,255,.07);
-      background: rgba(7, 7, 9, .68) !important;
-      backdrop-filter: blur(18px);
-      box-shadow: 0 12px 40px rgba(0,0,0,.18);
+      transition: background .35s ease, border-color .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
     }
 
-    .logo { letter-spacing: .2em; }
+    .dashboard-header.navbar-transparent {
+      background: transparent !important;
+      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(0);
+      box-shadow: none;
+    }
+
+    .dashboard-header.navbar-scrolled {
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+      backdrop-filter: blur(18px);
+    }
 
     .mmr-page {
       position: relative;
