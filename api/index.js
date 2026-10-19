@@ -62,7 +62,7 @@ app.get('/api/callback', async (req, res) => {
     const uid = `discord:${userData.id}`;
     const email = userData.email || null;
     const displayName = userData.global_name || userData.username;
-    const photoURL = userData.avatar ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png` : null;
+    const photoURL = userData.avatar ? `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png` : undefined;
 
     try {
         await admin.auth().getUser(uid);
