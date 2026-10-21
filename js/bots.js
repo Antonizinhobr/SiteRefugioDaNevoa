@@ -47,6 +47,18 @@ const BOTS = [
     inviteUrl: 'https://discord.com/oauth2/authorize?client_id=1495914731695898744&permissions=8&integration_type=0&scope=bot+applications.commands'
   },
   {
+    id: 'bot-nevoa-guide',
+    name: 'Névoa Guide',
+    category: 'dead by daylight',
+    categoryLabel: 'DEAD BY DAYLIGHT',
+    icon: 'fa-game',
+    color: '#ff3650',
+    description: 'Um bot com IA do gemini integrada, voltada para conhecimentos gerais de Dead By Daylight, função de rede social integrada, para postagens, curtidas, favoritar postagens e comentários em postagens e explicação de como jogar contra cada assassino do jogo Dead By Daylight, explicando as habilidades do assassino, os addons mais usados em partidas públicas por esses assassinos e vídeos explicativos na prática.',
+    features: ['Community', 'Dead By Daylight', 'Utility', 'Game'],
+    githubUrl: 'https://github.com/Antonizinhobr/nevoa-guide',
+    inviteUrl: 'https://discord.com/oauth2/authorize?client_id=1536156012623695942&permissions=8&integration_type=0&scope=bot+applications.commands'
+  },
+  {
   id: 'kage-bunshin',
   name: 'Kage Bunshin',
   category: 'music',
