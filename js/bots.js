@@ -51,7 +51,7 @@ const BOTS = [
     name: 'Névoa Guide',
     category: 'dead by daylight',
     categoryLabel: 'DEAD BY DAYLIGHT',
-    icon: 'fa-gamepad',
+    icon: 'fa-spider',
     color: '#ff3650',
     description: 'Um bot com IA do gemini integrada, voltada para conhecimentos gerais de Dead By Daylight, função de rede social integrada, para postagens, curtidas, favoritar postagens e comentários em postagens e explicação de como jogar contra cada assassino do jogo Dead By Daylight, explicando as habilidades do assassino, os addons mais usados em partidas públicas por esses assassinos e vídeos explicativos na prática.',
     features: ['Community', 'Dead By Daylight', 'Utility', 'Game'],
