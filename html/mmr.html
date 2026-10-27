@@ -233,15 +233,42 @@
     const LIMITE_GB = 5;
 
     function enviarComProgresso(url, arquivo, contentType, aoProgredir) {
-      return new Promise((resolve, reject) => {
+      const PARTE = 16 * 1024 * 1024;
+      const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
+      const enviarParte = (inicio) => new Promise((resolve, reject) => {
+        const fim = Math.min(inicio + PARTE, arquivo.size);
         const xhr = new XMLHttpRequest();
-        xhr.open('PUT', url);
-        xhr.setRequestHeader('Content-Type', contentType);
-        xhr.upload.onprogress = (e) => { if (e.lengthComputable) aoProgredir(e.loaded / e.total); };
-        xhr.onload = () => (xhr.status >= 200 && xhr.status < 300) ? resolve() : reject(new Error(`A nuvem recusou o upload (${xhr.status}).`));
-        xhr.onerror = () => reject(new Error('A ligação caiu durante o envio. Tenta de novo.'));
-        xhr.send(arquivo);
+        xhr.open('PUT', `${url}&inicio=${inicio}`);
+        xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+        xhr.upload.onprogress = (e) => { if (e.lengthComputable) aoProgredir((inicio + e.loaded) / arquivo.size); };
+        xhr.onload = () => {
+          let d = {};
+          try { d = JSON.parse(xhr.responseText); } catch (e) {}
+          if (xhr.status >= 200 && xhr.status < 300) return resolve(d);
+          if (xhr.status === 409 && Number.isFinite(d.recebidos)) return resolve(d);
+          if (xhr.status === 423 || xhr.status >= 500 || xhr.status === 0) return reject(Object.assign(new Error('rede'), { repetir: true }));
+          reject(new Error(d.erro || `O servidor recusou o envio (${xhr.status}).`));
+        };
+        xhr.onerror = () => reject(Object.assign(new Error('rede'), { repetir: true }));
+        xhr.send(arquivo.slice(inicio, fim));
       });
+      return (async () => {
+        let inicio = 0;
+        let falhas = 0;
+        while (inicio < arquivo.size) {
+          try {
+            const d = await enviarParte(inicio);
+            if (d.concluido) break;
+            inicio = Number(d.recebidos);
+            falhas = 0;
+          } catch (e) {
+            if (!e.repetir) throw e;
+            if (++falhas > 8) throw new Error('A ligação caiu durante o envio. Tenta de novo.');
+            await esperar(Math.min(30000, 2000 * falhas));
+          }
+        }
+        aoProgredir(1);
+      })();
     }
 
     document.getElementById('btnEnviar').addEventListener('click', async () => {
@@ -299,7 +326,7 @@
           throw new Error(dados.erro || "Não foi possível gerar o link.");
         }
 
-        statusTexto.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> A enviar vídeo para a Cloudflare... <b id="mmr-pct">0%</b>`;
+        statusTexto.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> A enviar vídeo... <b id="mmr-pct">0%</b>`;
         statusTexto.style.color = "#d45ce8";
 
         await enviarComProgresso(dados.urlUpload, ficheiro, dados.contentType || 'video/mp4', (p) => {
