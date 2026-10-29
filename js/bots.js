@@ -59,6 +59,17 @@ const BOTS = [
     inviteUrl: 'https://discord.com/oauth2/authorize?client_id=1536156012623695942&permissions=8&integration_type=0&scope=bot+applications.commands'
   },
   {
+    id: 'bot-nevoa-guide',
+    name: 'Bot MMR Guide',
+    category: 'dead by daylight',
+    categoryLabel: 'DEAD BY DAYLIGHT',
+    icon: 'fa-spider',
+    color: '#ff3650',
+    description: 'Um bot com PIPELINE de processamento de vídeo com OCR, OPENCV, FFMPEG e TESSERACT para análise de partidas de Dead By Daylight e classificar MMR, gerar relatório da partida e expor trechos bons/ruins da partida, de sobrevivente e/ou assassino.',
+    features: ['Community', 'Dead By Daylight', 'Utility', 'Game', 'MMR'],
+    githubUrl: 'https://github.com/Antonizinhobr/bot-mmr-deadbydaylight',
+  },
+  {
   id: 'kage-bunshin',
   name: 'Kage Bunshin',
   category: 'music',
