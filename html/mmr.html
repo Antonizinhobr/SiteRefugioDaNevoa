@@ -232,13 +232,16 @@
     const API_MMR = 'https://botmmr.discloud.dev';
     const LIMITE_GB = 5;
 
-    function enviarComProgresso(url, arquivo, contentType, aoProgredir) {
-      const PARTE = 16 * 1024 * 1024;
+    function enviarComProgresso(url, arquivo, contentType, aoProgredir, aoAviso) {
+      const PARTE = 8 * 1024 * 1024;
+      const LIMITE_MS = 180000;
+      const avisar = (t) => { if (aoAviso) aoAviso(t); };
       const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
       const enviarParte = (inicio) => new Promise((resolve, reject) => {
         const fim = Math.min(inicio + PARTE, arquivo.size);
         const xhr = new XMLHttpRequest();
         xhr.open('PUT', `${url}&inicio=${inicio}`);
+        xhr.timeout = LIMITE_MS;
         xhr.setRequestHeader('Content-Type', 'application/octet-stream');
         xhr.upload.onprogress = (e) => { if (e.lengthComputable) aoProgredir((inicio + e.loaded) / arquivo.size); };
         xhr.onload = () => {
@@ -250,24 +253,33 @@
           reject(new Error(d.erro || `O servidor recusou o envio (${xhr.status}).`));
         };
         xhr.onerror = () => reject(Object.assign(new Error('rede'), { repetir: true }));
+        xhr.ontimeout = () => reject(Object.assign(new Error('rede'), { repetir: true }));
         xhr.send(arquivo.slice(inicio, fim));
       });
       return (async () => {
-        let inicio = 0;
-        let falhas = 0;
-        while (inicio < arquivo.size) {
-          try {
-            const d = await enviarParte(inicio);
-            if (d.concluido) break;
-            inicio = Number(d.recebidos);
-            falhas = 0;
-          } catch (e) {
-            if (!e.repetir) throw e;
-            if (++falhas > 8) throw new Error('A ligação caiu durante o envio. Tenta de novo.');
-            await esperar(Math.min(30000, 2000 * falhas));
+        let tela = null;
+        try { if (navigator.wakeLock) tela = await navigator.wakeLock.request('screen'); } catch (e) {}
+        try {
+          let inicio = 0;
+          let falhas = 0;
+          while (inicio < arquivo.size) {
+            try {
+              const d = await enviarParte(inicio);
+              if (d.concluido) break;
+              inicio = Number(d.recebidos);
+              falhas = 0;
+              avisar('');
+            } catch (e) {
+              if (!e.repetir) throw e;
+              if (++falhas > 8) throw new Error('A ligação está instável e o envio não avançou. Tenta de novo numa rede mais estável.');
+              avisar(`Conexão instável, a tentar de novo (${falhas}/8)...`);
+              await esperar(Math.min(30000, 2000 * falhas));
+            }
           }
+          aoProgredir(1);
+        } finally {
+          if (tela) tela.release().catch(() => {});
         }
-        aoProgredir(1);
       })();
     }
 
@@ -326,13 +338,16 @@
           throw new Error(dados.erro || "Não foi possível gerar o link.");
         }
 
-        statusTexto.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> A enviar vídeo... <b id="mmr-pct">0%</b>`;
+        statusTexto.innerHTML = `<i class="fas fa-cloud-upload-alt"></i> A enviar vídeo... <b id="mmr-pct">0%</b><br><small id="mmr-aviso">Não feches esta página nem bloqueies o ecrã até terminar.</small>`;
         statusTexto.style.color = "#d45ce8";
 
         await enviarComProgresso(dados.urlUpload, ficheiro, dados.contentType || 'video/mp4', (p) => {
           setBarra(p);
           const pct = document.getElementById('mmr-pct');
           if (pct) pct.textContent = `${Math.round(p * 100)}%`;
+        }, (aviso) => {
+          const el = document.getElementById('mmr-aviso');
+          if (el) el.textContent = aviso || 'Não feches esta página nem bloqueies o ecrã até terminar.';
         });
 
         setBarra(1);
